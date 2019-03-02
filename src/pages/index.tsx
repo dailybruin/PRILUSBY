@@ -10,6 +10,8 @@ import {
 } from '@dailybruin/lux'
 
 import { TitleGallery } from '../components/TitleGallery'
+import { StyledCoverPhoto } from '../components/StyledCoverPhoto'
+import { FooterAuthorBio } from '../components/FooterAuthorBio'
 
 export const query = graphql`
   query {
@@ -51,6 +53,23 @@ const stories = [
 
 const IndexPage = ({ data }) => (
   <>
+    <FooterAuthorBio
+      name="Kristie-Valerie Hoang"
+      email="khoang@dailybruin.com"
+      handle="@KristieHoang DB"
+      bio="Hoang is a third-year political science major. She is the Social Media director at the Daily Bruin."
+    >
+    </FooterAuthorBio>
+    <StyledCoverPhoto
+          title="The Road to Royce"
+          authors={["John Tudhope"]}
+          description="A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this."
+          quarter="Fall 2018"
+          imageURL="https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg"
+          photographers={["Max Wu", "Yeet"]}
+    >
+
+    </StyledCoverPhoto>
     <TitleGallery
       stories={stories}
     ></TitleGallery>
