@@ -1,0 +1,17 @@
+.custom-pagination {
+    position: absolute;
+    text-align: right;
+    color: yellow;
+    padding-right: 20px;
+    padding-bottom: 5px;     
+    /* -webkit-transition: 300ms opacity;
+    -o-transition: 300ms opacity;
+    transition: 300ms opacity;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); */
+    z-index: 10;
+  }
+
+  .custom-pagination.swiper-pagination-hidden {
+    opacity: 0;
+  }
