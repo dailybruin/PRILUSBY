@@ -32,7 +32,6 @@ export class TitleGallery extends React.Component<TitleGalleryProps> {
       <div>
         <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet"></link>
         <Swiper {...params}>
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.css"></link>
           {this.props.stories.map((story) =>
             <div className={css`
                 text-align: center;

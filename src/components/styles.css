@@ -1,17 +1,22 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.css");
+
 .custom-pagination {
     position: absolute;
     text-align: right;
-    color: yellow;
     padding-right: 20px;
-    padding-bottom: 5px;     
-    /* -webkit-transition: 300ms opacity;
-    -o-transition: 300ms opacity;
-    transition: 300ms opacity;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0); */
+    padding-bottom: 5px;
     z-index: 10;
   }
 
   .custom-pagination.swiper-pagination-hidden {
     opacity: 0;
   }
+
+.swiper-pagination-bullet {
+    opacity: .5;
+    background: white;
+}
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #FFF96B;
+}
