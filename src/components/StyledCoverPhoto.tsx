@@ -120,25 +120,27 @@ export class StyledCoverPhoto extends React.Component<StyledCoverPhotoProps> {
         <div className={css`
           position: absolute;
           width: 60%;
-          height: 25%;
+          height: auto;
           bottom: 0;
           left: 0;
           background-color: white;
           color: black;
           text-align: right;
-          padding: 20px;
+          padding: 35px;
+          padding-bottom: 40px;
+          @media (max-width: 768px) {
+            padding: 25px;
+            paddin-bottom: 30px;
+          }
         `}>
           <h1 className={css`
-            margin-bottom: 10px;
+            margin: 10px;
             font-family: Barlow;
             font-style: normal;
             line-height: normal;
             font-size: 48px;
             @media (max-width: 768px) {
-              font-size: 36px;
-            }
-            @media (max-width: 600px) {
-              font-size: 28px;
+              font-size: 36px; 
             }
           `}><b>{ this.props.title }</b> </h1>
           <h2 className={css`
@@ -148,9 +150,6 @@ export class StyledCoverPhoto extends React.Component<StyledCoverPhotoProps> {
             font-size: 18px;
             @media (max-width: 768px) {
               font-size: 14px;
-            }
-            @media (max-width: 600px) {
-              font-size: 12px;
             }
           `}>BY { toSentence(this.props.authors).toUpperCase() }{ this.props.photographers && " // PHOTOS BY " + toSentence(this.props.photographers).toUpperCase() }
           </h2>
