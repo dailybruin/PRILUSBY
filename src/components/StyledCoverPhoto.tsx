@@ -113,7 +113,7 @@ export class StyledCoverPhoto extends React.Component<StyledCoverPhotoProps> {
           height: 83%;
           top: 0;
           right: 5%;
-          background-size: 100% auto;
+          background-size: auto 100%;
           background-image: url(${ this.props.imageURL });
         `}>
         </div>
@@ -134,12 +134,24 @@ export class StyledCoverPhoto extends React.Component<StyledCoverPhotoProps> {
             font-style: normal;
             line-height: normal;
             font-size: 48px;
+            @media (max-width: 768px) {
+              font-size: 36px;
+            }
+            @media (max-width: 600px) {
+              font-size: 28px;
+            }
           `}><b>{ this.props.title }</b> </h1>
           <h2 className={css`
             font-family: Barlow;
             font-style: normal;
             line-height: normal;
             font-size: 18px;
+            @media (max-width: 768px) {
+              font-size: 14px;
+            }
+            @media (max-width: 600px) {
+              font-size: 12px;
+            }
           `}>BY { toSentence(this.props.authors).toUpperCase() }{ this.props.photographers && " // PHOTOS BY " + toSentence(this.props.photographers).toUpperCase() }
           </h2>
         </div>

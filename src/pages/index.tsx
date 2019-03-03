@@ -111,6 +111,18 @@ const stories = [
 
 const IndexPage = ({ data }) => (
   <>
+    <StyledCoverPhoto
+      title="The Road to Royce"
+      authors={["John Tudhope"]}
+      description="A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this."
+      quarter="Fall 2018"
+      imageURL="https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg"
+      photographers={["Max Wu", "Yeet"]}
+    >
+    </StyledCoverPhoto>
+    <TitleGallery
+      stories={stories}
+    ></TitleGallery>
     <QuarterlyStories
       quarters={quarterlyStories}>
     </QuarterlyStories>
@@ -121,19 +133,6 @@ const IndexPage = ({ data }) => (
       bio="Hoang is a third-year political science major. She is the Social Media director at the Daily Bruin."
     >
     </FooterAuthorBio>
-    <StyledCoverPhoto
-          title="The Road to Royce"
-          authors={["John Tudhope"]}
-          description="A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this."
-          quarter="Fall 2018"
-          imageURL="https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg"
-          photographers={["Max Wu", "Yeet"]}
-    >
-
-    </StyledCoverPhoto>
-    <TitleGallery
-      stories={stories}
-    ></TitleGallery>
     <Head {...data.site.siteMetadata} />
     <CoverPhoto
       headline={data.kerckhoffArticle.headline}

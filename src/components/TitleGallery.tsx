@@ -25,7 +25,8 @@ export class TitleGallery extends React.Component<TitleGalleryProps> {
       pagination: {
         el: '.custom-pagination',
         clickable: true,
-      }
+      },
+      loop: true,
     }
 
     return (
