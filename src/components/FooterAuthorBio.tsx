@@ -20,7 +20,7 @@ export class FooterAuthorBio extends React.Component<FooterAuthorBioProps> {
     return (
       <div className={css`
         width: 100%;
-        height: 150px;
+        height: auto;
         background-color: black;
         color: white;
         text-align: center;
@@ -34,9 +34,14 @@ export class FooterAuthorBio extends React.Component<FooterAuthorBioProps> {
         line-height: normal;
         font-size: 24px;
         text-align: center;
+
+        @media (max-width: 768px) {
+          font-size: 18px;
+        }
       `}>
         <div className={css`
           max-width: 50%;
+          margin: 50px;
         `}>
           <p className={css`
             margin: 0;
