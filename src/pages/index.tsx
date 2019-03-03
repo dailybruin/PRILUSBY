@@ -8,7 +8,6 @@ import {
   XPosition,
   YPosition,
 } from '@dailybruin/lux'
-import CustomHeader from '../components/CustomHeader'
 import { ArticleCard } from "../components/ArticleCard";
 import { css } from 'emotion';
 
@@ -35,7 +34,6 @@ export const query = graphql`
 const IndexPage = ({ data }) => (
   <>
     <Head {...data.site.siteMetadata} />
-    <CustomHeader transparent={true} />
     <CoverPhoto
       headline={data.kerckhoffArticle.headline}
       authors={data.kerckhoffArticle.author}
