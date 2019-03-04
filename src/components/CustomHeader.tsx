@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { css } from 'react-emotion'
 import { Link } from 'gatsby'
+import MobilePopup from './MobilePopup'
 const prime = require('../images/prime.png')
 
 interface CustomHeaderProps {
@@ -27,6 +28,9 @@ const linkStyle = css`
     color: #fff;
     margin-left: 67px;
   }
+  @media (max-width: 940px) {
+    display: none;
+  }
 `
 
 export default class CustomHeader extends React.Component<CustomHeaderProps> {
@@ -39,6 +43,7 @@ export default class CustomHeader extends React.Component<CustomHeaderProps> {
       width: 100%;
       display: flex;
       padding-left: 46px;
+      align-items: center;
       ${background};
     `
     return (
@@ -50,6 +55,14 @@ export default class CustomHeader extends React.Component<CustomHeaderProps> {
           <Link to="/about">past issue</Link>
           <Link to="/all">all stories</Link>
         </div>
+        <MobilePopup>
+          {[
+            <Link to="/about">about</Link>,
+            <Link to="/current">current issue</Link>,
+            <Link to="/about">past issue</Link>,
+            <Link to="/all">all stories</Link>,
+          ]}
+        </MobilePopup>
       </div>
     )
   }
