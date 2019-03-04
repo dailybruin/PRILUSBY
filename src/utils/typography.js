@@ -5,8 +5,8 @@ import 'normalize.css'
 const typography = new Typography({
   googleFonts: [
     {
-      name: 'Libre Baskerville',
-      styles: ['400'],
+      name: 'Barlow',
+      styles: ['400', '900'],
     },
   ],
   headerFontFamily: ['Georgia', 'serif'],
