@@ -34,9 +34,9 @@ class MobilePopup extends React.Component<any, any> {
       <details
         ref={this.detailsRef}
         className={css`
-          width: 100%;
           justify-self: end;
           text-align: right;
+          margin-right: 55px;
           @media (min-width: 940px) {
             display: none;
           }
@@ -53,7 +53,6 @@ class MobilePopup extends React.Component<any, any> {
           <FontAwesomeIcon
             className={css`
               color: #fff;
-              margin-right: 25px;
             `}
             icon={this.state.open ? faTimes : faBars}
           />

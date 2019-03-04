@@ -44,6 +44,9 @@ export default class CustomHeader extends React.Component<CustomHeaderProps> {
       display: flex;
       padding-left: 46px;
       align-items: center;
+      @media (max-width: 940px) {
+        justify-content: space-between;
+      }
       ${background};
     `
     return (
