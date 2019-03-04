@@ -8,12 +8,10 @@ import {
   XPosition,
   YPosition,
 } from '@dailybruin/lux'
-<<<<<<< HEAD
 import GraphicNovel from '../components/GraphicNovel'
-=======
-import { ArticleCard } from "../components/ArticleCard";
-import { css } from 'emotion';
->>>>>>> master
+import CustomHeader from '../components/CustomHeader'
+import { ArticleCard } from '../components/ArticleCard'
+import { css } from 'emotion'
 
 export const query = graphql`
   query {
@@ -38,6 +36,7 @@ export const query = graphql`
 const IndexPage = ({ data }) => (
   <>
     <Head {...data.site.siteMetadata} />
+    <CustomHeader transparent={true} />
     <CoverPhoto
       headline={data.kerckhoffArticle.headline}
       authors={data.kerckhoffArticle.author}
@@ -47,16 +46,20 @@ const IndexPage = ({ data }) => (
     />
     <GraphicNovel />
     <Article dropcap={true} content={data.kerckhoffArticle.content} />
-    <div className={css`
-      display: flex;
-      justify-content: space-around;
-    `}>
+    <div
+      className={css`
+        display: flex;
+        justify-content: space-around;
+      `}
+    >
       <ArticleCard
         blackCardFontSize={1}
         whiteCardFontSize={0.8}
         blackCardText="Song Sot/Survival"
-        whiteCardText={"A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this."}
+        whiteCardText={
+          'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.'
+        }
         imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
         href="/"
         wrapperWidthVW={33}
@@ -66,8 +69,10 @@ const IndexPage = ({ data }) => (
         blackCardFontSize={1}
         whiteCardFontSize={0.8}
         blackCardText="Song Sot/Survival"
-        whiteCardText={"A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this."}
+        whiteCardText={
+          'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.'
+        }
         imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
         href="/"
         wrapperWidthVW={33}
@@ -77,24 +82,30 @@ const IndexPage = ({ data }) => (
         blackCardFontSize={1}
         whiteCardFontSize={0.8}
         blackCardText="Song Sot/Survival"
-        whiteCardText={"A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this."}
+        whiteCardText={
+          'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.'
+        }
         imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
         href="/"
         wrapperWidthVW={33}
         imgWidthVW={30}
       />
     </div>
-    <div className={css`
-      display: flex;
-      justify-content: space-around;
-    `}>
+    <div
+      className={css`
+        display: flex;
+        justify-content: space-around;
+      `}
+    >
       <ArticleCard
         blackCardFontSize={1.2}
         whiteCardFontSize={1}
         blackCardText="Song Sot/Survival"
-        whiteCardText={"A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this."}
+        whiteCardText={
+          'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.'
+        }
         imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
         href="/"
         wrapperWidthVW={41}
@@ -104,8 +115,10 @@ const IndexPage = ({ data }) => (
         blackCardFontSize={1.2}
         whiteCardFontSize={1}
         blackCardText="This is supposed to be a super long title and I have no idea what it should eventually land but I and growing paranoid and this is looking pretty bad, DUH!"
-        whiteCardText={"A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this."}
+        whiteCardText={
+          'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.'
+        }
         imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
         href="/"
         wrapperWidthVW={41}
