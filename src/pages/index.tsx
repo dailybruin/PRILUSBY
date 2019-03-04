@@ -8,6 +8,7 @@ import {
   XPosition,
   YPosition,
 } from '@dailybruin/lux'
+import GraphicNovel from '../components/GraphicNovel'
 
 export const query = graphql`
   query {
@@ -39,6 +40,7 @@ const IndexPage = ({ data }) => (
       xPosition={XPosition.Center}
       yPosition={YPosition.Center}
     />
+    <GraphicNovel />
     <Article dropcap={true} content={data.kerckhoffArticle.content} />
     <Footer developers="Nathan Smith" copyrightYear={2018} />
   </>
