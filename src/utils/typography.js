@@ -8,6 +8,7 @@ const typography = new Typography({
       name: 'Barlow',
       styles: ['400', '900'],
     },
+    { name: 'Barlow', styles: ['400', '800'] },
   ],
   headerFontFamily: ['Georgia', 'serif'],
   bodyFontFamily: ['Libre Baskerville', 'serif'],
