@@ -45,7 +45,12 @@ const IndexPage = ({ data }) => (
       yPosition={YPosition.Center}
     />
     <Article dropcap={true} content={data.kerckhoffArticle.content} />
-    <HeaderHighLight/> 
+    <HeaderHighLight
+      title="testing"
+      highlightPosition="top"
+      textAlign="right"
+      fullWidth={true}
+    />
     {/* <CustomPullImage
       url="https://assets.dailybruin.com/images/interactive.prime.2018.teddy/web.prime.homelessness.missmary.ADX-e4d9cf1515feb0181473bb868a1c2374.JPG"
       caption="Miss Mary"

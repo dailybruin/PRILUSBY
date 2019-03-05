@@ -1,51 +1,37 @@
 import * as React from 'react'
 import { css } from 'react-emotion'
-
-const headerStyles1 = css`
-  position: relative;
-  font-family: Barlow;
-  font-style: normal;
-  font-size: 25px;
-  line-height: 43px;
-  font-weight: bold;
-  line-height: normal;
-  height: 32px;
-  background: yellow;
-  margin-top: 10px;
-  padding-left: 5px;
-  padding-right: 5px;
-`
-
-const headerStyles2 = css`
-  font-family: Barlow;
-  font-style: normal;
-  font-size: 25px;
-  line-height: 43px;
-  font-weight: bold;
-  line-height: normal;
-`
-
-export class HeaderHighLight extends React.Component<> {
+interface HeaderProps {
+  title: string
+  highlightPosition: string
+  textAlign: string
+  fullWidth: boolean
+  style?: string
+}
+export class HeaderHighLight extends React.Component<HeaderProps, {}> {
   render() {
     return (
-      <div className={headerStyles1}>
+      <div
+        className={css`
+          display: ${this.props.fullWidth ? 'block' : 'inline-block'};
+          font-family: Barlow;
+          font-style: normal;
+          font-size: 2rem;
+          font-weight: 900;
+          height: 30px;
+          background: #fff96b;
+          padding-left: ${this.props.textAlign === 'left' ? 5 : 20}px;
+          padding-right: ${this.props.textAlign === 'left' ? 5 : 20}px;
+        `}
+      >
         <div
           className={css`
             position: relative;
-            top: -50%;
+            width: 100%;
+            top: ${this.props.highlightPosition === 'top' ? 5 : -20}px;
+            text-align: ${this.props.textAlign === 'left' ? 'left' : 'right'};
           `}
         >
-          <span
-            className={css`
-              height: 52px;
-              font-size: 2.5 rem;
-              font-style: italic;
-              font-weight: 900;
-              line-height: normal;
-            `}
-          >
-            Testing
-          </span>
+          {this.props.title}
         </div>
       </div>
     )
