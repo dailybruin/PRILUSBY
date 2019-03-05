@@ -135,7 +135,7 @@ export class StyledCoverPhoto extends React.Component<StyledCoverPhotoProps> {
             height: 83%;
             top: 0;
             right: 5%;
-            background-size: auto 100%;
+            background-size: cover;
             background-image: url(${this.props.imageURL});
             background-position: center;
           `}
@@ -150,10 +150,10 @@ export class StyledCoverPhoto extends React.Component<StyledCoverPhotoProps> {
             background-color: white;
             color: black;
             text-align: right;
-            padding: 35px;
+            padding: 10px;
             padding-bottom: 40px;
             @media (max-width: 768px) {
-              padding: 25px;
+              padding: 10px;
               paddin-bottom: 30px;
             }
           `}
@@ -172,7 +172,7 @@ export class StyledCoverPhoto extends React.Component<StyledCoverPhotoProps> {
           >
             <b>{this.props.title}</b>{' '}
           </h1>
-          <h2
+          <p
             className={css`
               font-family: Barlow;
               font-style: normal;
@@ -187,7 +187,7 @@ export class StyledCoverPhoto extends React.Component<StyledCoverPhotoProps> {
             {this.props.photographers &&
               ' // PHOTOS BY ' +
                 toSentence(this.props.photographers).toUpperCase()}
-          </h2>
+          </p>
         </div>
       </div>
     )
