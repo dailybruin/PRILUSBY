@@ -14,7 +14,7 @@ const typography = new Typography({
     },
     {
       name: 'Barlow',
-      styles: ['400'],
+      styles: ['400,500,600,800'],
     }
   ],
   headerFontFamily: ['Georgia', 'serif'],
