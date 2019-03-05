@@ -3,11 +3,11 @@ import { graphql } from 'gatsby'
 import {
   Article,
   CoverPhoto,
-  Footer,
   Head,
   XPosition,
   YPosition,
 } from '@dailybruin/lux'
+import { Footer } from '../components/Footer'
 
 export const query = graphql`
   query {
