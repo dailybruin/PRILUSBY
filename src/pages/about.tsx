@@ -32,25 +32,19 @@ export function AboutFrame(props: AboutInfo) {
     }>
     <img className={css`margin-bottom: 16px`} src={props.headshot}/>
     <div className={css`font-weight: 600;
-                        font-size: 30px;`}
-    dangerouslySetInnerHTML={{
-    __html: props.title,
-    }}/>
-    <div id='name' className={css`margin: 11px; font-weight: 500; font-size: 24px;`}
-    dangerouslySetInnerHTML={{
-    __html: props.name,
-    }}/>
+                        font-size: 30px;`}>{props.title}</div>
+    <div id='name' className={css`margin: 11px;
+                                  font-weight: 500;
+                                  font-size: 24px;`}>{props.name}</div>
     <div id='description'
-    className={css`font-weight:500; font-size:18px; margin: 0 20px 0 20px;`}
-    dangerouslySetInnerHTML={{
-    __html: props.text,
-    }}/>
+    className={css`font-weight:500;
+                   font-size:18px;
+                   margin: 0 20px 0 20px;`}>{props.text}</div>
     <img className={css`margin: 22px`} src={props.signature}/>
     <div id='email'
-    className={css`font-weight:500; font-size:18px; margin-bottom: 50px;`}
-    dangerouslySetInnerHTML={{
-    __html: props.email,
-    }}/>
+    className={css`font-weight:500;
+                   font-size:18px;
+                   margin-bottom: 50px;`}>{props.email}</div>
     </div>
 
   )
