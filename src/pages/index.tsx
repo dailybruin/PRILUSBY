@@ -143,6 +143,7 @@ const IndexPage = ({ data }) => (
       quarter="Fall 2018"
       imageURL="https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg"
       photographers={['Max Wu', 'Yeet']}
+      socialMediaLinks={["https://twitter.com/realDonaldTrump?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor", "https://www.linkedin.com/in/maxcwu/", "https://www.facebook.com/maxwuwaxmu", "mailto:chengmaxwu@gmail.com"]}
     />
 
     <FooterAuthorBio
