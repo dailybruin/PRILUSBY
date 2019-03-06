@@ -9,10 +9,17 @@ import { StyledCoverPhoto } from '../components/StyledCoverPhoto'
 import { FooterAuthorBio } from '../components/FooterAuthorBio'
 
 export const query = graphql`
-  query($name: String!) {
-    kerckhoffArticle(title: { eq: $name }) {
+  query($headline: String!) {
+    primeArticle(headline: { eq: $headline }) {
       headline
       author
+      authorbio
+      authoremail
+      authortwitter
+      coverimg
+      covercred
+      coveralt
+      articleType
       content {
         type
         value
@@ -47,7 +54,7 @@ export default ({ data }) => {
           imageURL="https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg"
           photographers={['Max Wu', 'Yeet']}
         />
-        <Article dropcap={true} content={data.kerckhoffArticle.content} />
+        <Article dropcap={true} content={data.primeArticle.content} />
       </div>
       <FooterAuthorBio
         name="Kristie-Valerie Hoang"

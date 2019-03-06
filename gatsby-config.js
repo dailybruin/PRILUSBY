@@ -38,12 +38,6 @@ module.exports = {
       },
     },
     {
-      resolve: '@dailybruin/gatsby-source-kerckhoff',
-      options: {
-        slug: 'online.demoaml',
-      },
-    },
-    {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: 'UA-28181852-23',

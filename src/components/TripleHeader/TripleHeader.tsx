@@ -71,6 +71,9 @@ export class TripleHeader extends React.Component<TripleHeaderProps, {}> {
           className={css`
             margin-left: -20%;
             margin-right: -35%;
+            & img {
+              object-fit: cover;
+            }
           `}
         >
           <Gallery photos={photos} columns={3} margin={8} />

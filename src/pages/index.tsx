@@ -24,26 +24,16 @@ import { CoverGallery } from '../components/CoverGallery'
 import F18prime2 from '../images/prime.f18.cover 2.1.png'
 import F18prime from '../images/prime.f18.cover.png'
 
-export const query = graphql`
-  query {
-    site {
-      siteMetadata {
-        siteName
-        description
-        url
-        image
-      }
-    }
-    kerckhoffArticle {
-      headline
-      author
-      content {
-        type
-        value
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query {
+//     issue {
+//       term
+//       title
+//       coverphoto
+//       articles
+//     }
+//   }
+// `
 
 const CoverPhotos = [
   {
@@ -70,24 +60,22 @@ const CoverPhotos = [
 
 const stories = [
   {
-    photoURL: F18prime,
-    URL: 'https://www.linkedin.com/in/maxcwu/',
+    title: 'The Road to Royce',
+    authors: ['John Tudhope'],
+    description:
+      'A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this.',
+    quarter: 'Fall 2018',
+    imageURL:
+      'https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg',
   },
   {
-    photoURL: F18prime,
-    URL: 'https://www.linkedin.com/in/maxcwu/',
-  },
-  {
-    photoURL: F18prime,
-    URL: 'https://www.linkedin.com/in/maxcwu/',
-  },
-  {
-    photoURL: F18prime,
-    URL: 'https://www.linkedin.com/in/maxcwu/',
-  },
-  {
-    photoURL: F18prime,
-    URL: 'https://www.linkedin.com/in/maxcwu/',
+    title: 'Song Sot/Survival',
+    authors: ['Kristie-Valerie Hoang'],
+    description:
+      'A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this.',
+    quarter: 'Winter 2018',
+    imageURL:
+      'https://s3.amazonaws.com/images.seroundtable.com/google-submit-url-1516800645.jpg',
   },
 ]
 
@@ -213,130 +201,6 @@ const IndexPage = ({ data }) => (
   <>
     <CustomHeader transparent={false} />
     <QuarterlyStories quarters={quarterlyStories} />
-
-    <FooterAuthorBio
-      name="Kristie-Valerie Hoang"
-      email="khoang@dailybruin.com"
-      handle="@KristieHoang DB"
-      bio="Hoang is a third-year political science major. She is the Social Media director at the Daily Bruin."
-    />
-    <Head {...data.site.siteMetadata} />
-    <GraphicNovel />
-    <ThreeArticleCardRow
-      cards={[
-        {
-          title: 'Song Sot/Survival',
-          caption:
-            'A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this.',
-          imageSrc: 'https://ampbyexample.com/img/canoe_900x600.jpg',
-          href: '/',
-        },
-        {
-          title: 'Song Sot/Survival',
-          caption:
-            'A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this.',
-          imageSrc:
-            'https://i.kym-cdn.com/photos/images/newsfeed/001/295/524/cda.jpg',
-          href: '/',
-        },
-        {
-          title: 'Song Sot/Survival',
-          caption:
-            'A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this.',
-          imageSrc: 'https://ampbyexample.com/img/green_apple_1_1024x682.jpg',
-          href: '/',
-        },
-      ]}
-    />
-    <HeaderHighLight
-      title="testing"
-      highlightPosition="top"
-      textAlign="right"
-      fullWidth={true}
-    />
-    <div
-      className={css`
-        display: flex;
-        justify-content: space-around;
-      `}
-    >
-      <ArticleCard
-        blackCardFontSize={1}
-        whiteCardFontSize={0.8}
-        blackCardText="Song Sot/Survival"
-        whiteCardText={
-          'A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this.'
-        }
-        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-        href="/"
-        wrapperWidthVW={33}
-        imgWidthVW={30}
-      />
-      <ArticleCard
-        blackCardFontSize={1}
-        whiteCardFontSize={0.8}
-        blackCardText="Song Sot/Survival"
-        whiteCardText={
-          'A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this.'
-        }
-        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-        href="/"
-        wrapperWidthVW={33}
-        imgWidthVW={30}
-      />
-      <ArticleCard
-        blackCardFontSize={1}
-        whiteCardFontSize={0.8}
-        blackCardText="Song Sot/Survival"
-        whiteCardText={
-          'A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this.'
-        }
-        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-        href="/"
-        wrapperWidthVW={33}
-        imgWidthVW={30}
-      />
-    </div>
-    <div
-      className={css`
-        display: flex;
-        justify-content: space-around;
-      `}
-    >
-      <ArticleCard
-        blackCardFontSize={1.2}
-        whiteCardFontSize={1}
-        blackCardText="Song Sot/Survival"
-        whiteCardText={
-          'A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this.'
-        }
-        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-        href="/"
-        wrapperWidthVW={41}
-        imgWidthVW={40}
-      />
-      <ArticleCard
-        blackCardFontSize={1.2}
-        whiteCardFontSize={1}
-        blackCardText="This is supposed to be a super long title and I have no idea what it should eventually land but I and growing paranoid and this is looking pretty bad, DUH!"
-        whiteCardText={
-          'A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this.'
-        }
-        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-        href="/"
-        wrapperWidthVW={41}
-        imgWidthVW={40}
-      />
-    </div>
-    <Footer />
   </>
 )
 
