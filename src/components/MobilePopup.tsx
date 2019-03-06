@@ -34,8 +34,10 @@ class MobilePopup extends React.Component<any, any> {
       <details
         ref={this.detailsRef}
         className={css`
+          position: absolute;
+          top: 3vw;
           justify-self: end;
-          text-align: right;
+          text-align: left;
           margin-right: 55px;
           @media (min-width: 940px) {
             display: none;
@@ -44,31 +46,59 @@ class MobilePopup extends React.Component<any, any> {
       >
         <summary
           className={css`
+            position: relative;
+            display: block;
             font-size: 1rem;
+            width: 20vw;
+            height: 20vw;
+            text-align: center;
             ::-webkit-details-marker {
               display: none;
             }
           `}
+          style={this.state.open ? {
+            backgroundColor: "white",
+            borderTopLeftRadius: "0.5rem",
+            borderTopRightRadius: "0.5rem",
+          } : null}
         >
-          <FontAwesomeIcon
-            className={css`
-              color: #fff;
-            `}
-            icon={this.state.open ? faTimes : faBars}
-          />
+          {this.state.open ?
+            <FontAwesomeIcon
+              className={[css`
+                color: black;
+                padding: 6vw;
+              `, 'fa-lg'].join(' ')}
+              icon={faBars}
+            /> :
+            <FontAwesomeIcon
+              className={[css`
+                color: white;
+                padding: 6vw;
+              `, 'fa-lg'].join(' ')}
+              icon={faBars}
+            />
+          }
         </summary>
         <nav
           className={css`
+            position: relative;
             display: grid;
             grid-template-columns: 1fr;
             font-family: barlow;
             font-size: 24px;
             font-weight: 800;
+            max-width: 20vw;
             a {
               text-decoration: none;
-              color: #fff;
-              margin-left: 67px;
+              color: black;
+              font-size: 0.85rem;
+              margin: 0.5rem 0.6rem 0.5rem auto;
+              text-align: right;
             }
+            background-color: white;
+            color: black !important;
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
           `}
         >
           {this.props.children}
