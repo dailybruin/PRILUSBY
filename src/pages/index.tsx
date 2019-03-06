@@ -207,12 +207,7 @@ const IndexPage = ({ data }) => (
     <Head {...data.site.siteMetadata} />
     <GraphicNovel />
     {/* <Article dropcap={true} content={data.kerckhoffArticle.content} /> */}
-    <HeaderHighLight
-      title="testing"
-      highlightPosition="top"
-      textAlign="right"
-      fullWidth={true}
-    />
+
     {/* <CustomPullImage
       url="https://assets.dailybruin.com/images/interactive.prime.2018.teddy/web.prime.homelessness.missmary.ADX-e4d9cf1515feb0181473bb868a1c2374.JPG"
       caption="Miss Mary"
@@ -221,6 +216,7 @@ const IndexPage = ({ data }) => (
     />
 
     <CustomPullQuote caption="Every day, they rejected his offers of help. Everyday, they reject his offers of help. Everyday, they reject his" /> */}
+
     <ThreeArticleCardRow
       cards={[
         {
@@ -261,7 +257,7 @@ const IndexPage = ({ data }) => (
           href: '/',
         },
         {
-          title: 'Song Sot/Survival',
+          title: 'Song Sot/Survival 2',
           caption:
             'A description of the story goes here. It should be about \
         two sentences and probably about this long and maybe even longer like this.',
