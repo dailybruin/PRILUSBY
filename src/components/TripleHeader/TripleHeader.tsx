@@ -60,7 +60,7 @@ export class TripleHeader extends React.Component<TripleHeaderProps, {}> {
     ]
     return (
       <div className={TripleHeaderStyle}>
-        <Link to={this.props.slug.split('.').join('')}>
+        <Link to={`/${this.props.slug.split('.').join('')}`}>
           <div className={blurbStyle}>
             <div className={titleStyle}>{this.props.term}</div>
             <div>

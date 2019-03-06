@@ -8,20 +8,10 @@ import { ArticleCard } from '../components/ArticleCard'
 import { css } from 'emotion'
 
 import { TitleGallery } from '../components/TitleGallery'
-import { StyledCoverPhoto } from '../components/StyledCoverPhoto'
-import { FooterAuthorBio } from '../components/FooterAuthorBio'
-import { QuarterlyStories } from '../components/QuarterlyStories'
-import { HeaderHighLight } from '../components/TripleHeader/HeaderHighLight'
-import { CustomPullQuote } from '../components/pullQuote'
-import { CustomPullImage } from '../components/pullImage'
 
-import { TripleHeader } from '../components/TripleHeader/TripleHeader'
 import { ThreeArticleCardRow } from '../components/ThreeArticleCardRow'
 import { TwoArticleCardRow } from '../components/TwoArticleCardRow'
-import { ArticleGrid } from '../components/ArticleGrid'
 
-import { CoverGallery } from '../components/CoverGallery'
-import F18prime2 from '../images/prime.f18.cover 2.1.png'
 import F18prime from '../images/prime.f18.cover.png'
 
 // export const query = graphql`
@@ -224,12 +214,16 @@ const quarterlyStories = [
 const IndexPage = ({ data }) => (
   <>
     <CustomHeader transparent={true} />
-    <TitleGallery stories={stories}/>
-    <div className={css`height: 20px;`}/>
-    <ThreeArticleCardRow cards={whykarl} term={'winter19'}/>
+    <TitleGallery stories={stories} />
+    <div
+      className={css`
+        height: 20px;
+      `}
+    />
+    <ThreeArticleCardRow cards={whykarl} term={'winter19'} />
     <TwoArticleCardRow cards={whykarl} term={'winter19'} title="title here!" />
     <TwoArticleCardRow cards={whykarl} term={'winter19'} title="title here!" />
-    <Footer/>
+    <Footer />
   </>
 )
 

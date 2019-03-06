@@ -45,7 +45,7 @@ exports.sourceNodes = async ({
   })
 
   // === GET ALL THE ARTICLES
-  for (let i = 1; i <= 6; i++) {
+  for (let i = 1; i <= 3; i++) {
     const url = `https://kerckhoff.dailybruin.com/api/packages/prime?page=${i}`
     const response = await fetch(url)
     const json = await response.json()
@@ -55,7 +55,9 @@ exports.sourceNodes = async ({
     Object.keys(data).forEach(key => {
       const article = data[key].data['article.aml']
       const slug = data[key].slug
-      if (!article) return
+      if (!article || !slug) {
+        return
+      }
       let content
       if (article.hasOwnProperty('content') && Array.isArray(article.content)) {
         content = article.content.map(element => {
@@ -148,44 +150,4 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     })
   })
-  /*
-  for (let i = 1; i <= 6; i++) {
-    const url = `https://kerckhoff.dailybruin.com/api/packages/prime?page=${i}`
-    const response = await fetch(url)
-    const json = await response.json()
-    const { data, description } = json
-    // Each article name is given as a key on in the JSON data, e.g., `"article.aml": {...}`
-    Object.keys(data).forEach(key => {
-      const article = data[key].data['article.aml']
-      const slug = data[key].slug
-      if (!article) return
-      console.log(slug)
-      return graphql(`
-      {
-        primeArticle(headline: {eq: "${article.headline}"}) {
-          headline
-          author
-          authorbio
-          authoremail
-          authortwitter
-          coverimg
-          covercred
-          coveralt
-          articleType
-          content {
-            type
-            value
-          }
-        }
-      }
-    `).then(_ => {
-        createPage({
-          path: `${slug.split('.').join('')}`,
-          component: path.resolve(`./src/templates/article.tsx`),
-          context: { headline: article.headline },
-        })
-      })
-    })
-  }
-  */
 }
