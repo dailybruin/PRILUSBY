@@ -14,6 +14,7 @@ interface TAC {
 }
 
 interface ThreeArticleCardRowProps {
+  term: string
   cards: TAC[]
 }
 
@@ -31,7 +32,11 @@ export class ThreeArticleCardRow extends React.Component<
       renderNextButton: () => <div className="button-next" />,
     }
     return (
-      <div>
+      <div
+        className={css`
+          margin: 10px;
+        `}
+      >
         <HeaderHighLight
           title="current issue"
           highlightPosition="bottom"
@@ -139,7 +144,7 @@ export class ThreeArticleCardRow extends React.Component<
               }
             `}
           >
-            <Link to="/">more stories</Link>
+            <Link to={`/${this.props.term}`}>more stories</Link>
           </div>
         </div>
       </div>

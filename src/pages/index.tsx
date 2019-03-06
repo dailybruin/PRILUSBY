@@ -58,6 +58,30 @@ const CoverPhotos = [
   },
 ]
 
+const whykarl = [
+  {
+    title: 'title',
+    caption: 'caption here',
+    imageSrc:
+      'https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg',
+    href: '/',
+  },
+  {
+    title: 'title',
+    caption: 'caption here',
+    imageSrc:
+      'https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg',
+    href: '/',
+  },
+  {
+    title: 'title',
+    caption: 'caption here',
+    imageSrc:
+      'https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg',
+    href: '/',
+  },
+]
+
 const stories = [
   {
     title: 'The Road to Royce',
@@ -201,6 +225,8 @@ const IndexPage = ({ data }) => (
   <>
     <CustomHeader transparent={false} />
     <QuarterlyStories quarters={quarterlyStories} />
+    <ThreeArticleCardRow cards={whykarl} term={'winter19'} />
+    <TwoArticleCardRow cards={whykarl} term={'winter19'} title="title here!" />
   </>
 )
 

@@ -2,8 +2,8 @@ import * as React from 'react'
 import Swiper from 'react-id-swiper'
 import { css } from 'emotion'
 import { ArticleCard } from './ArticleCard'
-import { HeaderHighLight } from './headerHeadLight'
-
+import { HeaderHighLight } from './TripleHeader/headerHighLight'
+import { Link } from 'gatsby'
 import './styles.css'
 
 interface TAC {
@@ -15,6 +15,8 @@ interface TAC {
 
 interface TwoArticleCardRowProps {
   cards: TAC[]
+  term: string
+  title: string
 }
 
 export class TwoArticleCardRow extends React.Component<TwoArticleCardRowProps> {
@@ -31,7 +33,7 @@ export class TwoArticleCardRow extends React.Component<TwoArticleCardRowProps> {
     return (
       <div>
         <HeaderHighLight
-          title="FALL 2018 // facing tomorrow"
+          title={`${this.props.term} // ${this.props.title}`}
           highlightPosition="top"
           textAlign="left"
           fullWidth={true}
@@ -40,7 +42,7 @@ export class TwoArticleCardRow extends React.Component<TwoArticleCardRowProps> {
           className={css`
             display: flex;
             justify-content: space-around;
-            margin-top: 45px;
+            margin-top: 50px;
             @media screen and (max-width: 700px) {
               display: none;
             }
@@ -61,6 +63,7 @@ export class TwoArticleCardRow extends React.Component<TwoArticleCardRowProps> {
         </div>
         <div
           className={css`
+            margin-top: 50px;
             @media screen and (min-width: 700px) {
               display: none;
             }
@@ -92,6 +95,41 @@ export class TwoArticleCardRow extends React.Component<TwoArticleCardRowProps> {
               />
             </div>
           </Swiper>
+        </div>
+        <div
+          className={css`
+            font-family: Barlow;
+            font-style: italic;
+            font-size: 18px;
+            font-weight: 600;
+
+            width: 100%;
+            text-align: right;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            /* width: 100%; */
+          `}
+        >
+          <div
+            className={css`
+              padding-bottom: 0px;
+              padding-left: 0px;
+              margin-bottom: 25px;
+              margin-right: 25px;
+              border-bottom: 2px solid #fff96b;
+              width: 110px;
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-end;
+              a {
+                text-decoration: none;
+                color: inherit;
+              }
+            `}
+          >
+            <Link to={`/${this.props.term}`}>more stories</Link>
+          </div>
         </div>
       </div>
     )
