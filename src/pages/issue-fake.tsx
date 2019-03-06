@@ -123,8 +123,8 @@ export default ({ data }) => {
           margin: 1rem auto;
         `}><ArticleGrid>{articleCards}</ArticleGrid></div>
         <Magazine link={"https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=primefall2015"} />
+        <Footer />
       </div>
-      <Footer />
     </div>
   )
 };
