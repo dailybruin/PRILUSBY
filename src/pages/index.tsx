@@ -114,6 +114,7 @@ const quarterlyStories = [
     ],
   },
 ]
+
 const stories = [
   {
     title: 'The Road to Royce',
