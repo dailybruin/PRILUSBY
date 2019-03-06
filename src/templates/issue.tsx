@@ -8,69 +8,88 @@ import { Footer } from '../components/Footer'
 import { ArticleGrid } from '../components/ArticleGrid'
 import { Magazine } from '../components/Magazine'
 import { TripleHeaderAlternative } from '../components/TripleHeader/TripleHeaderAlternative'
+import { format } from 'path'
 
 // export const query = graphql`
 //   query($name: String!) {
 //     issue(title: { eq: $name }) {
 //   }
 // `
+export const query = graphql`
+  query {
+    allPrimeArticle {
+      edges {
+        node {
+          title
+          slug
+          headline
+          author
+          authorbio
+          authoremail
+          authortwitter
+          coverimg
+          covercred
+          coveralt
+          articleType
+          excerpt
+        }
+      }
+    }
+  }
+`
 
-const articleCards = [
-  <ArticleCard
-    blackCardFontSize={1}
-    whiteCardFontSize={0.8}
-    blackCardText="Song Sot/Survival"
-    whiteCardText={
-      'A description of the story goes here. It should be about \
-  two sentences and probably about this long and maybe even longer like this.'
+export default ({ data, pageContext }) => {
+  let articles = []
+  data.allPrimeArticle.edges.forEach(edge => {
+    let slug = edge.node.slug
+    if (pageContext.articles.indexOf(slug) > -1) {
+      articles.push(edge.node)
     }
-    imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-    href="/"
-    imageHeightVW={20}
-    imageHeightMobileVW={50}
-  />,
-  <ArticleCard
-    blackCardFontSize={1}
-    whiteCardFontSize={0.8}
-    blackCardText="Song Sot/Survival"
-    whiteCardText={
-      'A description of the story goes here. It should be about \
-  two sentences and probably about this long and maybe even longer like this.'
-    }
-    imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-    href="/"
-    imageHeightVW={20}
-    imageHeightMobileVW={50}
-  />,
-  <ArticleCard
-    blackCardFontSize={1}
-    whiteCardFontSize={0.8}
-    blackCardText="Song Sot/Survival"
-    whiteCardText={
-      'A description of the story goes here. It should be about \
-  two sentences and probably about this long and maybe even longer like this.'
-    }
-    imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-    href="/"
-    imageHeightVW={20}
-    imageHeightMobileVW={50}
-  />,
-  <ArticleCard
-    blackCardFontSize={1}
-    whiteCardFontSize={0.8}
-    blackCardText="Song Sot/Survival"
-    whiteCardText={
-      'A description of the story goes here. It should be about \
-  two sentences and probably about this long and maybe even longer like this.'
-    }
-    imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-    href="/"
-    imageHeightVW={20}
-    imageHeightMobileVW={50}
-  />,
-]
-
-export default ({ data }) => {
+  })
+  articles.sort((a, b) => {
+    return (
+      pageContext.articles.indexOf(a.slug) -
+      pageContext.articles.indexOf(b.slug)
+    )
+  })
+  const term = pageContext.term
+  const season = term.substring(0, term.length - 2)
+  const year = '20' + term.substring(term.length - 2, term.length)
+  let issuuLink = `https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=prime${season}${year}`
+  if (parseInt(year) > 2017 || (parseInt(year) === 2017 && season === 'fall'))
+    issuuLink = `https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=prime_${season}_${year}`
+  const formatTerm = season + ' ' + year
+  const articleCards = []
+  {
+    /* <ArticleCard
+      blackCardFontSize={1}
+      whiteCardFontSize={0.8}
+      blackCardText="Song Sot/Survival"
+      whiteCardText={
+        'A description of the story goes here. It should be about \
+    two sentences and probably about this long and maybe even longer like this.'
+      }
+      imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
+      href="/"
+      imageHeightVW={20}
+      imageHeightMobileVW={50}
+    />, */
+  }
+  articles.forEach((article, i) => {
+    if (i === 0) return
+    articleCards.push(
+      <ArticleCard
+        blackCardFontSize={1}
+        whiteCardFontSize={0.8}
+        blackCardText={article.title}
+        whiteCardText={article.excerpt}
+        imageSrc={article.coverimg}
+        href={article.slug.split('.').join('')}
+        imageHeightVW={20}
+        imageHeightMobileVW={50}
+      />
+    )
+  })
   return (
     <div
       className={css`
@@ -96,11 +115,10 @@ export default ({ data }) => {
           `}
         >
           <TripleHeader
-            title={'Richard!!!'}
-            description={'RICHARD RICHARD RICHARD!!!!!!!!!'}
-            imageURL={
-              'https://s3.amazonaws.com/images.seroundtable.com/google-submit-url-1516800645.jpg'
-            }
+            title={pageContext.title}
+            term={formatTerm}
+            description={articles[0].excerpt}
+            imageURL={articles[0].coverimg}
           />
         </div>
         <div
@@ -111,12 +129,10 @@ export default ({ data }) => {
           `}
         >
           <TripleHeaderAlternative
-            issue={'winter 2019'}
-            title={'Richard!!!'}
-            description={'RICHARD RICHARD RICHARD!!!!!!!!!'}
-            imageURL={
-              'https://s3.amazonaws.com/images.seroundtable.com/google-submit-url-1516800645.jpg'
-            }
+            issue={formatTerm}
+            description={articles[0].excerpt}
+            imageURL={articles[0].coverimg}
+            title={pageContext.title}
           />
         </div>
         <div
@@ -127,11 +143,7 @@ export default ({ data }) => {
         >
           <ArticleGrid>{articleCards}</ArticleGrid>
         </div>
-        <Magazine
-          link={
-            'https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=primefall2015'
-          }
-        />
+        {/* <Magazine link={issuuLink} /> */}
         <Footer />
       </div>
     </div>

@@ -54,7 +54,8 @@ export default ({ data, pageContext }) => {
           max-width: 60%;
           font-family: 'Source Serif Pro';
           line-height: 38px;
-          font-size: 24px;
+          font-size: 1.25rem;
+          min-width: 300px;
         `}
       />
       <FooterAuthorBio

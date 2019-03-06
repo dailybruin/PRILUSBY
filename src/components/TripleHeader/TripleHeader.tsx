@@ -3,6 +3,7 @@ import { css } from 'react-emotion'
 import { HeaderHighLight } from './HeaderHighLight'
 import Gallery from 'react-photo-gallery'
 interface TripleHeaderProps {
+  term: string
   title: string
   description: string
   imageURL: string
@@ -31,7 +32,7 @@ export class TripleHeader extends React.Component<TripleHeaderProps, {}> {
       padding-left: 30px;
     `
     const descriptionStyle = css`
-      font-weight: 600;
+      font-weight: 400;
       font-size: 24px;
       margin-top: 10px;
     `
@@ -55,11 +56,11 @@ export class TripleHeader extends React.Component<TripleHeaderProps, {}> {
     return (
       <div className={TripleHeaderStyle}>
         <div className={blurbStyle}>
-          <div className={titleStyle}>{this.props.title}</div>
+          <div className={titleStyle}>{this.props.term}</div>
           <div>
             <HeaderHighLight
-              title="FACING TOMORROW"
-              highlightPosition="top"
+              title={this.props.title}
+              highlightPosition="bottom"
               textAlign="right"
               fullWidth={true}
             />
