@@ -59,21 +59,26 @@ export default class CustomHeader extends React.Component<CustomHeaderProps> {
         <MobilePopup>
           {[
             <Link to="/about">about</Link>,
-            <Link to="/current">current issue</Link>,
-            <Link to="/about">past issues</Link>,
+            <Link to="/winter19">current issue</Link>,
+            <Link to="/pastissues">past issues</Link>,
             <Link to="/all">all stories</Link>,
           ]}
         </MobilePopup>
-        <img src={PRIME} className={css`
-          @media screen and (max-width: 940px) {
-            width: 60vw;
-            margin: 0 auto;
-          }
-        `}/>
+        <Link to="/">
+          <img
+            src={PRIME}
+            className={css`
+              @media screen and (max-width: 940px) {
+                width: 60vw;
+                margin: 0 auto;
+              }
+            `}
+          />
+        </Link>
         <div className={linkStyle}>
           <Link to="/about">about</Link>
-          <Link to="/current">current issue</Link>
-          <Link to="/about">past issues</Link>
+          <Link to="/winter19">current issue</Link>
+          <Link to="/pastissues">past issues</Link>
           <Link to="/all">all stories</Link>
         </div>
       </div>

@@ -5,6 +5,7 @@ import { css } from 'react-emotion'
 
 import GraphicNovel from '../components/GraphicNovel'
 import CustomHeader from '../components/CustomHeader'
+import { HeaderHighLight } from '../components/TripleHeader/HeaderHighLight'
 import { StyledCoverPhoto } from '../components/StyledCoverPhoto'
 import { FooterAuthorBio } from '../components/FooterAuthorBio'
 import { CustomPullImage } from '../components/pullImage'
@@ -29,6 +30,16 @@ export const query = graphql`
     }
   }
 `
+const Italics = props => <p>{props.content}</p>
+
+const Subheading = props => (
+  <HeaderHighLight
+    title={props.name}
+    highlightPosition="bottom"
+    textAlign="left"
+    fullWidth={false}
+  />
+)
 
 export default ({ data, pageContext }) => {
   return (
@@ -48,13 +59,16 @@ export default ({ data, pageContext }) => {
         content={data.primeArticle.content}
         customTypeComponentMapping={{
           pull: CustomPullQuote,
-          image: CustomPullImage,
+          pullimage: CustomPullImage,
+          subheading: Subheading,
+          italics: Italics,
         }}
         style={css`
           max-width: 60%;
           font-family: 'Source Serif Pro';
           line-height: 38px;
-          font-size: 24px;
+          font-size: 1.25rem;
+          min-width: 300px;
         `}
       />
       <FooterAuthorBio

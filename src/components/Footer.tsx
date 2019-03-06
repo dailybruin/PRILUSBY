@@ -13,13 +13,14 @@ export function Footer() {
         color: white;
         background: black;
         height: 200px;
+        width: 100%;
       `}
     >
       <div
         className={css`
           align-items: center;
           display: flex;
-          justify-content: space-evenly;
+          justify-content: center;
           @media (max-width: 650px) {
             flex-direction: column;
             justify-content: center;
