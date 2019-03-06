@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, navigate } from 'gatsby'
 
 import CustomHeader from '../components/CustomHeader'
 import { QuarterlyStories } from '../components/QuarterlyStories'
@@ -101,21 +101,24 @@ export const query = graphql`
     }
   }
 `
-const AllStories = ({ data }) => (
-  <div>
-    {console.log(data)}
-    <CustomHeader />
-    <div
-      className={css`
-        margin: 20px;
-        margin-top: 50px;
-        margin-bottom: 100px;
-      `}
-    >
-      <QuarterlyStories quarters={quarterlyStories} />
+const AllStories = ({ data }) => {
+  navigate('/winter19')
+  return (
+    <div>
+      {console.log(data)}
+      <CustomHeader />
+      <div
+        className={css`
+          margin: 20px;
+          margin-top: 50px;
+          margin-bottom: 100px;
+        `}
+      >
+        <QuarterlyStories quarters={quarterlyStories} />
+      </div>
+      <Footer />
     </div>
-    <Footer />
-  </div>
-)
+  )
+}
 
 export default AllStories

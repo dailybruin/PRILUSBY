@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, navigate } from 'gatsby'
 import { Head } from '@dailybruin/lux'
 import { Footer } from '../components/Footer'
 import GraphicNovel from '../components/GraphicNovel'
@@ -211,20 +211,26 @@ const quarterlyStories = [
   },
 ]
 
-const IndexPage = ({ data }) => (
-  <>
-    <CustomHeader transparent={true} />
-    <TitleGallery stories={stories} />
-    <div
-      className={css`
-        height: 20px;
-      `}
-    />
-    <ThreeArticleCardRow cards={whykarl} term={'winter19'} />
-    <TwoArticleCardRow cards={whykarl} term={'winter19'} title="title here!" />
-    <TwoArticleCardRow cards={whykarl} term={'winter19'} title="title here!" />
-    <Footer />
-  </>
-)
+const IndexPage = ({ data }) => {
+  navigate('/winter19')
+  return (
+    <>
+      <CustomHeader transparent={true} />
+      <TitleGallery stories={stories} />
+      <div
+        className={css`
+          height: 20px;
+        `}
+      />
+      <ThreeArticleCardRow cards={whykarl} term={'winter19'} />
+      <TwoArticleCardRow
+        cards={whykarl}
+        term={'fall18'}
+        title="facing tomorrow"
+      />
+      <Footer />
+    </>
+  )
+}
 
 export default IndexPage
