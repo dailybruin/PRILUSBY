@@ -5,8 +5,8 @@ import './styles.css'
 
 interface CoverPhotosProps {
   photos: {
-    photoURL: string,
-    URL: string,
+    coverphoto: string,
+    term: string,
   }[]
 }
 
@@ -18,7 +18,7 @@ export class CoverGallery extends React.Component<CoverPhotosProps> {
         <div className={css`width: 100%`}>
           <div className={css`padding-left: 3vw; padding-right: 3vw;`}>
             {this.props.photos.slice(0,3).map((current) =>
-              <a href={ current.URL }>
+              <a href={ current.term }>
                 <div className={css`
                   display: inline-block; 
                   width: 33.33333333333333333%; /*yikes*/
@@ -35,7 +35,7 @@ export class CoverGallery extends React.Component<CoverPhotosProps> {
                       padding-top: 10px;
                       padding-bottom: 10px;
                     }
-                  `} src={current.photoURL}/>
+                  `} src={current.coverphoto}/>
                 </div>
               </a>
             )}
@@ -44,7 +44,7 @@ export class CoverGallery extends React.Component<CoverPhotosProps> {
         <div className={css`padding: 0 3vw 0 3vw;`}>
         {this.props.photos.length > 3
           && this.props.photos.slice(3).map((current) =>
-            <a href={ current.URL }>
+            <a href={ current.term }>
               <div className={css`
                 width: 25%; 
                 display: inline-block;
@@ -61,7 +61,7 @@ export class CoverGallery extends React.Component<CoverPhotosProps> {
                     padding-top: 0px;
                     padding-bottom: 10px;
                   }
-                `} src={current.photoURL}/>
+                `} src={current.coverphoto}/>
               </div>
             </a>
           )}

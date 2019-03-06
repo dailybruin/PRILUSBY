@@ -22,6 +22,7 @@ export class StyledCoverPhoto extends React.Component<StyledCoverPhotoProps> {
           height: 100vh;
         `}
       >
+        {console.log(this.props.photographers)}
         <div
           className={css`
             position: absolute;

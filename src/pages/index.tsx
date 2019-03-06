@@ -223,6 +223,15 @@ const quarterlyStories = [
 
 const IndexPage = ({ data }) => (
   <>
+    <StyledCoverPhoto
+      title="ligma"
+      authors={['Max', 'Wu']}
+      photographers={['hello']}
+      description="lol"
+      quarter="Fall 2018"
+      imageURL="https://upload.wikimedia.org/wikipedia/commons/4/4b/What_Is_URL.jpg"
+      socialMediaLinks={[]}
+    />
     <CustomHeader transparent={false} />
     <QuarterlyStories quarters={quarterlyStories} />
     <ThreeArticleCardRow cards={whykarl} term={'winter19'} />
