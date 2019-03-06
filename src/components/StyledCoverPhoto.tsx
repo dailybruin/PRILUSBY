@@ -2,7 +2,7 @@ import React from 'react'
 import { css, cx } from 'emotion'
 
 import { toSentence } from '@dailybruin/lux'
-import { SocialIcon } from 'react-social-icons';
+import { SocialIcon } from 'react-social-icons'
 
 interface StyledCoverPhotoProps {
   title: string
@@ -57,8 +57,8 @@ export class StyledCoverPhoto extends React.Component<StyledCoverPhotoProps> {
               margin: 10px;
             `}
           >
-          {this.props.quarter}
-        </div>
+            {this.props.quarter}
+          </div>
           <div
             className={css`
               position: absolute;
@@ -73,14 +73,17 @@ export class StyledCoverPhoto extends React.Component<StyledCoverPhotoProps> {
               }
             `}
           >
-            {this.props.socialMediaLinks && this.props.socialMediaLinks.map((link) => 
-              <SocialIcon url={ link }
-              className={css`
-                margin: 10px;
-                background-color: white;
-                border-radius: 50%;
-              `}/>
-            )}
+            {this.props.socialMediaLinks &&
+              this.props.socialMediaLinks.map(link => (
+                <SocialIcon
+                  url={link}
+                  className={css`
+                    margin: 10px;
+                    background-color: white;
+                    border-radius: 50%;
+                  `}
+                />
+              ))}
           </div>
           <div
             className={css`
@@ -97,14 +100,17 @@ export class StyledCoverPhoto extends React.Component<StyledCoverPhotoProps> {
               }
             `}
           >
-            {this.props.socialMediaLinks && this.props.socialMediaLinks.map((link) => 
-              <SocialIcon url={ link }
-              className={css`
-                margin: 10px;
-                background-color: white;
-                border-radius: 50%;
-              `}/>
-            )}
+            {this.props.socialMediaLinks &&
+              this.props.socialMediaLinks.map(link => (
+                <SocialIcon
+                  url={link}
+                  className={css`
+                    margin: 10px;
+                    background-color: white;
+                    border-radius: 50%;
+                  `}
+                />
+              ))}
           </div>
         </div>
         <div
