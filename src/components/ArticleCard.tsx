@@ -16,64 +16,129 @@ interface ArticleCardProps {
 export class ArticleCard extends React.Component<ArticleCardProps> {
   render() {
     return (
-      <Link to={this.props.href}
-        className={css`
-          position: relative;
-          width: 100%;
-          &:link, &:hover, &:active {
-            text-decoration: none;
-          }
-        `}>
-        <img
-          className={css`
-            display: block;
-            margin: auto;
-            width: 90%;
-            z-index: 0;
-            height: ${this.props.imageHeightVW}vw;
-            object-fit: cover;
-            ${!!this.props.imageHeightMobileVW ? `
-              @media screen and (max-width: 940px) {
-                height: ${this.props.imageHeightMobileVW}vw;
-              }
-            ` : ''}
-          `}
-          src={this.props.imageSrc}
-          alt=""/>
+      <Link className={css`width: 100%; margin: 20px;`} to={this.props.href}>
         <div className={css`
-          margin-top: -3rem;
-          // width: 10px;
-          // max-width: 100%;
-        `}>
+          text-align: center;
+          color: white;
+          width: 100%;
+          height: ${this.props.imageHeightVW}vw;
+          ${!!this.props.imageHeightMobileVW ? `
+          @media screen and (max-width: 940px) {
+          height: ${this.props.imageHeightMobileVW}vw;
+          }
+          ` : ''}
+          background-size: auto 100%;
+          background-position: center;
+          background-image: url(${ this.props.imageSrc });
+        `}
+        >
           <div className={css`
+            height: 100%;
             position: relative;
-            z-index: 2;
-            display: inline-block;
-            font-family: Arial;
-            font-weight: bold;
-            font-size: ${this.props.blackCardFontSize}rem;
-            color: white;
-            background-color: black;
-            padding: 0.5rem 1rem;
-            text-decoration: none;
-            max-width: 100%;
-          `}>{this.props.blackCardText}</div>
-          <div className={css`
-            z-index: 0;
-            margin-top: -${this.props.whiteCardFontSize * 0.5}rem;
-            display: inline-block;
-            max-width: 80%;
-            font-size: ${this.props.whiteCardFontSize}rem;
-            font-style: italic;
-            background-color: white;
-            color: black;
-            font-family: Arial;
-            text-decoration: none;
-            margin-left: 10%;
-            padding: ${this.props.whiteCardFontSize}rem;
-          `}>{this.props.whiteCardText}</div>
+          `}>
+            <div className={css`
+              position: absolute;
+              bottom: 0;
+              left: 6%;
+              width: 88%;
+            `}>
+              <div className={css`
+                background-color: white;
+                color: black;
+                padding: 10px;
+                position: relative;
+                width: 100%;
+                bottom: 0;
+                left: 0;
+                text-align: left;
+                font-family: Barlow;
+                font-style: italic;
+                font-weight: 500;
+                line-height: normal;
+                font-size: ${this.props.whiteCardFontSize}rem;
+              `}>
+                <div className={css`
+                  background-color: black;
+                  color: white;
+                  padding: 20px;
+                  position: absolute;
+                  
+                  top: ${this.props.whiteCardFontSize < 1 ? -30 : -40}px;
+                  left: ${this.props.whiteCardFontSize < 1 ? -35 : -40}px;
+                  z-index: 100;
+                  width: auto;
+                  padding: 10px;
+                  float: left;
+                  font-family: Barlow;
+                  font-style: normal;
+                  font-weight: 800;
+                  line-height: normal;
+                  font-size: ${this.props.blackCardFontSize}rem;
+                `}>
+                  { this.props.blackCardText }
+                </div>
+                { this.props.whiteCardText }
+              </div>                  
+            </div>
+          </div>
         </div>
       </Link>
+        // className={css`
+        //   position: relative;
+        //   width: 100%;
+        //   &:link, &:hover, &:active {
+        //     text-decoration: none;
+        //   }
+        // `}>
+        // <img
+        //   className={css`
+        //     display: block;
+        //     margin: auto;
+        //     width: 90%;
+        //     z-index: 0;
+        //     height: ${this.props.imageHeightVW}vw;
+        //     object-fit: cover;
+        //     ${!!this.props.imageHeightMobileVW ? `
+        //       @media screen and (max-width: 940px) {
+        //         height: ${this.props.imageHeightMobileVW}vw;
+        //       }
+        //     ` : ''}
+        //   `}
+        //   src={this.props.imageSrc}
+        //   alt=""/>
+        // <div className={css`
+        //   margin-top: -3rem;
+        //   // width: 10px;
+        //   // max-width: 100%;
+        // `}>
+        //   <div className={css`
+        //     position: relative;
+        //     z-index: 2;
+        //     display: inline-block;
+        //     font-family: Arial;
+        //     font-weight: bold;
+        //     font-size: ${this.props.blackCardFontSize}rem;
+        //     color: white;
+        //     background-color: black;
+        //     padding: 0.5rem 1rem;
+        //     text-decoration: none;
+        //     max-width: 100%;
+        //   `}>{this.props.blackCardText}</div>
+        //   <div className={css`
+        //     z-index: 0;
+        //     margin-top: -${this.props.whiteCardFontSize * 0.5}rem;
+        //     display: inline-block;
+        //     max-width: 80%;
+        //     font-size: ${this.props.whiteCardFontSize}rem;
+        //     font-style: italic;
+        //     background-color: white;
+        //     color: black;
+        //     font-family: Arial;
+        //     text-decoration: none;
+        //     margin-left: 10%;
+        //     padding: ${this.props.whiteCardFontSize}rem;
+        //   `}>{this.props.whiteCardText}</div>
+        // </div>
     )
   }
 }

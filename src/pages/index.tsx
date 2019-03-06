@@ -60,10 +60,10 @@ const CoverPhotos = [
 
 const whykarl = [
   {
-    title: 'title',
+    title: 'titleeeee',
     caption: 'caption here',
     imageSrc:
-      'https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/4/4b/What_Is_URL.jpg',
     href: '/',
   },
   {
@@ -223,19 +223,13 @@ const quarterlyStories = [
 
 const IndexPage = ({ data }) => (
   <>
-    <StyledCoverPhoto
-      title="ligma"
-      authors={['Max', 'Wu']}
-      photographers={['hello']}
-      description="lol"
-      quarter="Fall 2018"
-      imageURL="https://upload.wikimedia.org/wikipedia/commons/4/4b/What_Is_URL.jpg"
-      socialMediaLinks={[]}
-    />
-    <CustomHeader transparent={false} />
-    <QuarterlyStories quarters={quarterlyStories} />
-    <ThreeArticleCardRow cards={whykarl} term={'winter19'} />
+    <CustomHeader transparent={true} />
+    <TitleGallery stories={stories}/>
+    <div className={css`height: 20px;`}/>
+    <ThreeArticleCardRow cards={whykarl} term={'winter19'}/>
     <TwoArticleCardRow cards={whykarl} term={'winter19'} title="title here!" />
+    <TwoArticleCardRow cards={whykarl} term={'winter19'} title="title here!" />
+    <Footer/>
   </>
 )
 

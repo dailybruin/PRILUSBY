@@ -47,7 +47,7 @@ export class ThreeArticleCardRow extends React.Component<
           className={css`
             display: flex;
             justify-content: space-around;
-            margin-top: 45px;
+            margin-top: 0px;
             @media screen and (max-width: 700px) {
               display: none;
             }
