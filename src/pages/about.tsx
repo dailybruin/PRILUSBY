@@ -72,7 +72,7 @@ export const query = graphql`
     }
   }
 `
-const IndexPage = ({ data }) => (
+const About = ({ data }) => (
   <>
   <div className={css`
                   text-align: center;
@@ -138,4 +138,5 @@ const IndexPage = ({ data }) => (
   </>
 )
 
-export default IndexPage
+export default About
+
