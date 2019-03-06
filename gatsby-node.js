@@ -41,6 +41,7 @@ exports.sourceNodes = async ({
     // Each article name is given as a key on in the JSON data, e.g., `"article.aml": {...}`
     Object.keys(data).forEach(key => {
       const article = data[key].data['article.aml']
+      const slug = data[key].slug
       if (!article) return
       let content
       if (article.hasOwnProperty('content') && Array.isArray(article.content)) {
@@ -54,6 +55,7 @@ exports.sourceNodes = async ({
       createNode({
         title: article.headline,
         ...article,
+        slug,
         children: [],
         content,
         id: createNodeId(`prime-${key}`),
@@ -99,9 +101,40 @@ exports.createPages = async ({ graphql, actions }) => {
           coverphoto: issue.coverphoto,
         },
       })
+      issue.articles.forEach(articleslug => {
+        return graphql(`
+      {
+        primeArticle(slug: {eq: "${articleslug}"}) {
+          headline
+          author
+          authorbio
+          authoremail
+          authortwitter
+          coverimg
+          covercred
+          coveralt
+          articleType
+          excerpt
+          content {
+            type
+            value
+          }
+        }
+      }
+    `).then(_ => {
+          createPage({
+            path: `${articleslug.split('.').join('')}`,
+            component: path.resolve(`./src/templates/article.tsx`),
+            context: {
+              term: issue.term,
+              slug: articleslug,
+            },
+          })
+        })
+      })
     })
   })
-
+  /*
   for (let i = 1; i <= 6; i++) {
     const url = `https://kerckhoff.dailybruin.com/api/packages/prime?page=${i}`
     const response = await fetch(url)
@@ -112,7 +145,7 @@ exports.createPages = async ({ graphql, actions }) => {
       const article = data[key].data['article.aml']
       const slug = data[key].slug
       if (!article) return
-
+      console.log(slug)
       return graphql(`
       {
         primeArticle(headline: {eq: "${article.headline}"}) {
@@ -140,4 +173,5 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     })
   }
+  */
 }

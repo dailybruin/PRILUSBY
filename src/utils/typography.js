@@ -12,6 +12,10 @@ const typography = new Typography({
       name: 'EB Garamond',
       styles: ['400'],
     },
+    {
+      name: 'Source Serif Pro',
+      styles: ['400'],
+    },
     { name: 'Barlow', styles: ['400', '500', '600', '800', '900'] },
   ],
   headerFontFamily: ['Georgia', 'serif'],

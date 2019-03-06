@@ -201,6 +201,15 @@ const IndexPage = ({ data }) => (
   <>
     {console.log(data)}
     <TitleGallery stories={stories} />
+    <StyledCoverPhoto
+      socialMediaLinks={[]}
+      title="The Road to Royce"
+      authors={['John Tudhope']}
+      description="A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this."
+      quarter="Fall 2018"
+      imageURL="https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg"
+      photographers={['Max Wu', 'Yeet']}
+    />
     <CustomHeader transparent={true} />
     <QuarterlyStories quarters={quarterlyStories} />
     <Footer />
