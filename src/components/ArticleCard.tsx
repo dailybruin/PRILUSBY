@@ -10,6 +10,7 @@ interface ArticleCardProps {
   imageSrc: string;
   href: string;
   imageHeightVW: number;
+  imageHeightMobileVW?: number;
 }
 
 export class ArticleCard extends React.Component<ArticleCardProps> {
@@ -31,6 +32,11 @@ export class ArticleCard extends React.Component<ArticleCardProps> {
             z-index: 0;
             height: ${this.props.imageHeightVW}vw;
             object-fit: cover;
+            ${!!this.props.imageHeightMobileVW ? `
+              @media screen and (max-width: 940px) {
+                height: ${this.props.imageHeightMobileVW}vw;
+              }
+            ` : ''}
           `}
           src={this.props.imageSrc}
           alt=""/>
