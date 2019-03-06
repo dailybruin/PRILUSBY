@@ -12,7 +12,7 @@ const transparent = css`
   position: relative;
   background-color: transparent;
   position: absolute;
-  z-index: 1;
+  z-index: 100;
   top: 0;
 `
 const black = css`

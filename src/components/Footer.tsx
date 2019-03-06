@@ -29,12 +29,6 @@ export function Footer() {
       >
         <div
           className={css`
-            width: 200px;
-            height: 5px;
-          `}
-        />
-        <div
-          className={css`
             font-family: EB Garamond;
             font-style: normal;
             line-height: normal;
@@ -46,60 +40,6 @@ export function Footer() {
           `}
         >
           DAILY BRUIN
-        </div>
-        <div
-          className={css`
-            justify-content: space-evenly;
-            text-align: center;
-            padding: 0px;
-            @media (max-width: 980px) {
-              margin: 0;
-            }
-          `}
-        >
-          <img
-            className={css`
-              margin: 8px;
-              margin-bottom: 0px;
-              width: 40px;
-              height: 40px;
-              @media (max-width: 650px) {
-                /*display: none;*/
-                margin-left: 8px;
-                width: 30px;
-                height: 30px;
-              }
-            `}
-            src={RectangleLogos}
-          />
-          <img
-            className={css`
-              margin: 8px;
-              margin-bottom: 0px;
-              width: 40px;
-              height: 40px;
-              @media (max-width: 650px) {
-                /*display: none;*/
-                width: 30px;
-                height: 30px;
-              }
-            `}
-            src={RectangleLogos}
-          />
-          <img
-            className={css`
-              margin: 8px;
-              margin-bottom: 0px;
-              width: 40px;
-              height: 40px;
-              @media (max-width: 650px) {
-                /*display: none;*/
-                width: 30px;
-                height: 30px;
-              }
-            `}
-            src={RectangleLogos}
-          />
         </div>
       </div>
 

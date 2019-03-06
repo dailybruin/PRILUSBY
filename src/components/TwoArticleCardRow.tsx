@@ -42,7 +42,7 @@ export class TwoArticleCardRow extends React.Component<TwoArticleCardRowProps> {
           className={css`
             display: flex;
             justify-content: space-around;
-            margin-top: 50px;
+            margin-top: 10px;
             @media screen and (max-width: 700px) {
               display: none;
             }
@@ -51,8 +51,8 @@ export class TwoArticleCardRow extends React.Component<TwoArticleCardRowProps> {
           {cards.map((card, i) => (
             <ArticleCard
               key={i}
-              blackCardFontSize={1}
-              whiteCardFontSize={0.8}
+              blackCardFontSize={1.6}
+              whiteCardFontSize={1.2}
               blackCardText={card.title}
               whiteCardText={card.caption}
               imageSrc={card.imageSrc}
