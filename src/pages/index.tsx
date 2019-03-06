@@ -257,35 +257,46 @@ export const query = graphql`
 // )
 const CoverPhotos = [
   {
-    photo: F18prime,
+    photoURL: F18prime,
+    URL: "https://www.linkedin.com/in/maxcwu/",
   },
   {
-    photo: F18prime2,
+    photoURL: F18prime,
+    URL: "https://www.linkedin.com/in/maxcwu/",
   },
   {
-    photo: F18prime2,
+    photoURL: F18prime,
+    URL: "https://www.linkedin.com/in/maxcwu/",
   },
   {
-    photo: F18prime2,
+    photoURL: F18prime,
+    URL: "https://www.linkedin.com/in/maxcwu/",
   },
   {
-    photo: F18prime2,
+    photoURL: F18prime,
+    URL: "https://www.linkedin.com/in/maxcwu/",
   },
   {
-    photo: F18prime2,
+    photoURL: F18prime,
+    URL: "https://www.linkedin.com/in/maxcwu/",
   },
   {
-    photo: F18prime2,
+    photoURL: F18prime,
+    URL: "https://www.linkedin.com/in/maxcwu/",
   },
   {
-    photo: F18prime2,
+    photoURL: F18prime,
+    URL: "https://www.linkedin.com/in/maxcwu/",
   },
   {
-    photo: F18prime2,
+    photoURL: F18prime,
+    URL: "https://www.linkedin.com/in/maxcwu/",
   },
   {
-    photo: F18prime2,
+    photoURL: F18prime,
+    URL: "https://www.linkedin.com/in/maxcwu/",
   },
+  
 ]
 const IndexPage = ({ data }) => (
   <>
