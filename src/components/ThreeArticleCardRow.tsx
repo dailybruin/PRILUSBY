@@ -139,7 +139,7 @@ export class ThreeArticleCardRow extends React.Component<
               }
             `}
           >
-            <Link to="/current-issue">BROKEN LINK FAM more stories</Link>
+            <Link to="/">more stories</Link>
           </div>
         </div>
       </div>
