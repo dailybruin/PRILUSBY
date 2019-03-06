@@ -10,8 +10,14 @@ import {
 } from '@dailybruin/lux'
 import CustomHeader from '../components/CustomHeader'
 import { Footer } from '../components/Footer'
-import Juju from '../images/juju.png'
-import DefaultSignature from '../images/juliette.png'
+
+import Alexphoto from '../images/alexphoto.png'
+import Juliettephoto from '../images/juliettephoto.png'
+import Meganphoto from '../images/meganphoto.png'
+
+import Alexsig from '../images/alex.png'
+import Juliettesig from '../images/juju.png'
+import Megansig from '../images/mle.png'
 
 interface AboutInfo {
   headshot?: string
@@ -126,9 +132,33 @@ const About = ({ data }) => (
         margin: 18px 166px 108px 166px;
       `}
     >
-      PRIME IS THE BEST and you KNOW it. Let’s hear it for the preditors
-      yawyeeeeet! It’s no longer prime because we’re BIGGER and BOLDER than ever
-      before.
+      <p>
+        In this Winter 2019 issue, we hope to strike a chord on the subject of
+        identity. We’re all on a mission to better understand ourselves within
+        the context of our communities as we forge a sense of who we are and,
+        more importantly, who we might become.
+      </p>
+      <p>
+        Some of us search for ourselves in our memories of the past, which we
+        may uncover in places as unexpected as our online shopping carts to
+        keepsakes as familiar as the recipes of our childhoods. From quotidian
+        commutes through Berlin to half-packed games at Pauley Pavilion during
+        peak sports season, the adventures and places contributors have
+        investigated enlighten our search for a Bruin identity in relation to
+        the sprawling places that surround us. We also featured the voices of
+        those who are often overlooked, if not silenced, by the UCLA community,
+        from the driven nonstudents who tread Bruin Walk to those who seek
+        recovery from personal struggles.
+      </p>
+      <p>
+        Our habits and all we hold dear can also play a role in how we seek
+        change over the years, as one writer examined the psychological toll of
+        being the lifelong fan of a controversial figure. But even when the
+        things we cherish most are lost to forces beyond our control, we find
+        ways to move forward and live for ourselves. In the end, we pen our own
+        narratives, and the most beautiful stories are often considerate of
+        those others write alongside us.
+      </p>
     </div>
     <div
       className={css`
@@ -155,34 +185,34 @@ const About = ({ data }) => (
       `}
     >
       <AboutFrame
-        headshot={Juju}
+        headshot={Meganphoto}
         title={'PRIME art director'}
         name={'Megan Le'}
         text={
-          'She is a fourth-year anthropology major and film and tv minor. Le was previously the Design director of the Daily BruinShe is a fourth-year anthropology major and film and tv minor. Le was previously the Design director of the Daily Bruin'
+          'Le is a fourth-year anthropology major and film and tv minor. She was previously the Design director of the Daily Bruin.'
         }
-        signature={DefaultSignature}
+        signature={Megansig}
         email={'mle@dailybruin.com'}
       />
       <AboutFrame
-        headshot={Juju}
-        title={'PRIME art director'}
-        name={'Megan Le'}
+        headshot={Juliettephoto}
+        title={'PRIME director'}
+        name={'Juliette Le Saint'}
         text={
-          'She is a fourth-year anthropology major and film and tv minor. Le was previously the Design director of the Daily Bruin'
+          'Le Saint is a third-year cognitive science major with a film and tv minor. She was previously the Illustrations director for the Daily Bruin.'
         }
-        signature={DefaultSignature}
-        email={'mle@dailybruin.com'}
+        signature={Juliettesig}
+        email={'jsaint@dailybruin.com'}
       />
       <AboutFrame
-        headshot={Juju}
-        title={'PRIME art director'}
-        name={'Megan Le'}
+        headshot={Alexphoto}
+        title={'PRIME content director'}
+        name={'Alex Del Rosario'}
         text={
-          'She is a fourth-year anthropology major and film and tv minor. Le was previously the Design director of the Daily Bruin'
+          'Del Rosario is a fourth-year comparative literature student with a minor in French. She was previously an A&E staff reporter.'
         }
-        signature={DefaultSignature}
-        email={'mle@dailybruin.com'}
+        signature={Alexsig}
+        email={'adelrosario@dailybruin.com'}
       />
     </div>
     <Footer />
