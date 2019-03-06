@@ -107,6 +107,37 @@ export class ThreeArticleCardRow extends React.Component<
             </div>
           </Swiper>
         </div>
+        <div
+          className={css`
+            font-family: Barlow;
+            font-style: italic;
+            font-size: 18px;
+            font-weight: 600;
+
+            width: 100%;
+            text-align: right;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            /* width: 100%; */
+          `}
+        >
+          <div
+            className={css`
+              padding-bottom: 0px;
+              padding-left: 0px;
+              margin-bottom: 25px;
+              margin-right: 25px;
+              border-bottom: 2px solid #fff96b;
+              width: 110px;
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-end;
+            `}
+          >
+            more stories
+          </div>
+        </div>
       </div>
     )
   }
