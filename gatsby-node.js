@@ -15,7 +15,6 @@ exports.sourceNodes = async ({
   const mapJson = await mapResponse.json()
   const { data } = mapJson
   data['map.aml'].issues.forEach((issue, i) => {
-    console.log('issue', issue)
     createNode({
       ...issue,
       term: issue.term,
@@ -41,7 +40,8 @@ exports.sourceNodes = async ({
 
     // Each article name is given as a key on in the JSON data, e.g., `"article.aml": {...}`
     Object.keys(data).forEach(key => {
-      const article = data[key]
+      const article = data[key].data['article.aml']
+      if (!article) return
       let content
       if (article.hasOwnProperty('content') && Array.isArray(article.content)) {
         content = article.content.map(element => {
@@ -56,13 +56,13 @@ exports.sourceNodes = async ({
         ...article,
         children: [],
         content,
-        id: createNodeId(`kerckhoff-${key}`),
+        id: createNodeId(`prime-${key}`),
         internal: {
           content: JSON.stringify(article),
           contentDigest: createHash('md5')
             .update(JSON.stringify(article))
             .digest('hex'),
-          type: 'KerckhoffArticle',
+          type: 'PrimeArticle',
         },
         parent: null,
       })
@@ -78,9 +78,9 @@ exports.createPages = async ({ graphql, actions }) => {
     'https://kerckhoff.dailybruin.com/api/packages/prime/prime.map.articles.to.issues/'
   const mapResponse = await fetch(mapURL)
   const mapJson = await mapResponse.json()
-  const { issues } = mapJson.data
-
-  issues.forEach(issue => {
+  const { data } = mapJson
+  console.log(data['map.aml'].issues)
+  data['map.aml'].issues.forEach(issue => {
     return graphql(`
       {
         issue(term: {eq: "${issue.term}"}) {
@@ -90,12 +90,55 @@ exports.createPages = async ({ graphql, actions }) => {
           articles
         }
       }
-    `).then(result => {
+    `).then(_ => {
       createPage({
-        path: issue.term,
-        component: path.resolve(`./src/templates/article.tsx`),
-        context: { term: issue.term },
+        path: `${issue.term}`,
+        component: path.resolve(`./src/templates/issue.tsx`),
+        context: {
+          term: issue.term,
+          articles: issue.articles,
+          coverphoto: issue.coverphoto,
+        },
       })
     })
   })
+
+  for (let i = 1; i <= 6; i++) {
+    const url = `https://kerckhoff.dailybruin.com/api/packages/prime?page=${i}`
+    const response = await fetch(url)
+    const json = await response.json()
+    const { data, description } = json
+    // Each article name is given as a key on in the JSON data, e.g., `"article.aml": {...}`
+    Object.keys(data).forEach(key => {
+      const article = data[key].data['article.aml']
+      const slug = data[key].slug
+      if (!article) return
+
+      return graphql(`
+      {
+        primeArticle(headline: {eq: "${article.headline}"}) {
+          headline
+          author
+          authorbio
+          authoremail
+          authortwitter
+          coverimg
+          covercred
+          coveralt
+          articleType
+          content {
+            type
+            value
+          }
+        }
+      }
+    `).then(_ => {
+        createPage({
+          path: `${slug.split('.').join('')}`,
+          component: path.resolve(`./src/templates/article.tsx`),
+          context: { headline: article.headline },
+        })
+      })
+    })
+  }
 }

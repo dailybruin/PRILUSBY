@@ -31,7 +31,7 @@ export class QuarterlyStories extends React.Component<QuarterlyStoriesProps> {
 
     return (
       <div>
-        {this.props.quarters.map((quarter) =>
+        {this.props.quarters.map((quarter, i) =>
           <div className={css`
             position: relative;
           `}
@@ -111,14 +111,16 @@ export class QuarterlyStories extends React.Component<QuarterlyStoriesProps> {
                 </div>
               )}
             </Swiper>
-            <div className={css`
-              height: 5px; 
-              width: 98%;
-              background-color: black; 
-              margin-top: 50px;
-              margin-bottom: 50px;
-              margin-left: 1%;
-            `}/>
+            { (i < this.props.quarters.length - 1) &&
+              <div className={css`
+                height: 5px; 
+                width: 98%;
+                background-color: black; 
+                margin-top: 50px;
+                margin-bottom: 50px;
+                margin-left: 1%;
+              `}/>
+            }
           </div>
         )}
       </div>

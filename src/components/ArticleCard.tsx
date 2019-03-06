@@ -9,10 +9,8 @@ interface ArticleCardProps {
   whiteCardText: string;
   imageSrc: string;
   href: string;
-
-  cardTranslation?: string;
-  wrapperWidthVW: number;
-  imgWidthVW: number;
+  imageHeightVW: number;
+  imageHeightMobileVW?: number;
 }
 
 export class ArticleCard extends React.Component<ArticleCardProps> {
@@ -21,7 +19,7 @@ export class ArticleCard extends React.Component<ArticleCardProps> {
       <Link to={this.props.href}
         className={css`
           position: relative;
-          width: ${this.props.wrapperWidthVW}vw;
+          width: 100%;
           &:link, &:hover, &:active {
             text-decoration: none;
           }
@@ -30,13 +28,22 @@ export class ArticleCard extends React.Component<ArticleCardProps> {
           className={css`
             display: block;
             margin: auto;
-            width: ${this.props.imgWidthVW}vw;
+            width: 90%;
             z-index: 0;
+            height: ${this.props.imageHeightVW}vw;
+            object-fit: cover;
+            ${!!this.props.imageHeightMobileVW ? `
+              @media screen and (max-width: 940px) {
+                height: ${this.props.imageHeightMobileVW}vw;
+              }
+            ` : ''}
           `}
           src={this.props.imageSrc}
           alt=""/>
         <div className={css`
           margin-top: -3rem;
+          // width: 10px;
+          // max-width: 100%;
         `}>
           <div className={css`
             position: relative;
@@ -49,6 +56,7 @@ export class ArticleCard extends React.Component<ArticleCardProps> {
             background-color: black;
             padding: 0.5rem 1rem;
             text-decoration: none;
+            max-width: 100%;
           `}>{this.props.blackCardText}</div>
           <div className={css`
             z-index: 0;
