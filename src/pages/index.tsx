@@ -1,12 +1,6 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
-import {
-  Article,
-  CoverPhoto,
-  Head,
-  XPosition,
-  YPosition,
-} from '@dailybruin/lux'
+import { Head } from '@dailybruin/lux'
 import { Footer } from '../components/Footer'
 import GraphicNovel from '../components/GraphicNovel'
 import CustomHeader from '../components/CustomHeader'
@@ -17,14 +11,18 @@ import { TitleGallery } from '../components/TitleGallery'
 import { StyledCoverPhoto } from '../components/StyledCoverPhoto'
 import { FooterAuthorBio } from '../components/FooterAuthorBio'
 import { QuarterlyStories } from '../components/QuarterlyStories'
-
+import { HeaderHighLight } from '../components/TripleHeader/HeaderHighLight'
 import { CustomPullQuote } from '../components/pullQuote'
 import { CustomPullImage } from '../components/pullImage'
 
-import { HeaderHighLight } from '../components/headerHeadLight'
+import { TripleHeader } from '../components/TripleHeader/TripleHeader'
 import { ThreeArticleCardRow } from '../components/ThreeArticleCardRow'
 import { TwoArticleCardRow } from '../components/TwoArticleCardRow'
 import { ArticleGrid } from '../components/ArticleGrid'
+
+import { CoverGallery } from '../components/CoverGallery'
+import F18prime2 from '../images/prime.f18.cover 2.1.png'
+import F18prime from '../images/prime.f18.cover.png'
 
 export const query = graphql`
   query {
@@ -46,6 +44,103 @@ export const query = graphql`
     }
   }
 `
+
+const CoverPhotos = [
+  {
+    photoURL: F18prime,
+    URL: 'https://www.linkedin.com/in/maxcwu/',
+  },
+  {
+    photoURL: F18prime,
+    URL: 'https://www.linkedin.com/in/maxcwu/',
+  },
+  {
+    photoURL: F18prime,
+    URL: 'https://www.linkedin.com/in/maxcwu/',
+  },
+  {
+    photoURL: F18prime,
+    URL: 'https://www.linkedin.com/in/maxcwu/',
+  },
+  {
+    photoURL: F18prime,
+    URL: 'https://www.linkedin.com/in/maxcwu/',
+  },
+]
+
+const stories = [
+  {
+    photoURL: F18prime,
+    URL: 'https://www.linkedin.com/in/maxcwu/',
+  },
+  {
+    photoURL: F18prime,
+    URL: 'https://www.linkedin.com/in/maxcwu/',
+  },
+  {
+    photoURL: F18prime,
+    URL: 'https://www.linkedin.com/in/maxcwu/',
+  },
+  {
+    photoURL: F18prime,
+    URL: 'https://www.linkedin.com/in/maxcwu/',
+  },
+  {
+    photoURL: F18prime,
+    URL: 'https://www.linkedin.com/in/maxcwu/',
+  },
+]
+
+const articleCards = [
+  <ArticleCard
+    blackCardFontSize={1}
+    whiteCardFontSize={0.8}
+    blackCardText="Song Sot/Survival"
+    whiteCardText={
+      'A description of the story goes here. It should be about \
+  two sentences and probably about this long and maybe even longer like this.'
+    }
+    imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
+    href="/"
+    imageHeightVW={30}
+  />,
+  <ArticleCard
+    blackCardFontSize={1}
+    whiteCardFontSize={0.8}
+    blackCardText="Song Sot/Survival"
+    whiteCardText={
+      'A description of the story goes here. It should be about \
+  two sentences and probably about this long and maybe even longer like this.'
+    }
+    imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
+    href="/"
+    imageHeightVW={30}
+  />,
+  <ArticleCard
+    blackCardFontSize={1}
+    whiteCardFontSize={0.8}
+    blackCardText="Song Sot/Survival"
+    whiteCardText={
+      'A description of the story goes here. It should be about \
+  two sentences and probably about this long and maybe even longer like this.'
+    }
+    imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
+    href="/"
+    imageHeightVW={30}
+  />,
+  <ArticleCard
+    blackCardFontSize={1}
+    whiteCardFontSize={0.8}
+    blackCardText="Song Sot/Survival"
+    whiteCardText={
+      'A description of the story goes here. It should be about \
+  two sentences and probably about this long and maybe even longer like this.'
+    }
+    imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
+    href="/"
+    imageHeightVW={30}
+  />,
+]
 
 const quarterlyStories = [
   {
@@ -113,91 +208,12 @@ const quarterlyStories = [
     ],
   },
 ]
-const stories = [
-  {
-    title: 'The Road to Royce',
-    authors: ['John Tudhope'],
-    description:
-      'A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this.',
-    quarter: 'Fall 2018',
-    imageURL:
-      'https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg',
-  },
-  {
-    title: 'Song Sot/Survival',
-    authors: ['Kristie-Valerie Hoang'],
-    description:
-      'A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this.',
-    quarter: 'Winter 2018',
-    imageURL:
-      'https://s3.amazonaws.com/images.seroundtable.com/google-submit-url-1516800645.jpg',
-  },
-]
 
-const articleCards = [
-  <ArticleCard
-    blackCardFontSize={1}
-    whiteCardFontSize={0.8}
-    blackCardText="Song Sot/Survival"
-    whiteCardText={
-      'A description of the story goes here. It should be about \
-  two sentences and probably about this long and maybe even longer like this.'
-    }
-    imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-    href="/"
-    imageHeightVW={30}
-  />,
-  <ArticleCard
-    blackCardFontSize={1}
-    whiteCardFontSize={0.8}
-    blackCardText="Song Sot/Survival"
-    whiteCardText={
-      'A description of the story goes here. It should be about \
-  two sentences and probably about this long and maybe even longer like this.'
-    }
-    imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-    href="/"
-    imageHeightVW={30}
-  />,
-  <ArticleCard
-    blackCardFontSize={1}
-    whiteCardFontSize={0.8}
-    blackCardText="Song Sot/Survival"
-    whiteCardText={
-      'A description of the story goes here. It should be about \
-  two sentences and probably about this long and maybe even longer like this.'
-    }
-    imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-    href="/"
-    imageHeightVW={30}
-  />,
-  <ArticleCard
-    blackCardFontSize={1}
-    whiteCardFontSize={0.8}
-    blackCardText="Song Sot/Survival"
-    whiteCardText={
-      'A description of the story goes here. It should be about \
-  two sentences and probably about this long and maybe even longer like this.'
-    }
-    imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-    href="/"
-    imageHeightVW={30}
-  />,
-]
 const IndexPage = ({ data }) => (
   <>
-    <TitleGallery stories={stories} />
-    <CustomHeader transparent={true} />
+    <CustomHeader transparent={false} />
     <QuarterlyStories quarters={quarterlyStories} />
-    <StyledCoverPhoto
-      title="The Road to Royce"
-      authors={['John Tudhope']}
-      description="A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this."
-      quarter="Fall 2018"
-      imageURL="https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg"
-      photographers={['Max Wu', 'Yeet']}
-    />
-    <ArticleGrid>{articleCards}</ArticleGrid>
+
     <FooterAuthorBio
       name="Kristie-Valerie Hoang"
       email="khoang@dailybruin.com"
@@ -206,17 +222,6 @@ const IndexPage = ({ data }) => (
     />
     <Head {...data.site.siteMetadata} />
     <GraphicNovel />
-    {/* <Article dropcap={true} content={data.kerckhoffArticle.content} /> */}
-
-    {/* <CustomPullImage
-      url="https://assets.dailybruin.com/images/interactive.prime.2018.teddy/web.prime.homelessness.missmary.ADX-e4d9cf1515feb0181473bb868a1c2374.JPG"
-      caption="Miss Mary"
-      credit="Karl Huang"
-      alt="A picture of Miss Mary, a homeless woman who lives in Westwood. She is wearing a beanie and a dark sweatshirt."
-    />
-
-    <CustomPullQuote caption="Every day, they rejected his offers of help. Everyday, they reject his offers of help. Everyday, they reject his" /> */}
-
     <ThreeArticleCardRow
       cards={[
         {
@@ -246,27 +251,91 @@ const IndexPage = ({ data }) => (
         },
       ]}
     />
-    <TwoArticleCardRow
-      cards={[
-        {
-          title: 'Song Sot/Survival',
-          caption:
-            'A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this.',
-          imageSrc: 'https://ampbyexample.com/img/canoe_900x600.jpg',
-          href: '/',
-        },
-        {
-          title: 'Song Sot/Survival 2',
-          caption:
-            'A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this.',
-          imageSrc:
-            'https://i.kym-cdn.com/photos/images/newsfeed/001/295/524/cda.jpg',
-          href: '/',
-        },
-      ]}
+    <HeaderHighLight
+      title="testing"
+      highlightPosition="top"
+      textAlign="right"
+      fullWidth={true}
     />
+    <div
+      className={css`
+        display: flex;
+        justify-content: space-around;
+      `}
+    >
+      <ArticleCard
+        blackCardFontSize={1}
+        whiteCardFontSize={0.8}
+        blackCardText="Song Sot/Survival"
+        whiteCardText={
+          'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.'
+        }
+        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
+        href="/"
+        wrapperWidthVW={33}
+        imgWidthVW={30}
+      />
+      <ArticleCard
+        blackCardFontSize={1}
+        whiteCardFontSize={0.8}
+        blackCardText="Song Sot/Survival"
+        whiteCardText={
+          'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.'
+        }
+        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
+        href="/"
+        wrapperWidthVW={33}
+        imgWidthVW={30}
+      />
+      <ArticleCard
+        blackCardFontSize={1}
+        whiteCardFontSize={0.8}
+        blackCardText="Song Sot/Survival"
+        whiteCardText={
+          'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.'
+        }
+        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
+        href="/"
+        wrapperWidthVW={33}
+        imgWidthVW={30}
+      />
+    </div>
+    <div
+      className={css`
+        display: flex;
+        justify-content: space-around;
+      `}
+    >
+      <ArticleCard
+        blackCardFontSize={1.2}
+        whiteCardFontSize={1}
+        blackCardText="Song Sot/Survival"
+        whiteCardText={
+          'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.'
+        }
+        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
+        href="/"
+        wrapperWidthVW={41}
+        imgWidthVW={40}
+      />
+      <ArticleCard
+        blackCardFontSize={1.2}
+        whiteCardFontSize={1}
+        blackCardText="This is supposed to be a super long title and I have no idea what it should eventually land but I and growing paranoid and this is looking pretty bad, DUH!"
+        whiteCardText={
+          'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.'
+        }
+        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
+        href="/"
+        wrapperWidthVW={41}
+        imgWidthVW={40}
+      />
+    </div>
     <Footer />
   </>
 )
