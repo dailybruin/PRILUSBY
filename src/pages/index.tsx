@@ -3,11 +3,11 @@ import { graphql } from 'gatsby'
 import {
   Article,
   CoverPhoto,
-  Footer,
   Head,
   XPosition,
   YPosition,
 } from '@dailybruin/lux'
+import { Footer } from '../components/Footer'
 import GraphicNovel from '../components/GraphicNovel'
 import CustomHeader from '../components/CustomHeader'
 import { ArticleCard } from '../components/ArticleCard'
@@ -250,7 +250,7 @@ const IndexPage = ({ data }) => (
         imgWidthVW={40}
       />
     </div>
-    <Footer developers="Nathan Smith" copyrightYear={2018} />
+    <Footer/>
   </>
 )
 
