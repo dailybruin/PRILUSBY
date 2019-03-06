@@ -3,7 +3,7 @@ import Swiper from 'react-id-swiper'
 import { css } from 'emotion'
 import { ArticleCard } from './ArticleCard'
 import { HeaderHighLight } from './headerHeadLight'
-
+import { Link } from 'gatsby'
 import './styles.css'
 
 interface TAC {
@@ -133,9 +133,13 @@ export class ThreeArticleCardRow extends React.Component<
               display: flex;
               flex-direction: row;
               justify-content: flex-end;
+              a {
+                text-decoration: none;
+                color: inherit;
+              }
             `}
           >
-            more stories
+            <Link to="/current-issue">BROKEN LINK FAM more stories</Link>
           </div>
         </div>
       </div>
