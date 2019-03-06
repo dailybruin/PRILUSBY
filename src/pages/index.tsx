@@ -22,6 +22,8 @@ import { CustomPullQuote } from '../components/pullQuote'
 import { CustomPullImage } from '../components/pullImage'
 
 import { HeaderHighLight } from '../components/headerHeadLight'
+import { ThreeArticleCardRow } from '../components/ThreeArticleCardRow'
+import { TwoArticleCardRow } from '../components/TwoArticleCardRow'
 import { ArticleGrid } from '../components/ArticleGrid'
 
 export const query = graphql`
@@ -143,8 +145,7 @@ const articleCards = [
     }
     imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
     href="/"
-    wrapperWidthVW={33}
-    imgWidthVW={30}
+    imageHeightVW={30}
   />,
   <ArticleCard
     blackCardFontSize={1}
@@ -156,8 +157,7 @@ const articleCards = [
     }
     imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
     href="/"
-    wrapperWidthVW={33}
-    imgWidthVW={30}
+    imageHeightVW={30}
   />,
   <ArticleCard
     blackCardFontSize={1}
@@ -169,8 +169,7 @@ const articleCards = [
     }
     imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
     href="/"
-    wrapperWidthVW={33}
-    imgWidthVW={30}
+    imageHeightVW={30}
   />,
   <ArticleCard
     blackCardFontSize={1}
@@ -182,8 +181,7 @@ const articleCards = [
     }
     imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
     href="/"
-    wrapperWidthVW={33}
-    imgWidthVW={30}
+    imageHeightVW={30}
   />,
 ]
 const IndexPage = ({ data }) => (
@@ -223,85 +221,56 @@ const IndexPage = ({ data }) => (
     />
 
     <CustomPullQuote caption="Every day, they rejected his offers of help. Everyday, they reject his offers of help. Everyday, they reject his" /> */}
-    <div
-      className={css`
-        display: flex;
-        justify-content: space-around;
-      `}
-    >
-      <ArticleCard
-        blackCardFontSize={1}
-        whiteCardFontSize={0.8}
-        blackCardText="Song Sot/Survival"
-        whiteCardText={
-          'A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this.'
-        }
-        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-        href="/"
-        wrapperWidthVW={33}
-        imgWidthVW={30}
-      />
-      <ArticleCard
-        blackCardFontSize={1}
-        whiteCardFontSize={0.8}
-        blackCardText="Song Sot/Survival"
-        whiteCardText={
-          'A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this.'
-        }
-        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-        href="/"
-        wrapperWidthVW={33}
-        imgWidthVW={30}
-      />
-      <ArticleCard
-        blackCardFontSize={1}
-        whiteCardFontSize={0.8}
-        blackCardText="Song Sot/Survival"
-        whiteCardText={
-          'A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this.'
-        }
-        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-        href="/"
-        wrapperWidthVW={33}
-        imgWidthVW={30}
-      />
-    </div>
-    <div
-      className={css`
-        display: flex;
-        justify-content: space-around;
-      `}
-    >
-      <ArticleCard
-        blackCardFontSize={1.2}
-        whiteCardFontSize={1}
-        blackCardText="Song Sot/Survival"
-        whiteCardText={
-          'A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this.'
-        }
-        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-        href="/"
-        wrapperWidthVW={41}
-        imgWidthVW={40}
-      />
-      <ArticleCard
-        blackCardFontSize={1.2}
-        whiteCardFontSize={1}
-        blackCardText="This is supposed to be a super long title and I have no idea what it should eventually land but I and growing paranoid and this is looking pretty bad, DUH!"
-        whiteCardText={
-          'A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this.'
-        }
-        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-        href="/"
-        wrapperWidthVW={41}
-        imgWidthVW={40}
-      />
-    </div>
+    <ThreeArticleCardRow
+      cards={[
+        {
+          title: 'Song Sot/Survival',
+          caption:
+            'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.',
+          imageSrc: 'https://ampbyexample.com/img/canoe_900x600.jpg',
+          href: '/',
+        },
+        {
+          title: 'Song Sot/Survival',
+          caption:
+            'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.',
+          imageSrc:
+            'https://i.kym-cdn.com/photos/images/newsfeed/001/295/524/cda.jpg',
+          href: '/',
+        },
+        {
+          title: 'Song Sot/Survival',
+          caption:
+            'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.',
+          imageSrc: 'https://ampbyexample.com/img/green_apple_1_1024x682.jpg',
+          href: '/',
+        },
+      ]}
+    />
+    <TwoArticleCardRow
+      cards={[
+        {
+          title: 'Song Sot/Survival',
+          caption:
+            'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.',
+          imageSrc: 'https://ampbyexample.com/img/canoe_900x600.jpg',
+          href: '/',
+        },
+        {
+          title: 'Song Sot/Survival',
+          caption:
+            'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.',
+          imageSrc:
+            'https://i.kym-cdn.com/photos/images/newsfeed/001/295/524/cda.jpg',
+          href: '/',
+        },
+      ]}
+    />
     <Footer />
   </>
 )
