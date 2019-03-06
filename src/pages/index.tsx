@@ -286,9 +286,6 @@ const CoverPhotos = [
   {
     photo: F18prime2,
   },
-  {
-    photo: F18prime2,
-  },
 ]
 const IndexPage = ({ data }) => (
   <>
