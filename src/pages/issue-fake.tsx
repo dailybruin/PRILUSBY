@@ -9,18 +9,18 @@ import { ArticleGrid } from '../components/ArticleGrid'
 import { Magazine } from '../components/Magazine';
 import { TripleHeaderAlternative } from '../components/TripleHeader/TripleHeaderAlternative';
 
-export const query = graphql`
-  query($name: String!) {
-    kerckhoffArticle(title: { eq: $name }) {
-      headline
-      author
-      content {
-        type
-        value
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query($name: String!) {
+//     kerckhoffArticle(title: { eq: $name }) {
+//       headline
+//       author
+//       content {
+//         type
+//         value
+//       }
+//     }
+//   }
+// `
 
 const articleCards = [
   <ArticleCard
