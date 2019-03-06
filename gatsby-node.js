@@ -14,6 +14,19 @@ exports.sourceNodes = async ({
   const mapResponse = await fetch(mapURL)
   const mapJson = await mapResponse.json()
   const { data } = mapJson
+  createNode({
+    issues: data['map.aml'].issues,
+    children: [],
+    id: createNodeId(`kerck-issues`),
+    internal: {
+      content: JSON.stringify(data['map.aml'].issues),
+      contentDigest: createHash('md5')
+        .update(JSON.stringify(data['map.aml'].issues))
+        .digest('hex'),
+      type: 'Issues',
+    },
+    parent: null,
+  })
   data['map.aml'].issues.forEach((issue, i) => {
     createNode({
       ...issue,
