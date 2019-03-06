@@ -7,7 +7,7 @@ import { SocialIcon } from 'react-social-icons'
 interface StyledCoverPhotoProps {
   title: string
   authors: string[]
-  photographers: string[]
+  photographers: string
   quarter: string
   imageURL: string
   socialMediaLinks: string[]
@@ -158,7 +158,7 @@ export class StyledCoverPhoto extends React.Component<StyledCoverPhotoProps> {
             BY {toSentence(this.props.authors).toUpperCase()}
             {this.props.photographers &&
               ' // PHOTOS BY ' +
-                toSentence(this.props.photographers).toUpperCase()}
+                toSentence([this.props.photographers]).toUpperCase()}
           </p>
         </div>
       </div>
