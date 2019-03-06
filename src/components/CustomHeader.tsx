@@ -3,7 +3,6 @@ import { css } from 'react-emotion'
 import { Link } from 'gatsby'
 import MobilePopup from './MobilePopup'
 import PRIME from '../images/PRIME.svg'
-const prime = require('../images/prime.png')
 
 interface CustomHeaderProps {
   transparent?: boolean
@@ -56,14 +55,14 @@ export default class CustomHeader extends React.Component<CustomHeaderProps> {
         <div className={linkStyle}>
           <Link to="/about">about</Link>
           <Link to="/current">current issue</Link>
-          <Link to="/about">past issue</Link>
+          <Link to="/about">past issues</Link>
           <Link to="/all">all stories</Link>
         </div>
         <MobilePopup>
           {[
             <Link to="/about">about</Link>,
             <Link to="/current">current issue</Link>,
-            <Link to="/about">past issue</Link>,
+            <Link to="/about">past issues</Link>,
             <Link to="/all">all stories</Link>,
           ]}
         </MobilePopup>

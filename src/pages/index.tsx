@@ -153,7 +153,7 @@ const IndexPage = ({ data }) => (
     />
     <Head {...data.site.siteMetadata} />
     <GraphicNovel />
-    <Article dropcap={true} content={data.kerckhoffArticle.content} />
+    {/* <Article dropcap={true} content={data.kerckhoffArticle.content} /> */}
     <HeaderHighLight
       title="testing"
       highlightPosition="top"
