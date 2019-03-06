@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import CustomHeader from '../components/CustomHeader'
 import { QuarterlyStories } from '../components/QuarterlyStories'
 import { css, cx } from 'emotion'
-import { Footer } from '../components/Footer';
+import { Footer } from '../components/Footer'
 
 const quarterlyStories = [
   {
@@ -73,39 +73,32 @@ const quarterlyStories = [
   },
 ]
 
-export const query = graphql`
-  query {
-    site {
-      siteMetadata {
-        siteName
-        description
-        url
-        image
-      }
-    }
-    kerckhoffArticle {
-      headline
-      author
-      content {
-        type
-        value
-      }
-    }
-  }
-`
-const AllStories = ({ data }) => 
+// export const query = graphql`
+//   query {
+//     site {
+//       siteMetadata {
+//         siteName
+//         description
+//         url
+//         image
+//       }
+//     }
+//   }
+// `
+const AllStories = ({ data }) => (
   <div>
-    <CustomHeader/>
-    <div className={css`
-      margin: 20px;
-      margin-top: 50px;
-      margin-bottom: 100px;
-    `}>
-      <QuarterlyStories
-        quarters={quarterlyStories}
-      />
+    <CustomHeader />
+    <div
+      className={css`
+        margin: 20px;
+        margin-top: 50px;
+        margin-bottom: 100px;
+      `}
+    >
+      <QuarterlyStories quarters={quarterlyStories} />
     </div>
-    <Footer/>
+    <Footer />
   </div>
+)
 
 export default AllStories
