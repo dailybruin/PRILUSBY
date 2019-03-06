@@ -15,6 +15,9 @@ interface StyledCoverPhotoProps {
 
 export class StyledCoverPhoto extends React.Component<StyledCoverPhotoProps> {
   render() {
+    if (typeof document == 'undefined') {
+      return null
+    }
     return (
       <div
         className={css`

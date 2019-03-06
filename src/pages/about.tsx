@@ -29,6 +29,9 @@ interface AboutInfo {
 }
 
 export function AboutFrame(props: AboutInfo) {
+  if (typeof document == 'undefined') {
+    return null
+  }
   return (
     <div
       className={css`
@@ -76,6 +79,7 @@ export function AboutFrame(props: AboutInfo) {
       <img
         className={css`
           margin: 22px;
+          height: 5em;
         `}
         src={props.signature}
       />
@@ -199,7 +203,7 @@ const About = ({ data }) => (
         title={'PRIME director'}
         name={'Juliette Le Saint'}
         text={
-          'Le Saint is a third-year cognitive science major with a film and tv minor. She was previously the Illustrations director for the Daily Bruin.'
+          'Le Saint is a third-year cognitive science major. She was previously the Illustrations director for the Daily Bruin.'
         }
         signature={Juliettesig}
         email={'jsaint@dailybruin.com'}

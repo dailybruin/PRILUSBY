@@ -27,7 +27,7 @@ export class CoverGallery extends React.Component<CoverPhotosProps> {
             `}
           >
             {this.props.photos.slice(0, 3).map(current => (
-              <a href={current.term}>
+              <Link to={current.term}>
                 <div
                   className={css`
                     display: inline-block;
@@ -51,7 +51,7 @@ export class CoverGallery extends React.Component<CoverPhotosProps> {
                     src={current.coverphoto}
                   />
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

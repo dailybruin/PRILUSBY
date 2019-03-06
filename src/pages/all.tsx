@@ -102,6 +102,9 @@ export const query = graphql`
   }
 `
 const AllStories = ({ data }) => {
+  if (typeof window == 'undefined') {
+    return null
+  }
   navigate('/winter19')
   return (
     <div>

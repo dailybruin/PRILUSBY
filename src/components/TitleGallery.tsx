@@ -18,6 +18,9 @@ interface TitleGalleryProps {
 
 export class TitleGallery extends React.Component<TitleGalleryProps> {
   render() {
+    if (typeof document == 'undefined') {
+      return null
+    }
     const params = {
       ContainerEl: 'section',
       WrapperEl: 'section',

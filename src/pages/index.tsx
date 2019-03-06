@@ -80,7 +80,7 @@ const stories = [
       'A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this.',
     quarter: 'Fall 2018',
     imageURL:
-      'https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Solid_white.svg/1024px-Solid_white.svg.png',
   },
   {
     title: 'Song Sot/Survival',
@@ -212,7 +212,13 @@ const quarterlyStories = [
 ]
 
 const IndexPage = ({ data }) => {
+  if (typeof window == 'undefined') {
+    return null
+  }
   navigate('/winter19')
+  if (typeof document == 'undefined') {
+    return null
+  }
   return (
     <>
       <CustomHeader transparent={true} />

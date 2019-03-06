@@ -11,11 +11,15 @@ class MobilePopup extends React.Component<any, any> {
   }
 
   public componentDidMount() {
-    document.addEventListener('mousedown', this.handleClick)
+    if (typeof document !== 'undefined') {
+      document.addEventListener('mousedown', this.handleClick)
+    }
   }
 
   public componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleClick)
+    if (typeof document !== 'undefined') {
+      document.removeEventListener('mousedown', this.handleClick)
+    }
   }
 
   public handleClick = (event: MouseEvent) => {
@@ -56,28 +60,39 @@ class MobilePopup extends React.Component<any, any> {
               display: none;
             }
           `}
-          style={this.state.open ? {
-            backgroundColor: "white",
-            borderTopLeftRadius: "0.5rem",
-            borderTopRightRadius: "0.5rem",
-          } : null}
+          style={
+            this.state.open
+              ? {
+                  backgroundColor: 'white',
+                  borderTopLeftRadius: '0.5rem',
+                  borderTopRightRadius: '0.5rem',
+                }
+              : null
+          }
         >
-          {this.state.open ?
+          {this.state.open ? (
             <FontAwesomeIcon
-              className={[css`
-                color: black;
-                padding: 6vw;
-              `, 'fa-lg'].join(' ')}
-              icon={faBars}
-            /> :
-            <FontAwesomeIcon
-              className={[css`
-                color: white;
-                padding: 6vw;
-              `, 'fa-lg'].join(' ')}
+              className={[
+                css`
+                  color: black;
+                  padding: 6vw;
+                `,
+                'fa-lg',
+              ].join(' ')}
               icon={faBars}
             />
-          }
+          ) : (
+            <FontAwesomeIcon
+              className={[
+                css`
+                  color: white;
+                  padding: 6vw;
+                `,
+                'fa-lg',
+              ].join(' ')}
+              icon={faBars}
+            />
+          )}
         </summary>
         <nav
           className={css`

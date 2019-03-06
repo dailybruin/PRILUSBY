@@ -42,6 +42,9 @@ const Subheading = props => (
 )
 
 export default ({ data, pageContext }) => {
+  if (typeof document == 'undefined') {
+    return null
+  }
   const term = pageContext.term
   const season = term.substring(0, term.length - 2)
   const year = '20' + term.substring(term.length - 2, term.length)
