@@ -12,75 +12,118 @@ export function Footer() {
         padding: 0 0;
         color: white;
         background: black;
-        height: 207px;
-        @media (max-width: 600px) {
-          display: none;
-        }
+        height: 200px;
       `}
-  >
+    >
       <div
-      className={css`
-        align-items: center;
-        display: flex;
-      `}
-      >
-        <div className={css`
-          margin-right: auto;
-          flex: 1;
-        `}>
-        </div>
-        <div
         className={css`
-          font-family: EB Garamond;
-          font-style: normal;
-          line-height: normal;
-          font-size: 64px;
-          padding: 8px;
-          `}>
+          align-items: center;
+          display: flex;
+          justify-content: space-evenly;
+          @media (max-width: 650px) {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          }
+        `}
+      >
+        <div
+          className={css`
+            width: 200px;
+            height: 5px;
+          `}
+        />
+        <div
+          className={css`
+            font-family: EB Garamond;
+            font-style: normal;
+            line-height: normal;
+            font-size: 64px;
+            padding: 8px;
+            @media (max-width: 980px) {
+              font-size: 2rem;
+            }
+          `}
+        >
           DAILY BRUIN
         </div>
-        <div className={css`margin-left: auto
-          justify-content: space-evenly;
-          text-align: center;
-          flex: 1;
-          padding: 0px`}>
-          <img className={css`margin: 8px;
-                              margin-left: 80px;
-                              margin-bottom: 0px;
-                              @media (max-width: 980px) {
-                                display: none;
-                              }`} src={RectangleLogos}/>
-          <img className={css`margin: 8px; margin-bottom: 0px;@media (max-width: 980px) {display: none;}`} src={RectangleLogos}/>
-          <img className={css`margin: 8px; margin-bottom: 0px;@media (max-width: 980px) {display: none;}`} src={RectangleLogos}/>
+        <div
+          className={css`
+            justify-content: space-evenly;
+            text-align: center;
+            padding: 0px;
+            @media (max-width: 980px) {
+              margin: 0;
+            }
+          `}
+        >
+          <img
+            className={css`
+              margin: 8px;
+              margin-bottom: 0px;
+              width: 40px;
+              height: 40px;
+              @media (max-width: 650px) {
+                /*display: none;*/
+                margin-left: 8px;
+                width: 30px;
+                height: 30px;
+              }
+            `}
+            src={RectangleLogos}
+          />
+          <img
+            className={css`
+              margin: 8px;
+              margin-bottom: 0px;
+              width: 40px;
+              height: 40px;
+              @media (max-width: 650px) {
+                /*display: none;*/
+                width: 30px;
+                height: 30px;
+              }
+            `}
+            src={RectangleLogos}
+          />
+          <img
+            className={css`
+              margin: 8px;
+              margin-bottom: 0px;
+              width: 40px;
+              height: 40px;
+              @media (max-width: 650px) {
+                /*display: none;*/
+                width: 30px;
+                height: 30px;
+              }
+            `}
+            src={RectangleLogos}
+          />
         </div>
       </div>
 
       <div
-      className={css`
-        font-family: Barlow;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        font-size: 18px;
-        text-align: center;
-        padding-top: 5px;
-        @media (max-width:731px) {
-          font-size: 14px;
-        }
-        `}>
+        className={css`
+          font-family: Barlow;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          font-size: 18px;
+          text-align: center;
+          padding-top: 5px;
+          @media (max-width: 731px) {
+            font-size: 14px;
+          }
+        `}
+      >
         <div>
-        PRIME is the official website for the Daily Bruin's quarterly arts, culture, and lifestyle magazine.
+          PRIME is the official website for the Daily Bruin's quarterly arts,
+          culture, and lifestyle magazine.
         </div>
-        <div>
-        © UCLA Student Media 1998 - 2018
-        </div>
-        <div>
-        Built with love at 118 Kerckhoff Hall
-        </div>
+        <div>© UCLA Student Media 1998 - 2018</div>
+        <div>Built with love at 118 Kerckhoff Hall</div>
       </div>
-
-
-
-  </footer>
+    </footer>
   )
 }
