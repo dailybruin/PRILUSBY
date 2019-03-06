@@ -2,7 +2,7 @@ import * as React from 'react'
 import Swiper from 'react-id-swiper'
 import { css } from 'emotion'
 import { ArticleCard } from './ArticleCard'
-import { HeaderHighLight } from './TripleHeader/headerHighLight'
+import { HeaderHighLight } from './TripleHeader/HeaderHighLight'
 import { Link } from 'gatsby'
 import './styles.css'
 
