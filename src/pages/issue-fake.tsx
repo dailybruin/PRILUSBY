@@ -4,7 +4,7 @@ import { ArticleCard } from '../components/ArticleCard';
 import { css } from 'emotion';
 import CustomHeader from '../components/CustomHeader';
 import { TripleHeader } from '../components/TripleHeader/TripleHeader';
-import { FooterAuthorBio } from '../components/FooterAuthorBio';
+import { Footer } from '../components/Footer';
 import { ArticleGrid } from '../components/ArticleGrid'
 import { Magazine } from '../components/Magazine';
 import { TripleHeaderAlternative } from '../components/TripleHeader/TripleHeaderAlternative';
@@ -124,12 +124,7 @@ export default ({ data }) => {
         `}><ArticleGrid>{articleCards}</ArticleGrid></div>
         <Magazine link={"https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=primefall2015"} />
       </div>
-      <FooterAuthorBio
-        name="Kristie-Valerie Hoang"
-        email="khoang@dailybruin.com"
-        handle="@KristieHoang DB"
-        bio="Hoang is a third-year political science major. She is the Social Media director at the Daily Bruin."
-      />
+      <Footer />
     </div>
   )
 };
