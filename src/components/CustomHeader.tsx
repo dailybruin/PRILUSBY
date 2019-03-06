@@ -12,9 +12,9 @@ const transparent = css`
   position: relative;
   background-color: transparent;
   position: absolute;
-  z-index: 1;
   top: 0;
 `
+
 const black = css`
   background-color: black;
 `
@@ -46,13 +46,13 @@ export default class CustomHeader extends React.Component<CustomHeaderProps> {
       align-items: center;
       position: relative;
       z-index: 100000;
+      ${background};
       @media (max-width: 940px) {
         justify-content: space-between;
       }
       @media (min-width: 940px) {
         padding-left: 46px;
       }
-      ${background};
     `
     return (
       <div className={headerStyle}>
@@ -64,12 +64,15 @@ export default class CustomHeader extends React.Component<CustomHeaderProps> {
             <Link to="/all">all stories</Link>,
           ]}
         </MobilePopup>
-        <img src={PRIME} className={css`
-          @media screen and (max-width: 940px) {
-            width: 60vw;
-            margin: 0 auto;
-          }
-        `}/>
+        <img
+          src={PRIME}
+          className={css`
+            @media screen and (max-width: 940px) {
+              width: 60vw;
+              margin: 0 auto;
+            }
+          `}
+        />
         <div className={linkStyle}>
           <Link to="/about">about</Link>
           <Link to="/current">current issue</Link>

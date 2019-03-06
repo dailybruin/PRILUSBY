@@ -212,101 +212,117 @@ const quarterlyStories = [
 const IndexPage = ({ data }) => (
   <>
     <CustomHeader transparent={true} />
-    <QuarterlyStories quarters={quarterlyStories} />
-
-    <FooterAuthorBio
-      name="Kristie-Valerie Hoang"
-      email="khoang@dailybruin.com"
-      handle="@KristieHoang DB"
-      bio="Hoang is a third-year political science major. She is the Social Media director at the Daily Bruin."
+    <TitleGallery
+      stories={[
+        {
+          imageURL:
+            'https://s3.amazonaws.com/images.seroundtable.com/google-submit-url-1516800645.jpg',
+          quarter: 'winter2019',
+          title: 'Road to Royce',
+          description:
+            'A description of the story goes here. It should be about two sentences and probably about this long and maybe even longer like this. ',
+          authors: ['John Tudhope'],
+        },
+        {
+          imageURL:
+            'https://s3.amazonaws.com/images.seroundtable.com/google-submit-url-1516800645.jpg',
+          quarter: 'fall2018',
+          title: 'DONT KNOW',
+          description:
+            'A description of the story goes here. It should be about two sentences and probably about this long and maybe even longer like this. ',
+          authors: ['FALL John Tudhope'],
+        },
+      ]}
     />
-    <Head {...data.site.siteMetadata} />
-    <GraphicNovel />
     <HeaderHighLight
-      title="testing"
-      highlightPosition="top"
-      textAlign="right"
-      fullWidth={true}
+      fullWidth={false}
+      highlightPosition="bottom"
+      title="current issue"
+      textAlign="left"
     />
-    <div
-      className={css`
-        display: flex;
-        justify-content: space-around;
-      `}
-    >
-      <ArticleCard
-        blackCardFontSize={1}
-        whiteCardFontSize={0.8}
-        blackCardText="Song Sot/Survival"
-        whiteCardText={
-          'A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this.'
-        }
-        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-        href="/"
-        wrapperWidthVW={33}
-        imgWidthVW={30}
-      />
-      <ArticleCard
-        blackCardFontSize={1}
-        whiteCardFontSize={0.8}
-        blackCardText="Song Sot/Survival"
-        whiteCardText={
-          'A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this.'
-        }
-        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-        href="/"
-        wrapperWidthVW={33}
-        imgWidthVW={30}
-      />
-      <ArticleCard
-        blackCardFontSize={1}
-        whiteCardFontSize={0.8}
-        blackCardText="Song Sot/Survival"
-        whiteCardText={
-          'A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this.'
-        }
-        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-        href="/"
-        wrapperWidthVW={33}
-        imgWidthVW={30}
-      />
-    </div>
-    <div
-      className={css`
-        display: flex;
-        justify-content: space-around;
-      `}
-    >
-      <ArticleCard
-        blackCardFontSize={1.2}
-        whiteCardFontSize={1}
-        blackCardText="Song Sot/Survival"
-        whiteCardText={
-          'A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this.'
-        }
-        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-        href="/"
-        wrapperWidthVW={41}
-        imgWidthVW={40}
-      />
-      <ArticleCard
-        blackCardFontSize={1.2}
-        whiteCardFontSize={1}
-        blackCardText="This is supposed to be a super long title and I have no idea what it should eventually land but I and growing paranoid and this is looking pretty bad, DUH!"
-        whiteCardText={
-          'A description of the story goes here. It should be about \
-        two sentences and probably about this long and maybe even longer like this.'
-        }
-        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-        href="/"
-        wrapperWidthVW={41}
-        imgWidthVW={40}
-      />
-    </div>
+    <ThreeArticleCardRow
+      cards={[
+        {
+          title: 'Song Sot/Survival',
+          caption:
+            'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.',
+          imageSrc: 'https://ampbyexample.com/img/canoe_900x600.jpg',
+          href: '/',
+        },
+        {
+          title: 'Song Sot/Survival',
+          caption:
+            'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.',
+          imageSrc:
+            'https://i.kym-cdn.com/photos/images/newsfeed/001/295/524/cda.jpg',
+          href: '/',
+        },
+        {
+          title: 'Song Sot/Survival',
+          caption:
+            'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.',
+          imageSrc: 'https://ampbyexample.com/img/green_apple_1_1024x682.jpg',
+          href: '/',
+        },
+      ]}
+    />
+    <HeaderHighLight
+      fullWidth={false}
+      highlightPosition="top"
+      title="FALL 2018 // facing tomorrow"
+      textAlign="left"
+    />
+    <TwoArticleCardRow
+      cards={[
+        {
+          title: 'Song Sot/Survival',
+          caption:
+            'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.',
+          imageSrc: 'https://ampbyexample.com/img/canoe_900x600.jpg',
+          href: '/',
+        },
+        {
+          title: 'Song Sot/Survival',
+          caption:
+            'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.',
+          imageSrc:
+            'https://i.kym-cdn.com/photos/images/newsfeed/001/295/524/cda.jpg',
+          href: '/',
+        },
+      ]}
+    />
+    <HeaderHighLight
+      fullWidth={false}
+      highlightPosition="top"
+      title="SPRING 2018 // facing tomorrow"
+      textAlign="left"
+    />
+    <TwoArticleCardRow
+      cards={[
+        {
+          title: 'Song Sot/Survival',
+          caption:
+            'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.',
+          imageSrc: 'https://ampbyexample.com/img/canoe_900x600.jpg',
+          href: '/',
+        },
+        {
+          title: 'Song Sot/Survival',
+          caption:
+            'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.',
+          imageSrc:
+            'https://i.kym-cdn.com/photos/images/newsfeed/001/295/524/cda.jpg',
+          href: '/',
+        },
+      ]}
+    />
     <Footer />
   </>
 )
