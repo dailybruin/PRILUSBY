@@ -9,11 +9,16 @@ import { ArticleGrid } from '../components/ArticleGrid'
 import { Magazine } from '../components/Magazine'
 import { TripleHeaderAlternative } from '../components/TripleHeader/TripleHeaderAlternative'
 
-// export const query = graphql`
-//   query($name: String!) {
-//     issue(title: { eq: $name }) {
-//   }
-// `
+export const query = graphql`
+  query($term: String!) {
+    issue(term: { eq: $term }) {
+      term
+      title
+      coverphoto
+      articles
+    }
+  }
+`
 
 const articleCards = [
   <ArticleCard
@@ -71,6 +76,12 @@ const articleCards = [
 ]
 
 export default ({ data }) => {
+  const term = data.issue.term
+  const season = term.substring(0, term.length - 2)
+  const year = '20' + term.substring(term.length - 2, term.length)
+  let issuuLink = `https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=prime${season}${year}`
+  if (parseInt(year) > 2017 || (parseInt(year) === 2017 && season === 'fall'))
+    issuuLink = `https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=prime_${season}_${year}`
   return (
     <div
       className={css`
@@ -111,7 +122,7 @@ export default ({ data }) => {
           `}
         >
           <TripleHeaderAlternative
-            issue={'winter 2019'}
+            issue={term}
             title={'Richard!!!'}
             description={'RICHARD RICHARD RICHARD!!!!!!!!!'}
             imageURL={
@@ -127,11 +138,7 @@ export default ({ data }) => {
         >
           <ArticleGrid>{articleCards}</ArticleGrid>
         </div>
-        <Magazine
-          link={
-            'https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=primefall2015'
-          }
-        />
+        <Magazine link={issuuLink} />
         <Footer />
       </div>
     </div>
