@@ -8,6 +8,7 @@ import CustomHeader from '../components/CustomHeader'
 import { StyledCoverPhoto } from '../components/StyledCoverPhoto'
 import { FooterAuthorBio } from '../components/FooterAuthorBio'
 
+/*
 export const query = graphql`
   query($name: String!) {
     kerckhoffArticle(title: { eq: $name }) {
@@ -19,7 +20,7 @@ export const query = graphql`
       }
     }
   }
-`
+`*/
 
 export default ({ data }) => {
   return (

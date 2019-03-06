@@ -33,13 +33,11 @@ export const query = graphql`
         image
       }
     }
-    kerckhoffArticle {
-      headline
-      author
-      content {
-        type
-        value
-      }
+    issue {
+      term
+      title
+      coverphoto
+      articles
     }
   }
 `
@@ -133,6 +131,7 @@ const stories = [
 
 const IndexPage = ({ data }) => (
   <>
+    {console.log(data)}
     <TitleGallery stories={stories} />
     <CustomHeader transparent={true} />
     <QuarterlyStories quarters={quarterlyStories} />
@@ -247,7 +246,7 @@ const IndexPage = ({ data }) => (
         imgWidthVW={40}
       />
     </div>
-    <Footer/>
+    <Footer />
   </>
 )
 

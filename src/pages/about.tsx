@@ -11,14 +11,6 @@ export const query = graphql`
         image
       }
     }
-    kerckhoffArticle {
-      headline
-      author
-      content {
-        type
-        value
-      }
-    }
   }
 `
 const About = ({ data }) => <div>hello</div>
