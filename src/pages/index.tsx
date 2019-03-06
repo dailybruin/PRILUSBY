@@ -24,16 +24,16 @@ import { CoverGallery } from '../components/CoverGallery'
 import F18prime2 from '../images/prime.f18.cover 2.1.png'
 import F18prime from '../images/prime.f18.cover.png'
 
-export const query = graphql`
-  query {
-    issue {
-      term
-      title
-      coverphoto
-      articles
-    }
-  }
-`
+// export const query = graphql`
+//   query {
+//     issue {
+//       term
+//       title
+//       coverphoto
+//       articles
+//     }
+//   }
+// `
 
 const CoverPhotos = [
   {
@@ -55,6 +55,30 @@ const CoverPhotos = [
   {
     photoURL: F18prime,
     URL: 'https://www.linkedin.com/in/maxcwu/',
+  },
+]
+
+const whykarl = [
+  {
+    title: 'title',
+    caption: 'caption here',
+    imageSrc:
+      'https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg',
+    href: '/',
+  },
+  {
+    title: 'title',
+    caption: 'caption here',
+    imageSrc:
+      'https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg',
+    href: '/',
+  },
+  {
+    title: 'title',
+    caption: 'caption here',
+    imageSrc:
+      'https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg',
+    href: '/',
   },
 ]
 
@@ -199,20 +223,10 @@ const quarterlyStories = [
 
 const IndexPage = ({ data }) => (
   <>
-    {console.log(data)}
-    <TitleGallery stories={stories} />
-    <StyledCoverPhoto
-      socialMediaLinks={[]}
-      title="The Road to Royce"
-      authors={['John Tudhope']}
-      description="A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this."
-      quarter="Fall 2018"
-      imageURL="https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg"
-      photographers={['Max Wu', 'Yeet']}
-    />
-    <CustomHeader transparent={true} />
+    <CustomHeader transparent={false} />
     <QuarterlyStories quarters={quarterlyStories} />
-    <Footer />
+    <ThreeArticleCardRow cards={whykarl} term={'winter19'} />
+    <TwoArticleCardRow cards={whykarl} term={'winter19'} title="title here!" />
   </>
 )
 
