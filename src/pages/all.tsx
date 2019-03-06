@@ -73,18 +73,18 @@ const quarterlyStories = [
   },
 ]
 
-export const query = graphql`
-  query {
-    site {
-      siteMetadata {
-        siteName
-        description
-        url
-        image
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query {
+//     site {
+//       siteMetadata {
+//         siteName
+//         description
+//         url
+//         image
+//       }
+//     }
+//   }
+// `
 const AllStories = ({ data }) => (
   <div>
     <CustomHeader />

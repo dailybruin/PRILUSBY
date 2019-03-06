@@ -79,7 +79,6 @@ exports.createPages = async ({ graphql, actions }) => {
   const mapResponse = await fetch(mapURL)
   const mapJson = await mapResponse.json()
   const { data } = mapJson
-  console.log(data['map.aml'].issues)
   data['map.aml'].issues.forEach(issue => {
     return graphql(`
       {
