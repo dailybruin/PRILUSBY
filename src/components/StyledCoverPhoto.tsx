@@ -2,6 +2,7 @@ import React from 'react'
 import { css, cx } from 'emotion'
 
 import { toSentence } from '@dailybruin/lux'
+import { SocialIcon } from 'react-social-icons'
 
 interface StyledCoverPhotoProps {
   title: string
@@ -10,6 +11,7 @@ interface StyledCoverPhotoProps {
   description: string
   quarter: string
   imageURL: string
+  socialMediaLinks: string[]
 }
 
 export class StyledCoverPhoto extends React.Component<StyledCoverPhotoProps> {
@@ -24,122 +26,93 @@ export class StyledCoverPhoto extends React.Component<StyledCoverPhotoProps> {
         <div
           className={css`
             position: absolute;
-            top: 45%;
-            right: 0;
-            width: 5%;
-            height: 38%;
-          `}
-        >
-          <div
-            className={css`
-              padding: 10% 5% 10% 20%;
-              height: 25%;
-            `}
-          >
-            <div
-              className={css`
-                position: relative;
-                border-style: solid;
-                border-width: thin;
-                border-radius: 50%;
-                width: 100%;
-                height: auto;
-                padding-top: 100%;
-                background: white;
-              `}
-            />
-          </div>
-          <div
-            className={css`
-              padding: 10% 5% 10% 20%;
-              height: 25%;
-            `}
-          >
-            <div
-              className={css`
-                position: relative;
-                border-style: solid;
-                border-width: thin;
-                border-radius: 50%;
-                width: 100%;
-                height: auto;
-                padding-top: 100%;
-                background: white;
-              `}
-            />
-          </div>
-          <div
-            className={css`
-              padding: 10% 5% 10% 20%;
-              height: 25%;
-            `}
-          >
-            <div
-              className={css`
-                position: relative;
-                border-style: solid;
-                border-width: thin;
-                border-radius: 50%;
-                width: 100%;
-                height: auto;
-                padding-top: 100%;
-                background: white;
-              `}
-            />
-          </div>
-          <div
-            className={css`
-              padding: 10% 5% 10% 20%;
-              height: 25%;
-            `}
-          >
-            <div
-              className={css`
-                position: relative;
-                border-style: solid;
-                border-width: thin;
-                border-radius: 50%;
-                width: 100%;
-                height: auto;
-                padding-top: 100%;
-                background: white;
-              `}
-            />
-          </div>
-        </div>
-        <div
-          className={css`
-            position: absolute;
+            width: 80%;
+            height: 80%;
             top: 0;
-            right: 88%;
-            background-color: white;
-
-            writing-mode: vertical-rl;
-            transform: rotate(180deg);
-
-            font-family: Barlow;
-            font-style: normal;
-            font-weight: 800;
-            line-height: normal;
-            font-size: 24px;
-            text-align: right;
-            margin: 10px;
-          `}
-        >
-          {this.props.quarter}
-        </div>
-        <div
-          className={css`
-            position: absolute;
-            width: 83%;
-            height: 83%;
-            top: 0;
-            right: 5%;
+            right: 10%;
             background-size: cover;
             background-image: url(${this.props.imageURL});
             background-position: center;
+            @media (max-width: 768px) {
+              right: 40px;
+            }
           `}
-        />
+        >
+          <div
+            className={css`
+              position: absolute;
+              top: 0;
+              left: -42px;
+              background-color: white;
+
+              writing-mode: vertical-rl;
+              transform: rotate(180deg);
+
+              font-family: Barlow;
+              font-style: normal;
+              font-weight: 800;
+              line-height: normal;
+              font-size: 24px;
+              text-align: right;
+              margin: 10px;
+            `}
+          >
+            {this.props.quarter}
+          </div>
+          <div
+            className={css`
+              position: absolute;
+              top: 0;
+              left: 0;
+              height: 100%;
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-end;
+              @media (min-width: 768px) {
+                display: none;
+              }
+            `}
+          >
+            {this.props.socialMediaLinks &&
+              this.props.socialMediaLinks.map(link => (
+                <SocialIcon
+                  url={link}
+                  className={css`
+                    margin: 10px;
+                    background-color: white;
+                    border-radius: 50%;
+                  `}
+                />
+              ))}
+          </div>
+          <div
+            className={css`
+              position: absolute;
+              bottom: 0;
+              right: -3%;
+              width: 3%;
+              height: 100%;
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-end;
+              @media (max-width: 768px) {
+                display: none;
+              }
+            `}
+          >
+            {this.props.socialMediaLinks &&
+              this.props.socialMediaLinks.map(link => (
+                <SocialIcon
+                  url={link}
+                  className={css`
+                    margin: 10px;
+                    background-color: white;
+                    border-radius: 50%;
+                  `}
+                />
+              ))}
+          </div>
+        </div>
         <div
           className={css`
             position: absolute;

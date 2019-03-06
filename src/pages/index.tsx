@@ -207,6 +207,12 @@ const IndexPage = ({ data }) => (
       quarter="Fall 2018"
       imageURL="https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg"
       photographers={['Max Wu', 'Yeet']}
+      socialMediaLinks={[
+        'https://twitter.com/realDonaldTrump?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor',
+        'https://www.linkedin.com/in/maxcwu/',
+        'https://www.facebook.com/maxwuwaxmu',
+        'mailto:chengmaxwu@gmail.com',
+      ]}
     />
     <ArticleGrid>{articleCards}</ArticleGrid>
     <FooterAuthorBio
@@ -226,6 +232,85 @@ const IndexPage = ({ data }) => (
     />
 
     <CustomPullQuote caption="Every day, they rejected his offers of help. Everyday, they reject his offers of help. Everyday, they reject his" /> */}
+    <div
+      className={css`
+        display: flex;
+        justify-content: space-around;
+      `}
+    >
+      <ArticleCard
+        blackCardFontSize={1}
+        whiteCardFontSize={0.8}
+        blackCardText="Song Sot/Survival"
+        whiteCardText={
+          'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.'
+        }
+        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
+        href="/"
+        wrapperWidthVW={33}
+        imgWidthVW={30}
+      />
+      <ArticleCard
+        blackCardFontSize={1}
+        whiteCardFontSize={0.8}
+        blackCardText="Song Sot/Survival"
+        whiteCardText={
+          'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.'
+        }
+        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
+        href="/"
+        wrapperWidthVW={33}
+        imgWidthVW={30}
+      />
+      <ArticleCard
+        blackCardFontSize={1}
+        whiteCardFontSize={0.8}
+        blackCardText="Song Sot/Survival"
+        whiteCardText={
+          'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.'
+        }
+        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
+        href="/"
+        wrapperWidthVW={33}
+        imgWidthVW={30}
+      />
+    </div>
+    <div
+      className={css`
+        display: flex;
+        justify-content: space-around;
+      `}
+    >
+      <ArticleCard
+        blackCardFontSize={1.2}
+        whiteCardFontSize={1}
+        blackCardText="Song Sot/Survival"
+        whiteCardText={
+          'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.'
+        }
+        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
+        href="/"
+        wrapperWidthVW={41}
+        imgWidthVW={40}
+      />
+      <ArticleCard
+        blackCardFontSize={1.2}
+        whiteCardFontSize={1}
+        blackCardText="This is supposed to be a super long title and I have no idea what it should eventually land but I and growing paranoid and this is looking pretty bad, DUH!"
+        whiteCardText={
+          'A description of the story goes here. It should be about \
+        two sentences and probably about this long and maybe even longer like this.'
+        }
+        imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
+        href="/"
+        wrapperWidthVW={41}
+        imgWidthVW={40}
+      />
+    </div>
     <ThreeArticleCardRow
       cards={[
         {
