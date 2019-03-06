@@ -7,10 +7,12 @@ import GraphicNovel from '../components/GraphicNovel'
 import CustomHeader from '../components/CustomHeader'
 import { StyledCoverPhoto } from '../components/StyledCoverPhoto'
 import { FooterAuthorBio } from '../components/FooterAuthorBio'
+import { CustomPullImage } from '../components/pullImage'
+import { CustomPullQuote } from '../components/pullQuote'
 
 export const query = graphql`
-  query($headline: String!) {
-    primeArticle(headline: { eq: $headline }) {
+  query($slug: String!) {
+    primeArticle(slug: { eq: $slug }) {
       headline
       author
       authorbio
@@ -28,39 +30,38 @@ export const query = graphql`
   }
 `
 
-export default ({ data }) => {
+export default ({ data, pageContext }) => {
   return (
-    <div
-      className={css`
-        width: 100vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      `}
-    >
-      <div
-        className={css`
-          max-width: 700px;
-          margin: 15px;
+    <div>
+      {console.log(pageContext)}
+      <CustomHeader transparent={false} />
+      <StyledCoverPhoto
+        socialMediaLinks={['mailto:online@media.ucla.edu']}
+        title={data.primeArticle.headline}
+        authors={[data.primeArticle.author]}
+        quarter={pageContext.term}
+        imageURL={data.primeArticle.coverimg}
+        photographers={[data.primeArticle.covercred]}
+      />
+      <Article
+        dropcap={true}
+        content={data.primeArticle.content}
+        customTypeComponentMapping={{
+          pull: CustomPullQuote,
+          image: CustomPullImage,
+        }}
+        style={css`
+          max-width: 60%;
+          font-family: 'Source Serif Pro';
+          line-height: 38px;
+          font-size: 24px;
         `}
-      >
-        <CustomHeader transparent={false} />
-        <StyledCoverPhoto
-          title="The Road to Royce"
-          authors={['John Tudhope']}
-          description="A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this."
-          quarter="Fall 2018"
-          imageURL="https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg"
-          photographers={['Max Wu', 'Yeet']}
-        />
-        <Article dropcap={true} content={data.primeArticle.content} />
-      </div>
+      />
       <FooterAuthorBio
-        name="Kristie-Valerie Hoang"
-        email="khoang@dailybruin.com"
-        handle="@KristieHoang DB"
-        bio="Hoang is a third-year political science major. She is the Social Media director at the Daily Bruin."
+        name={data.primeArticle.author}
+        email={data.primeArticle.authoremail}
+        handle={data.primeArticle.authortwitter}
+        bio={data.primeArticle.authorbio}
       />
     </div>
   )

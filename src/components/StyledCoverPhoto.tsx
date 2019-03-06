@@ -8,7 +8,6 @@ interface StyledCoverPhotoProps {
   title: string
   authors: string[]
   photographers: string[]
-  description: string
   quarter: string
   imageURL: string
   socialMediaLinks: string[]
@@ -117,7 +116,7 @@ export class StyledCoverPhoto extends React.Component<StyledCoverPhotoProps> {
           className={css`
             position: absolute;
             width: 60%;
-            height: auto;
+            min-height: 30%;
             bottom: 0;
             left: 0;
             background-color: white;
