@@ -21,6 +21,7 @@ import { QuarterlyStories } from '../components/QuarterlyStories'
 import { CustomPullQuote } from '../components/pullQuote'
 import { CustomPullImage } from '../components/pullImage'
 
+import { TripleHeader } from '../components/TripleHeader/TripleHeader'
 import { HeaderHighLight } from '../components/headerHeadLight'
 import { ThreeArticleCardRow } from '../components/ThreeArticleCardRow'
 import { TwoArticleCardRow } from '../components/TwoArticleCardRow'
@@ -187,6 +188,15 @@ const articleCards = [
 const IndexPage = ({ data }) => (
   <>
     <TitleGallery stories={stories} />
+    <TripleHeader
+      title={'winter 2019'}
+      description={
+        'Description about what this issue is about goes here. Description about what this issue is about goes here. Description about what this issue is about goes here.'
+      }
+      imageURL={
+        'https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg'
+      }
+    />
     <CustomHeader transparent={true} />
     <QuarterlyStories quarters={quarterlyStories} />
     <StyledCoverPhoto
@@ -206,13 +216,7 @@ const IndexPage = ({ data }) => (
     />
     <Head {...data.site.siteMetadata} />
     <GraphicNovel />
-    {/* <Article dropcap={true} content={data.kerckhoffArticle.content} /> */}
-    <HeaderHighLight
-      title="testing"
-      highlightPosition="top"
-      textAlign="right"
-      fullWidth={true}
-    />
+    <Article dropcap={true} content={data.kerckhoffArticle.content} />
     {/* <CustomPullImage
       url="https://assets.dailybruin.com/images/interactive.prime.2018.teddy/web.prime.homelessness.missmary.ADX-e4d9cf1515feb0181473bb868a1c2374.JPG"
       caption="Miss Mary"
