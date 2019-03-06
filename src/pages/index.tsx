@@ -33,7 +33,7 @@ export const query = graphql`
         image
       }
     }
-    kerckhoffArticle {
+    kerckhoffArticle(title: { eq: "article2.aml" }) {
       headline
       author
       content {
@@ -153,7 +153,14 @@ const IndexPage = ({ data }) => (
     />
     <Head {...data.site.siteMetadata} />
     <GraphicNovel />
-    <Article dropcap={true} content={data.kerckhoffArticle.content} />
+    <Article
+      dropcap={true}
+      content={data.kerckhoffArticle.content}
+      customTypeComponentMapping={{
+        // pull: CustomPullQuote,
+        pullimage: CustomPullImage,
+      }}
+    />
     <HeaderHighLight
       title="testing"
       highlightPosition="top"
