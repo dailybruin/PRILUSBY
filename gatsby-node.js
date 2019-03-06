@@ -112,6 +112,7 @@ exports.createPages = async ({ graphql, actions }) => {
           term: issue.term,
           articles: issue.articles,
           coverphoto: issue.coverphoto,
+          title: issue.title,
         },
       })
       issue.articles.forEach(articleslug => {
