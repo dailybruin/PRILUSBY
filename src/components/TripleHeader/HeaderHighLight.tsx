@@ -21,6 +21,8 @@ export class HeaderHighLight extends React.Component<HeaderProps, {}> {
           background: #fff96b;
           padding-left: ${this.props.textAlign === 'left' ? 5 : 20}px;
           padding-right: ${this.props.textAlign === 'left' ? 5 : 20}px;
+          margin-top: 10px;
+          margin-bottom: 10px;
         `}
       >
         <div
