@@ -20,6 +20,7 @@ export class StyledCoverPhoto extends React.Component<StyledCoverPhotoProps> {
         className={css`
           position: relative;
           height: 100vh;
+          margin-top: 20px;
         `}
       >
         {console.log(this.props.photographers)}

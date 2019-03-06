@@ -2,11 +2,14 @@ import * as React from 'react'
 import { css } from 'react-emotion'
 import { HeaderHighLight } from './HeaderHighLight'
 import Gallery from 'react-photo-gallery'
+import { Link } from 'gatsby'
+import slugify from 'slugify'
 interface TripleHeaderProps {
   term: string
   title: string
   description: string
   imageURL: string
+  slug: string
 }
 
 export class TripleHeader extends React.Component<TripleHeaderProps, {}> {
@@ -30,6 +33,8 @@ export class TripleHeader extends React.Component<TripleHeaderProps, {}> {
       margin-left: 5%;
       padding: 15px;
       padding-left: 30px;
+      color: black;
+      text-decoration: none;
     `
     const descriptionStyle = css`
       font-weight: 400;
@@ -55,19 +60,20 @@ export class TripleHeader extends React.Component<TripleHeaderProps, {}> {
     ]
     return (
       <div className={TripleHeaderStyle}>
-        <div className={blurbStyle}>
-          <div className={titleStyle}>{this.props.term}</div>
-          <div>
-            <HeaderHighLight
-              title={this.props.title}
-              highlightPosition="bottom"
-              textAlign="right"
-              fullWidth={true}
-            />
+        <Link to={this.props.slug.split('.').join('')}>
+          <div className={blurbStyle}>
+            <div className={titleStyle}>{this.props.term}</div>
+            <div>
+              <HeaderHighLight
+                title={this.props.title}
+                highlightPosition="bottom"
+                textAlign="right"
+                fullWidth={true}
+              />
+            </div>
+            <div className={descriptionStyle}>{this.props.description}</div>
           </div>
-          <div className={descriptionStyle}>{this.props.description}</div>
-        </div>
-
+        </Link>
         <div
           className={css`
             margin-left: -20%;

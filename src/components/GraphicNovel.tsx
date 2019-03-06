@@ -2,37 +2,16 @@ import React from 'react'
 import Gallery from 'react-photo-gallery'
 import Lightbox from 'react-images'
 import { css } from 'react-emotion'
-const panel = require('../images/panel.png')
 
-const photos = [
-  {
-    src: panel,
-    width: 5,
-    height: 7,
-  },
-  {
-    src: panel,
-    width: 5,
-    height: 7,
-  },
-  {
-    src: panel,
-    width: 5,
-    height: 7,
-  },
-  {
-    src: panel,
-    width: 5,
-    height: 7,
-  },
-]
-
+interface GraphicNovelProps {
+  content: any[]
+}
 interface GraphicNovelState {
   currentImage: number
   lightboxIsOpen: boolean
 }
 export default class GraphicNovel extends React.Component<
-  {},
+  GraphicNovelProps,
   GraphicNovelState
 > {
   constructor(props) {
@@ -66,6 +45,15 @@ export default class GraphicNovel extends React.Component<
       currentImage: this.state.currentImage + 1,
     })
   }
+
+  photos = this.props.content.map(photo => {
+    console.log(photo)
+    return {
+      src: JSON.parse(photo.value).url,
+      width: 5,
+      height: 7,
+    }
+  })
   render() {
     const galleryStyle = css`
       width: 1126px;
@@ -77,9 +65,13 @@ export default class GraphicNovel extends React.Component<
     return (
       <div className={flexStyle}>
         <div className={galleryStyle}>
-          <Gallery photos={photos} columns={2} onClick={this.openLightbox} />
+          <Gallery
+            photos={this.photos}
+            columns={2}
+            onClick={this.openLightbox}
+          />
           <Lightbox
-            images={photos}
+            images={this.photos}
             onClose={this.closeLightbox}
             onClickPrev={this.gotoPrevious}
             onClickNext={this.gotoNext}

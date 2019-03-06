@@ -60,21 +60,6 @@ export default ({ data, pageContext }) => {
     issuuLink = `https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=prime_${season}_${year}`
   const formatTerm = season + ' ' + year
   const articleCards = []
-  {
-    /* <ArticleCard
-      blackCardFontSize={1}
-      whiteCardFontSize={0.8}
-      blackCardText="Song Sot/Survival"
-      whiteCardText={
-        'A description of the story goes here. It should be about \
-    two sentences and probably about this long and maybe even longer like this.'
-      }
-      imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-      href="/"
-      imageHeightVW={20}
-      imageHeightMobileVW={50}
-    />, */
-  }
   articles.forEach((article, i) => {
     if (i === 0) return
     articleCards.push(
@@ -119,6 +104,7 @@ export default ({ data, pageContext }) => {
             term={formatTerm}
             description={articles[0].excerpt}
             imageURL={articles[0].coverimg}
+            slug={articles[0].slug}
           />
         </div>
         <div
@@ -133,6 +119,7 @@ export default ({ data, pageContext }) => {
             description={articles[0].excerpt}
             imageURL={articles[0].coverimg}
             title={pageContext.title}
+            slug={articles[0].slug}
           />
         </div>
         <div

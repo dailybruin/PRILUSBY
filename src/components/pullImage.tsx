@@ -6,9 +6,9 @@ const pullQuoteStyle = css`
   flex-direction: column;
   font-family: Barlow;
   font-style: normal;
-  font-size: 25px;
+  font-size: 16px;
   line-height: 43px;
-  font-weight: bold;
+  font-weight: 400;
   line-height: normal;
   padding: 0;
   border: none;

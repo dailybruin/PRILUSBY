@@ -42,35 +42,44 @@ const Subheading = props => (
 )
 
 export default ({ data, pageContext }) => {
+  const term = pageContext.term
+  const season = term.substring(0, term.length - 2)
+  const year = '20' + term.substring(term.length - 2, term.length)
+  const formatTerm = season + ' ' + year
   return (
     <div>
       {console.log(pageContext)}
       <CustomHeader transparent={false} />
       <StyledCoverPhoto
-        socialMediaLinks={['mailto:online@media.ucla.edu']}
+        socialMediaLinks={[]}
         title={data.primeArticle.headline}
         authors={[data.primeArticle.author]}
-        quarter={pageContext.term}
+        quarter={formatTerm}
         imageURL={data.primeArticle.coverimg}
         photographers={[data.primeArticle.covercred]}
       />
-      <Article
-        dropcap={true}
-        content={data.primeArticle.content}
-        customTypeComponentMapping={{
-          pull: CustomPullQuote,
-          pullimage: CustomPullImage,
-          subheading: Subheading,
-          italics: Italics,
-        }}
-        style={css`
-          max-width: 60%;
-          font-family: 'Source Serif Pro';
-          line-height: 38px;
-          font-size: 1.25rem;
-          min-width: 300px;
-        `}
-      />
+      {data.primeArticle.articleType === 'graphic' && (
+        <GraphicNovel content={data.primeArticle.content} />
+      )}
+      {data.primeArticle.articleType === 'article' && (
+        <Article
+          dropcap={true}
+          content={data.primeArticle.content}
+          customTypeComponentMapping={{
+            pull: CustomPullQuote,
+            pullimage: CustomPullImage,
+            subheading: Subheading,
+            italics: Italics,
+          }}
+          style={css`
+            max-width: 60%;
+            font-family: 'Source Serif Pro';
+            line-height: 38px;
+            font-size: 1.25rem;
+            min-width: 300px;
+          `}
+        />
+      )}
       <FooterAuthorBio
         name={data.primeArticle.author}
         email={data.primeArticle.authoremail}

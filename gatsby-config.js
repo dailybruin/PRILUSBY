@@ -1,10 +1,10 @@
 const slugify = require('slugify')
 
-const siteName = 'SITE_NAME'
+const siteName = 'PRIME'
 const description = 'SITE_DESCRIPTION'
 const image =
-  'https://chancellor.ucla.edu/wp-content/uploads/2018/07/ChancellorBlock_1366x912_acf_cropped.jpg'
-const year = 'CURRENT_YEAR'
+  'https://assets.dailybruin.com/images/prime.map.articles.to.issues/PRIME.thumbnail-cf84048a01d52fbc0582220cf04779ad.jpg'
+const year = '2019'
 
 const url = `https://features.dailybruin.com/${year}/${slugify(siteName)}`
 
