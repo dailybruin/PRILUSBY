@@ -8,6 +8,10 @@ const typography = new Typography({
       name: 'Barlow',
       styles: ['400', '900'],
     },
+    {
+      name: 'EB Garamond',
+      styles: ['400'],
+    },
     { name: 'Barlow', styles: ['400', '800'] },
   ],
   headerFontFamily: ['Georgia', 'serif'],
