@@ -221,6 +221,12 @@ const IndexPage = ({ data }) => {
   }
   return (
     <>
+      <Head
+        siteName="PRIME"
+        url="https://prime.dailybruin.com"
+        description="Daily Bruin's quarterly magazine"
+        image="https://assets.dailybruin.com/images/prime.map.articles.to.issues/PRIME.thumbnail-cf84048a01d52fbc0582220cf04779ad.jpg"
+      />
       <CustomHeader transparent={true} />
       <TitleGallery stories={stories} />
       <div
