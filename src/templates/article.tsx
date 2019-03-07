@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
-import { Article } from '@dailybruin/lux'
+import { Article, Head } from '@dailybruin/lux'
 import { css } from 'react-emotion'
 
 import GraphicNovel from '../components/GraphicNovel'
@@ -51,7 +51,18 @@ export default ({ data, pageContext }) => {
   const formatTerm = season + ' ' + year
   return (
     <div>
-      {console.log(pageContext)}
+      <Head
+        siteName={`PRIME | ${data.primeArticle.headline}`}
+        description={data.primeArticle.excerpt}
+        url={
+          !data.primeArticle.slug
+            ? ''
+            : `https://prime.dailybruin.com/${data.primeArticle.slug
+                .split('.')
+                .join('')}`
+        }
+        image={data.primeArticle.coverimg}
+      />
       <CustomHeader transparent={false} />
       <StyledCoverPhoto
         socialMediaLinks={[]}
@@ -80,6 +91,10 @@ export default ({ data, pageContext }) => {
             line-height: 38px;
             font-size: 1.25rem;
             min-width: 300px;
+            figcaption {
+              font-style: italic;
+              font-size: 1.15rem;
+            }
           `}
         />
       )}
