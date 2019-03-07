@@ -129,7 +129,7 @@ const About = ({ data }) => (
         line-height: normal;
         font-size: 24px;
         text-align: center;
-        margin: 18px 166px 108px 166px;
+        margin: 18px 12vw 108px 12vw;
       `}
     >
       <p>
