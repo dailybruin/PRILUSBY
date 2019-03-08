@@ -15,7 +15,7 @@ export class QuarterlyStories extends React.Component<QuarterlyStoriesProps> {
   render() {
     const params = {
       slidesPerView: 3,
-      spaceBetween: 0,
+      spaceBetween: 10,
       navigation: {
         nextEl: '.button-next',
         prevEl: '.button-prev',
@@ -69,7 +69,7 @@ export class QuarterlyStories extends React.Component<QuarterlyStoriesProps> {
                       imageSrc={story.coverimg}
                       aType={story.articleType}
                       slug={story.slug}
-                      imageHeightVW={15}
+                      imageHeightVW={18}
                       imageHeightMobileVW={20}
                     />
                   </div>
@@ -88,7 +88,7 @@ export class QuarterlyStories extends React.Component<QuarterlyStoriesProps> {
                   <div
                     className={css`
                       height: auto;
-                      width: 10vw;
+                      width: calc(10vw);
                     `}
                   >
                     <ArticleCard
@@ -100,7 +100,7 @@ export class QuarterlyStories extends React.Component<QuarterlyStoriesProps> {
                       aType={story.articleType}
                       slug={story.slug}
                       imageHeightVW={18}
-                      imageHeightMobileVW={50}
+                      imageHeightMobileVW={60}
                     />
                   </div>
                 ))}

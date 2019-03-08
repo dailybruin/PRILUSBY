@@ -81,7 +81,7 @@ export class ArticleCard extends React.Component<ArticleCardProps> {
                   color: black;
                   padding: 10px;
                   position: relative;
-                  width: 100%;
+
                   bottom: 0;
                   left: 0;
                   text-align: left;
@@ -98,9 +98,8 @@ export class ArticleCard extends React.Component<ArticleCardProps> {
                     color: white;
                     padding: 20px;
                     position: absolute;
-
                     top: ${this.props.whiteCardFontSize < 1 ? -30 : -40}px;
-                    left: ${this.props.whiteCardFontSize < 1 ? -35 : -40}px;
+                    left: ${this.props.whiteCardFontSize < 1 ? -30 : -40}px;
                     z-index: 100;
                     width: auto;
                     padding: 10px;

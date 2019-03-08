@@ -52,6 +52,7 @@ const AllStories = ({ data }) => {
       }),
     }
   })
+  console.log(quarterlyStories)
   return (
     <div>
       <CustomHeader />
