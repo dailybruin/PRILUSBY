@@ -71,7 +71,8 @@ export default ({ data, pageContext }) => {
         blackCardText={article.headline}
         whiteCardText={article.excerpt}
         imageSrc={article.coverimg}
-        href={article.slug.split('.').join('')}
+        aType={article.articleType}
+        slug={article.slug}
         imageHeightVW={20}
         imageHeightMobileVW={50}
       />

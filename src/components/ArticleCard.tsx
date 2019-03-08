@@ -8,19 +8,41 @@ interface ArticleCardProps {
   blackCardText: string
   whiteCardText: string
   imageSrc: string
-  href: string
   imageHeightVW: number
   imageHeightMobileVW?: number
+  aType: string
+  slug: string
+}
+
+const CustomLink = props => {
+  if (!props.link) return <div>{props.children}</div>
+  if (props.link[0] !== '/')
+    return (
+      <a
+        href={props.link}
+        className={css`
+          color: black;
+          text-decoration: none;
+        `}
+      >
+        {props.children}
+      </a>
+    )
+  return <Link to={props.link}>{props.children}</Link>
 }
 
 export class ArticleCard extends React.Component<ArticleCardProps> {
   render() {
     return (
-      <Link
+      <CustomLink
         className={css`
           width: 100%;
         `}
-        to={this.props.href}
+        link={
+          this.props.aType !== 'article' && this.props.aType !== 'graphic'
+            ? this.props.aType
+            : `/${this.props.slug.split('.').join('')}`
+        }
       >
         <div
           className={css`
@@ -97,7 +119,7 @@ export class ArticleCard extends React.Component<ArticleCardProps> {
             </div>
           </div>
         </div>
-      </Link>
+      </CustomLink>
       // className={css`
       //   position: relative;
       //   width: 100%;
