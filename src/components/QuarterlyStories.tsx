@@ -3,34 +3,12 @@ import { css, cx } from 'emotion'
 import Swiper from 'react-id-swiper'
 import { Link } from 'gatsby'
 import './styles.css'
-
+import { ArticleCard } from './ArticleCard'
 interface QuarterlyStoriesProps {
   quarters: {
     quarter: String
-    stories: {
-      title: string
-      description: string
-      imageURL: string
-      link: string
-    }[]
+    stories: any[]
   }[]
-}
-
-const CustomLink = props => {
-  if (!props.link) return <div>{props.children}</div>
-  if (props.link[0] !== '/')
-    return (
-      <a
-        href={props.link}
-        className={css`
-          color: black;
-          text-decoration: none;
-        `}
-      >
-        {props.children}
-      </a>
-    )
-  return <Link to={props.link}>{props.children}</Link>
 }
 
 export class QuarterlyStories extends React.Component<QuarterlyStoriesProps> {
@@ -45,7 +23,6 @@ export class QuarterlyStories extends React.Component<QuarterlyStoriesProps> {
       renderPrevButton: () => <div className="button-prev" />,
       renderNextButton: () => <div className="button-next" />,
     }
-
     return (
       <div>
         {this.props.quarters.map((quarter, i) => (
@@ -67,83 +44,68 @@ export class QuarterlyStories extends React.Component<QuarterlyStoriesProps> {
             >
               <b>{quarter.quarter}</b>
             </p>
-            <Swiper {...params}>
-              {quarter.stories.map(story => (
-                <div>
-                  <CustomLink link={story.link}>
-                    <div
-                      className={css`
-                        margin-left: 15px;
-                        margin-right: 15px;
-                        text-align: center;
-                        color: white;
-                        background-size: auto 100%;
-                        background-position: center;
-                        background-image: url(${story.imageURL});
-                      `}
-                    >
-                      <div
-                        className={css`
-                          height: 50vh;
-                          position: relative;
-                        `}
-                      >
-                        <div
-                          className={css`
-                            position: absolute;
-                            bottom: 0;
-                            left: 5%;
-                            width: 80%;
-                          `}
-                        >
-                          <div
-                            className={css`
-                              background-color: white;
-                              color: black;
-                              padding: 20px;
-                              position: relative;
-                              width: 100%;
-                              bottom: 0;
-                              left: 0;
-                              text-align: left;
-                              font-family: Barlow;
-                              font-style: italic;
-                              font-weight: 500;
-                              line-height: normal;
-                              font-size: 18px;
-                            `}
-                          >
-                            <div
-                              className={css`
-                                background-color: black;
-                                color: white;
-                                padding: 20px;
-                                position: absolute;
-
-                                top: -35px;
-                                left: -35px;
-                                z-index: 100;
-                                width: auto;
-                                padding: 12px;
-                                float: left;
-                                font-family: Barlow;
-                                font-style: normal;
-                                font-weight: 800;
-                                line-height: normal;
-                                font-size: 24px;
-                              `}
-                            >
-                              {story.title}
-                            </div>
-                            {story.description}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </CustomLink>
-                </div>
-              ))}
-            </Swiper>
+            <div
+              className={css`
+                @media screen and (max-width: 800px) {
+                  display: none;
+                }
+              `}
+            >
+              <Swiper {...params}>
+                {quarter.stories.map(story => (
+                  <div
+                    className={css`
+                      height: auto;
+                      width: 10vw;
+                      margin-left: 5px;
+                      margin-right: 5px;
+                    `}
+                  >
+                    <ArticleCard
+                      blackCardFontSize={1}
+                      whiteCardFontSize={0.8}
+                      blackCardText={story.headline}
+                      whiteCardText={story.excerpt}
+                      imageSrc={story.coverimg}
+                      aType={story.articleType}
+                      slug={story.slug}
+                      imageHeightVW={15}
+                      imageHeightMobileVW={20}
+                    />
+                  </div>
+                ))}
+              </Swiper>
+            </div>
+            <div
+              className={css`
+                @media screen and (min-width: 800px) {
+                  display: none;
+                }
+              `}
+            >
+              <Swiper {...params} slidesPerView={1}>
+                {quarter.stories.map(story => (
+                  <div
+                    className={css`
+                      height: auto;
+                      width: 10vw;
+                    `}
+                  >
+                    <ArticleCard
+                      blackCardFontSize={1}
+                      whiteCardFontSize={0.8}
+                      blackCardText={story.headline}
+                      whiteCardText={story.excerpt}
+                      imageSrc={story.coverimg}
+                      aType={story.articleType}
+                      slug={story.slug}
+                      imageHeightVW={18}
+                      imageHeightMobileVW={50}
+                    />
+                  </div>
+                ))}
+              </Swiper>
+            </div>
             {i < this.props.quarters.length - 1 && (
               <div
                 className={css`

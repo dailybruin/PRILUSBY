@@ -48,19 +48,7 @@ const AllStories = ({ data }) => {
         const curredge = data.allPrimeArticle.edges.filter(edge => {
           return edge.node.slug === slug
         })[0]
-        const currArticle = curredge.node
-        const aType = currArticle.articleType
-        return {
-          title: currArticle.headline,
-          authors: [currArticle.author],
-          description: currArticle.excerpt,
-          quarter: season + ' ' + year,
-          imageURL: '' + currArticle.coverimg,
-          link:
-            aType !== 'article' && aType !== 'graphic'
-              ? aType
-              : `/${slug.split('.').join('')}`,
-        }
+        return curredge.node
       }),
     }
   })
