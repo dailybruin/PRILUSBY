@@ -151,3 +151,25 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 }
+
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+  if (stage === 'build-html') {
+    actions.setWebpackConfig({
+      resolve: {
+        alias: {
+          lux: require.resolve('@dailybruin/lux'),
+        },
+      },
+    })
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /lux/,
+            use: loaders.null(),
+          },
+        ],
+      },
+    })
+  }
+}

@@ -15,6 +15,9 @@ interface StyledCoverPhotoProps {
 
 export class StyledCoverPhoto extends React.Component<StyledCoverPhotoProps> {
   render() {
+    if (typeof document == 'undefined') {
+      return null
+    }
     return (
       <div
         className={css`
@@ -159,7 +162,7 @@ export class StyledCoverPhoto extends React.Component<StyledCoverPhotoProps> {
           >
             BY {toSentence(this.props.authors).toUpperCase()}
             {this.props.photographers &&
-              ' // PHOTOS BY ' +
+              ' // ART BY ' +
                 toSentence(this.props.photographers).toUpperCase()}
           </p>
         </div>

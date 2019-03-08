@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, navigate } from 'gatsby'
 import { Head } from '@dailybruin/lux'
 import { Footer } from '../components/Footer'
 import GraphicNovel from '../components/GraphicNovel'
@@ -80,7 +80,7 @@ const stories = [
       'A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this.',
     quarter: 'Fall 2018',
     imageURL:
-      'https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Solid_white.svg/1024px-Solid_white.svg.png',
   },
   {
     title: 'Song Sot/Survival',
@@ -211,20 +211,38 @@ const quarterlyStories = [
   },
 ]
 
-const IndexPage = ({ data }) => (
-  <>
-    <CustomHeader transparent={true} />
-    <TitleGallery stories={stories} />
-    <div
-      className={css`
-        height: 20px;
-      `}
-    />
-    <ThreeArticleCardRow cards={whykarl} term={'winter19'} />
-    <TwoArticleCardRow cards={whykarl} term={'winter19'} title="title here!" />
-    <TwoArticleCardRow cards={whykarl} term={'winter19'} title="title here!" />
-    <Footer />
-  </>
-)
+const IndexPage = ({ data }) => {
+  if (typeof window == 'undefined') {
+    return null
+  }
+  navigate('/winter19')
+  if (typeof document == 'undefined') {
+    return null
+  }
+  return (
+    <>
+      <Head
+        siteName="PRIME"
+        url="https://prime.dailybruin.com"
+        description="Daily Bruin's quarterly magazine"
+        image="https://assets.dailybruin.com/images/prime.map.articles.to.issues/PRIME.thumbnail-cf84048a01d52fbc0582220cf04779ad.jpg"
+      />
+      <CustomHeader transparent={true} />
+      <TitleGallery stories={stories} />
+      <div
+        className={css`
+          height: 20px;
+        `}
+      />
+      <ThreeArticleCardRow cards={whykarl} term={'winter19'} />
+      <TwoArticleCardRow
+        cards={whykarl}
+        term={'fall18'}
+        title="facing tomorrow"
+      />
+      <Footer />
+    </>
+  )
+}
 
 export default IndexPage

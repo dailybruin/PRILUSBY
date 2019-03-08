@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
-import { Article } from '@dailybruin/lux'
+import { Article, Head, Video } from '@dailybruin/lux'
 import { css } from 'react-emotion'
 
 import GraphicNovel from '../components/GraphicNovel'
@@ -42,13 +42,27 @@ const Subheading = props => (
 )
 
 export default ({ data, pageContext }) => {
+  if (typeof document == 'undefined') {
+    return null
+  }
   const term = pageContext.term
   const season = term.substring(0, term.length - 2)
   const year = '20' + term.substring(term.length - 2, term.length)
   const formatTerm = season + ' ' + year
   return (
     <div>
-      {console.log(pageContext)}
+      <Head
+        siteName={`PRIME | ${data.primeArticle.headline}`}
+        description={data.primeArticle.excerpt}
+        url={
+          !data.primeArticle.slug
+            ? ''
+            : `https://prime.dailybruin.com/${data.primeArticle.slug
+                .split('.')
+                .join('')}`
+        }
+        image={data.primeArticle.coverimg}
+      />
       <CustomHeader transparent={false} />
       <StyledCoverPhoto
         socialMediaLinks={[]}
@@ -70,6 +84,7 @@ export default ({ data, pageContext }) => {
             pullimage: CustomPullImage,
             subheading: Subheading,
             italics: Italics,
+            video: Video,
           }}
           style={css`
             max-width: 60%;
@@ -77,6 +92,10 @@ export default ({ data, pageContext }) => {
             line-height: 38px;
             font-size: 1.25rem;
             min-width: 300px;
+            figcaption {
+              font-style: italic;
+              font-size: 1.15rem;
+            }
           `}
         />
       )}

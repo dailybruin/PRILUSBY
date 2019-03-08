@@ -3,75 +3,8 @@ import { graphql } from 'gatsby'
 
 import CustomHeader from '../components/CustomHeader'
 import { QuarterlyStories } from '../components/QuarterlyStories'
-import { css, cx } from 'emotion'
+import { css } from 'emotion'
 import { Footer } from '../components/Footer'
-
-const quarterlyStories = [
-  {
-    quarter: 'Fall 2018',
-    stories: [
-      {
-        title: 'The Road to Royce',
-        authors: ['John Tudhope'],
-        description:
-          'A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this.',
-        quarter: 'Fall 2018',
-        imageURL:
-          'https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg',
-      },
-      {
-        title: 'Song Sot/Survival',
-        authors: ['Kristie-Valerie Hoang'],
-        description:
-          'A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this.',
-        quarter: 'Winter 2018',
-        imageURL:
-          'https://s3.amazonaws.com/images.seroundtable.com/google-submit-url-1516800645.jpg',
-      },
-      {
-        title: 'The Road to Royce',
-        authors: ['John Tudhope'],
-        description:
-          'A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this.',
-        quarter: 'Fall 2018',
-        imageURL:
-          'https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg',
-      },
-      {
-        title: 'Song Sot/Survival',
-        authors: ['Kristie-Valerie Hoang'],
-        description:
-          'A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this.',
-        quarter: 'Winter 2018',
-        imageURL:
-          'https://s3.amazonaws.com/images.seroundtable.com/google-submit-url-1516800645.jpg',
-      },
-    ],
-  },
-  {
-    quarter: 'Winter 2019',
-    stories: [
-      {
-        title: 'YETEETET',
-        authors: ['John Tudhope'],
-        description:
-          'A description of the story goes here. A description of the story goes here. A description of the story goes here. A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this.',
-        quarter: 'Fall 2018',
-        imageURL:
-          'https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg',
-      },
-      {
-        title: 'Song Sot/Survival',
-        authors: ['Kristie-Valerie Hoang'],
-        description:
-          'A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this.',
-        quarter: 'Winter 2018',
-        imageURL:
-          'https://s3.amazonaws.com/images.seroundtable.com/google-submit-url-1516800645.jpg',
-      },
-    ],
-  },
-]
 
 export const query = graphql`
   query {
@@ -79,6 +12,7 @@ export const query = graphql`
       issues {
         term
         coverphoto
+        articles
       }
     }
     allPrimeArticle {
@@ -101,21 +35,57 @@ export const query = graphql`
     }
   }
 `
-const AllStories = ({ data }) => (
-  <div>
-    {console.log(data)}
-    <CustomHeader />
-    <div
-      className={css`
-        margin: 20px;
-        margin-top: 50px;
-        margin-bottom: 100px;
-      `}
-    >
-      <QuarterlyStories quarters={quarterlyStories} />
+const AllStories = ({ data }) => {
+  if (typeof window == 'undefined') {
+    return null
+  }
+  console.log(data)
+  let quarterlyStories = data.issues.issues.map(issue => {
+    console.log(issue)
+    let term = issue.term
+    let season = term.substring(0, term.length - 2)
+    let year = '20' + term.substring(term.length - 2, term.length)
+    return {
+      quarter: season + ' ' + year,
+      stories: issue.articles.map(slug => {
+        console.log('slug: ', slug)
+        const curredge = data.allPrimeArticle.edges.filter(edge => {
+          return edge.node.slug === slug
+        })[0]
+        const currArticle = curredge.node
+        console.log('curarticle', currArticle)
+        const aType = currArticle.articleType
+        return {
+          title: currArticle.headline,
+          authors: [currArticle.author],
+          description: currArticle.excerpt,
+          quarter: season + ' ' + year,
+          imageURL: '' + currArticle.coverimg,
+          link:
+            aType !== 'article' && aType !== 'graphic'
+              ? aType
+              : `/${slug.split('.').join('')}`,
+        }
+      }),
+    }
+  })
+  console.log(quarterlyStories)
+  return (
+    <div>
+      {console.log(data)}
+      <CustomHeader />
+      <div
+        className={css`
+          margin: 20px;
+          margin-top: 50px;
+          margin-bottom: 100px;
+        `}
+      >
+        <QuarterlyStories quarters={quarterlyStories} />
+      </div>
+      <Footer />
     </div>
-    <Footer />
-  </div>
-)
+  )
+}
 
 export default AllStories
