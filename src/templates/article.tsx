@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
-import { Article, Head } from '@dailybruin/lux'
+import { Article, Head, Video } from '@dailybruin/lux'
 import { css } from 'react-emotion'
 
 import GraphicNovel from '../components/GraphicNovel'
@@ -84,6 +84,7 @@ export default ({ data, pageContext }) => {
             pullimage: CustomPullImage,
             subheading: Subheading,
             italics: Italics,
+            video: Video,
           }}
           style={css`
             max-width: 60%;
