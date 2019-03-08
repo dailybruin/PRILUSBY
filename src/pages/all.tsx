@@ -18,7 +18,6 @@ export const query = graphql`
     allPrimeArticle {
       edges {
         node {
-          title
           slug
           headline
           author
@@ -39,21 +38,17 @@ const AllStories = ({ data }) => {
   if (typeof window == 'undefined') {
     return null
   }
-  console.log(data)
   let quarterlyStories = data.issues.issues.map(issue => {
-    console.log(issue)
     let term = issue.term
     let season = term.substring(0, term.length - 2)
     let year = '20' + term.substring(term.length - 2, term.length)
     return {
       quarter: season + ' ' + year,
       stories: issue.articles.map(slug => {
-        console.log('slug: ', slug)
         const curredge = data.allPrimeArticle.edges.filter(edge => {
           return edge.node.slug === slug
         })[0]
         const currArticle = curredge.node
-        console.log('curarticle', currArticle)
         const aType = currArticle.articleType
         return {
           title: currArticle.headline,
@@ -69,10 +64,8 @@ const AllStories = ({ data }) => {
       }),
     }
   })
-  console.log(quarterlyStories)
   return (
     <div>
-      {console.log(data)}
       <CustomHeader />
       <div
         className={css`

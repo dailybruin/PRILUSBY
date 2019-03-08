@@ -42,7 +42,6 @@ class MobilePopup extends React.Component<any, any> {
           top: 3vw;
           justify-self: end;
           text-align: left;
-          margin-right: 55px;
           @media (min-width: 940px) {
             display: none;
           }
@@ -51,10 +50,12 @@ class MobilePopup extends React.Component<any, any> {
         <summary
           className={css`
             position: relative;
-            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-size: 1rem;
-            width: 20vw;
-            height: 20vw;
+            width: 70px;
+            height: 70px;
             text-align: center;
             ::-webkit-details-marker {
               display: none;
@@ -75,7 +76,6 @@ class MobilePopup extends React.Component<any, any> {
               className={[
                 css`
                   color: black;
-                  padding: 6vw;
                 `,
                 'fa-lg',
               ].join(' ')}
@@ -86,7 +86,6 @@ class MobilePopup extends React.Component<any, any> {
               className={[
                 css`
                   color: white;
-                  padding: 6vw;
                 `,
                 'fa-lg',
               ].join(' ')}
@@ -100,14 +99,17 @@ class MobilePopup extends React.Component<any, any> {
             display: grid;
             grid-template-columns: 1fr;
             font-family: barlow;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 800;
-            max-width: 20vw;
+            max-width: 70px;
             a {
               text-decoration: none;
               color: black;
-              font-size: 0.85rem;
-              margin: 0.5rem 0.6rem 0.5rem auto;
+              font-size: 0.9rem;
+              word-break: keep-all;
+              width: 60px;
+              margin: 0.8rem 0.6rem 0.8rem auto;
+              word-spacing: 100%;
               text-align: right;
             }
             background-color: white;

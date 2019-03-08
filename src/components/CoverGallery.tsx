@@ -18,40 +18,46 @@ export class CoverGallery extends React.Component<CoverPhotosProps> {
         <div
           className={css`
             width: 100%;
+            height: 100%;
           `}
         >
           <div
             className={css`
+              display: flex;
               padding-left: 3vw;
               padding-right: 3vw;
+              justify-content: space-evenly;
+              align-items: center;
+              @media screen and (max-width: 900px) {
+                flex-direction: column;
+              }
             `}
           >
             {this.props.photos.slice(0, 3).map(current => (
-              <Link to={current.term}>
-                <div
-                  className={css`
-                    display: inline-block;
-                    width: 33.33333333333333333%; /*yikes*/
-                    @media (max-width: 667px) {
-                      width: 100%;
-                      text-align: center;
-                    }
-                  `}
-                >
+              <div
+                className={css`
+                  padding-top: 10px;
+                  padding-bottom: 10px;
+                `}
+              >
+                <Link to={current.term}>
                   <img
                     className={css`
-                      padding: 10px;
-                      padding-top: 20px;
-                      padding-bottom: 0px;
-                      &:hover {
-                        padding-top: 10px;
-                        padding-bottom: 10px;
+                      max-width: 431px;
+                      max-height: 550px;
+                      height: 40vw;
+                      width: auto;
+                      margin: 0px;
+                      overflow: hidden;
+                      @media screen and (max-width: 900px) {
+                        width: 100%;
+                        height: auto;
                       }
                     `}
                     src={current.coverphoto}
                   />
-                </div>
-              </Link>
+                </Link>
+              </div>
             ))}
           </div>
         </div>

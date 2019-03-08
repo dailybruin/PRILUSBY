@@ -32,7 +32,7 @@ exports.sourceNodes = async ({
       ...issue,
       term: issue.term,
       children: [],
-      id: createNodeId(`kerck-issue-${i}`),
+      id: createNodeId(`kerck-issue-${issue.term}`),
       internal: {
         content: JSON.stringify(issue),
         contentDigest: createHash('md5')
@@ -45,7 +45,7 @@ exports.sourceNodes = async ({
   })
 
   // === GET ALL THE ARTICLES
-  for (let i = 1; i <= 3; i++) {
+  for (let i = 0; i <= 6; i++) {
     const url = `https://kerckhoff.dailybruin.com/api/packages/prime?page=${i}`
     const response = await fetch(url)
     const json = await response.json()
@@ -68,12 +68,11 @@ exports.sourceNodes = async ({
         })
       }
       createNode({
-        title: article.headline,
         ...article,
         slug,
         children: [],
         content,
-        id: createNodeId(`prime-${key}`),
+        id: createNodeId(`prime-${slug}`),
         internal: {
           content: JSON.stringify(article),
           contentDigest: createHash('md5')
@@ -121,6 +120,7 @@ exports.createPages = async ({ graphql, actions }) => {
         return graphql(`
       {
         primeArticle(slug: {eq: "${articleslug}"}) {
+          slug
           headline
           author
           authorbio

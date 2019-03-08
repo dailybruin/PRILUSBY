@@ -45,9 +45,9 @@ export default class CustomHeader extends React.Component<CustomHeaderProps> {
       display: flex;
       align-items: center;
       position: relative;
-      z-index: 100000;
+      z-index: 100;
       @media (max-width: 940px) {
-        justify-content: space-between;
+        justify-content: flex-start;
       }
       @media (min-width: 940px) {
         padding-left: 46px;
@@ -58,10 +58,18 @@ export default class CustomHeader extends React.Component<CustomHeaderProps> {
       <div className={headerStyle}>
         <MobilePopup>
           {[
-            <Link to="/about">about</Link>,
-            <Link to="/winter19">current issue</Link>,
-            <Link to="/pastissues">past issues</Link>,
-            <Link to="/all">all stories</Link>,
+            <Link key={1} to="/about">
+              about
+            </Link>,
+            <Link key={2} to="/winter19">
+              current issue
+            </Link>,
+            <Link key={3} to="/pastissues">
+              past issues
+            </Link>,
+            <Link key={4} to="/all">
+              all stories
+            </Link>,
           ]}
         </MobilePopup>
         <Link to="/">
@@ -70,7 +78,8 @@ export default class CustomHeader extends React.Component<CustomHeaderProps> {
             className={css`
               @media screen and (max-width: 940px) {
                 width: 60vw;
-                margin: 0 auto;
+                max-height: 125px;
+                margin: 0 75px;
               }
             `}
           />

@@ -20,7 +20,6 @@ export const query = graphql`
     allPrimeArticle {
       edges {
         node {
-          title
           slug
           headline
           author
@@ -58,6 +57,9 @@ export default ({ data, pageContext }) => {
   let issuuLink = `https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=prime${season}${year}`
   if (parseInt(year) > 2017 || (parseInt(year) === 2017 && season === 'fall'))
     issuuLink = `https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=prime_${season}_${year}`
+  if (term === 'spring18')
+    issuuLink =
+      'https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=finalpdf'
   const formatTerm = season + ' ' + year
   const articleCards = []
   articles.forEach((article, i) => {
@@ -66,7 +68,7 @@ export default ({ data, pageContext }) => {
       <ArticleCard
         blackCardFontSize={1}
         whiteCardFontSize={0.8}
-        blackCardText={article.title}
+        blackCardText={article.headline}
         whiteCardText={article.excerpt}
         imageSrc={article.coverimg}
         href={article.slug.split('.').join('')}
@@ -130,7 +132,7 @@ export default ({ data, pageContext }) => {
         >
           <ArticleGrid>{articleCards}</ArticleGrid>
         </div>
-        {/* <Magazine link={issuuLink} /> */}
+        <Magazine link={issuuLink} />
         <Footer />
       </div>
     </div>

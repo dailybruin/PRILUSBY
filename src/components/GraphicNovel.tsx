@@ -47,7 +47,6 @@ export default class GraphicNovel extends React.Component<
   }
 
   photos = this.props.content.map(photo => {
-    console.log(photo)
     return {
       src: JSON.parse(photo.value).url,
       width: 5,

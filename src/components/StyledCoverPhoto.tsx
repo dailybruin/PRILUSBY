@@ -26,7 +26,6 @@ export class StyledCoverPhoto extends React.Component<StyledCoverPhotoProps> {
           margin-top: 20px;
         `}
       >
-        {console.log(this.props.photographers)}
         <div
           className={css`
             position: absolute;
@@ -132,6 +131,7 @@ export class StyledCoverPhoto extends React.Component<StyledCoverPhotoProps> {
             @media (max-width: 768px) {
               padding: 10px;
               paddin-bottom: 30px;
+              width: 80%;
             }
           `}
         >

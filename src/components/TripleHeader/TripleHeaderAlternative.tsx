@@ -53,16 +53,12 @@ export class TripleHeaderAlternative extends React.Component<
             >
               {this.props.issue}
             </div>
-            <div
-              className={css`
-                font-size: 2rem;
-                font-weight: bold;
-                font-style: italic;
-                text-decoration: none;
-              `}
-            >
-              {this.props.title}
-            </div>
+            <HeaderHighLight
+              title={this.props.title}
+              textAlign="left"
+              highlightPosition="bottom"
+              fullWidth={false}
+            />
             <div
               className={css`
                 font-size: 1rem;
