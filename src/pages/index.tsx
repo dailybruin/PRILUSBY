@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { graphql, navigate } from 'gatsby'
-import { Head } from '@dailybruin/lux'
+import CustomHead from '../components/CustomHead'
 import { Footer } from '../components/Footer'
 import GraphicNovel from '../components/GraphicNovel'
 import CustomHeader from '../components/CustomHeader'
@@ -213,18 +213,38 @@ const quarterlyStories = [
 
 const IndexPage = ({ data }) => {
   if (typeof window == 'undefined') {
-    return null
+    return (
+      <>
+        <CustomHead
+          siteName="PRIME"
+          pageName="all stories"
+          url="https://prime.dailybruin.com/all"
+          description="PRIME is the official website for the Daily Bruin's quarterly arts, culture, and lifestyle magazine."
+          image="https://assets.dailybruin.com/images/prime.map.articles.to.issues/PRIME.thumbnail-cf84048a01d52fbc0582220cf04779ad.jpg"
+        />
+      </>
+    )
   }
   navigate('/winter19')
   if (typeof document == 'undefined') {
-    return null
+    return (
+      <>
+        <CustomHead
+          siteName="PRIME"
+          pageName="all stories"
+          url="https://prime.dailybruin.com/all"
+          description="PRIME is the official website for the Daily Bruin's quarterly arts, culture, and lifestyle magazine."
+          image="https://assets.dailybruin.com/images/prime.map.articles.to.issues/PRIME.thumbnail-cf84048a01d52fbc0582220cf04779ad.jpg"
+        />
+      </>
+    )
   }
   return (
     <>
-      <Head
+      <CustomHead
         siteName="PRIME"
         url="https://prime.dailybruin.com"
-        description="Daily Bruin's quarterly magazine"
+        description="PRIME is the official website for the Daily Bruin's quarterly arts, culture, and lifestyle magazine."
         image="https://assets.dailybruin.com/images/prime.map.articles.to.issues/PRIME.thumbnail-cf84048a01d52fbc0582220cf04779ad.jpg"
       />
       <CustomHeader transparent={true} />

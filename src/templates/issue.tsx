@@ -2,13 +2,13 @@ import * as React from 'react'
 import { graphql } from 'gatsby'
 import { ArticleCard } from '../components/ArticleCard'
 import { css } from 'emotion'
+import CustomHead from '../components/CustomHead'
 import CustomHeader from '../components/CustomHeader'
 import { TripleHeader } from '../components/TripleHeader/TripleHeader'
 import { Footer } from '../components/Footer'
 import { ArticleGrid } from '../components/ArticleGrid'
 import { Magazine } from '../components/Magazine'
 import { TripleHeaderAlternative } from '../components/TripleHeader/TripleHeaderAlternative'
-import { format } from 'path'
 
 // export const query = graphql`
 //   query($name: String!) {
@@ -79,63 +79,72 @@ export default ({ data, pageContext }) => {
     )
   })
   return (
-    <div
-      className={css`
-        width: 100vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      `}
-    >
+    <>
+      <CustomHead
+        siteName="PRIME"
+        pageName={formatTerm}
+        url={`https://prime.dailybruin.com/${term}`}
+        description="PRIME is the official website for the Daily Bruin's quarterly arts, culture, and lifestyle magazine."
+        image="https://assets.dailybruin.com/images/prime.map.articles.to.issues/PRIME.thumbnail-cf84048a01d52fbc0582220cf04779ad.jpg"
+      />
       <div
         className={css`
-          width: 100%;
-          margin: 0 15px;
+          width: 100vw;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
         `}
       >
-        <CustomHeader transparent={false} />
         <div
           className={css`
-            @media screen and (max-width: 940px) {
-              display: none;
-            }
+            width: 100%;
+            margin: 0 15px;
           `}
         >
-          <TripleHeader
-            title={pageContext.title}
-            term={formatTerm}
-            description={articles[0].excerpt}
-            imageURL={articles[0].coverimg}
-            slug={articles[0].slug}
-          />
+          <CustomHeader transparent={false} />
+          <div
+            className={css`
+              @media screen and (max-width: 940px) {
+                display: none;
+              }
+            `}
+          >
+            <TripleHeader
+              title={pageContext.title}
+              term={formatTerm}
+              description={articles[0].excerpt}
+              imageURL={articles[0].coverimg}
+              slug={articles[0].slug}
+            />
+          </div>
+          <div
+            className={css`
+              @media screen and (min-width: 940px) {
+                display: none;
+              }
+            `}
+          >
+            <TripleHeaderAlternative
+              issue={formatTerm}
+              description={articles[0].excerpt}
+              imageURL={articles[0].coverimg}
+              title={pageContext.title}
+              slug={articles[0].slug}
+            />
+          </div>
+          <div
+            className={css`
+              width: 95%;
+              margin: 1rem auto;
+            `}
+          >
+            <ArticleGrid>{articleCards}</ArticleGrid>
+          </div>
+          <Magazine link={issuuLink} />
+          <Footer />
         </div>
-        <div
-          className={css`
-            @media screen and (min-width: 940px) {
-              display: none;
-            }
-          `}
-        >
-          <TripleHeaderAlternative
-            issue={formatTerm}
-            description={articles[0].excerpt}
-            imageURL={articles[0].coverimg}
-            title={pageContext.title}
-            slug={articles[0].slug}
-          />
-        </div>
-        <div
-          className={css`
-            width: 95%;
-            margin: 1rem auto;
-          `}
-        >
-          <ArticleGrid>{articleCards}</ArticleGrid>
-        </div>
-        <Magazine link={issuuLink} />
-        <Footer />
       </div>
-    </div>
+    </>
   )
 }

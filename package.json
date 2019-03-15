@@ -36,7 +36,7 @@
     "react": "16.7.0",
     "react-dom": "16.7.0",
     "react-emotion": "9.2.12",
-    "react-helmet": "5.2.0",
+    "react-helmet": "^5.2.0",
     "react-id-swiper": "^1.6.9",
     "react-images": "^0.5.19",
     "react-photo-gallery": "^6.3.2",

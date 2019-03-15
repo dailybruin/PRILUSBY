@@ -4,6 +4,7 @@ import { Article, Head, Video } from '@dailybruin/lux'
 import { css } from 'react-emotion'
 
 import GraphicNovel from '../components/GraphicNovel'
+import CustomHead from '../components/CustomHead'
 import CustomHeader from '../components/CustomHeader'
 import { HeaderHighLight } from '../components/TripleHeader/HeaderHighLight'
 import { StyledCoverPhoto } from '../components/StyledCoverPhoto'
@@ -43,7 +44,23 @@ const Subheading = props => (
 
 export default ({ data, pageContext }) => {
   if (typeof document == 'undefined') {
-    return null
+    return (
+      <>
+        <CustomHead
+          siteName="PRIME"
+          pageName={data.primeArticle.headline}
+          description={data.primeArticle.excerpt}
+          url={
+            !data.primeArticle.slug
+              ? ''
+              : `https://prime.dailybruin.com/${data.primeArticle.slug
+                  .split('.')
+                  .join('')}`
+          }
+          image={data.primeArticle.coverimg}
+        />
+      </>
+    )
   }
   const term = pageContext.term
   const season = term.substring(0, term.length - 2)
@@ -51,8 +68,9 @@ export default ({ data, pageContext }) => {
   const formatTerm = season + ' ' + year
   return (
     <div>
-      <Head
-        siteName={`PRIME | ${data.primeArticle.headline}`}
+      <CustomHead
+        siteName="PRIME"
+        pageName={data.primeArticle.headline}
         description={data.primeArticle.excerpt}
         url={
           !data.primeArticle.slug

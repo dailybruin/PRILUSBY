@@ -1,13 +1,7 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
 import { css } from 'react-emotion'
-import {
-  Article,
-  CoverPhoto,
-  Head,
-  XPosition,
-  YPosition,
-} from '@dailybruin/lux'
+import CustomHead from '../components/CustomHead'
 import CustomHeader from '../components/CustomHeader'
 import { Footer } from '../components/Footer'
 
@@ -30,70 +24,89 @@ interface AboutInfo {
 
 export function AboutFrame(props: AboutInfo) {
   if (typeof document == 'undefined') {
-    return null
+    return (
+      <>
+        <CustomHead
+          siteName="PRIME"
+          pageName="about"
+          url="https://prime.dailybruin.com/about"
+          description="PRIME is the official website for the Daily Bruin's quarterly arts, culture, and lifestyle magazine."
+          image="https://assets.dailybruin.com/images/prime.map.articles.to.issues/PRIME.thumbnail-cf84048a01d52fbc0582220cf04779ad.jpg"
+        />
+      </>
+    )
   }
   return (
-    <div
-      className={css`
-        text-align: center;
-        font-family: Barlow;
-        font-style: normal;
-        flex: 1;
-        line-height: normal;
-      `}
-    >
-      <img
-        className={css`
-          margin-bottom: 16px;
-        `}
-        src={props.headshot}
+    <>
+      <CustomHead
+        siteName="PRIME"
+        pageName="about"
+        url="https://prime.dailybruin.com/about"
+        description="PRIME is the official website for the Daily Bruin's quarterly arts, culture, and lifestyle magazine."
+        image="https://assets.dailybruin.com/images/prime.map.articles.to.issues/PRIME.thumbnail-cf84048a01d52fbc0582220cf04779ad.jpg"
       />
       <div
         className={css`
-          font-weight: 600;
-          font-size: 30px;
+          text-align: center;
+          font-family: Barlow;
+          font-style: normal;
+          flex: 1;
+          line-height: normal;
         `}
       >
-        {props.title}
+        <img
+          className={css`
+            margin-bottom: 16px;
+          `}
+          src={props.headshot}
+        />
+        <div
+          className={css`
+            font-weight: 600;
+            font-size: 30px;
+          `}
+        >
+          {props.title}
+        </div>
+        <div
+          id="name"
+          className={css`
+            margin: 11px;
+            font-weight: 500;
+            font-size: 24px;
+          `}
+        >
+          {props.name}
+        </div>
+        <div
+          id="description"
+          className={css`
+            font-weight: 500;
+            font-size: 18px;
+            margin: 0 20px 0 20px;
+          `}
+        >
+          {props.text}
+        </div>
+        <img
+          className={css`
+            margin: 22px;
+            height: 5em;
+          `}
+          src={props.signature}
+        />
+        <div
+          id="email"
+          className={css`
+            font-weight: 500;
+            font-size: 18px;
+            margin-bottom: 50px;
+          `}
+        >
+          {props.email}
+        </div>
       </div>
-      <div
-        id="name"
-        className={css`
-          margin: 11px;
-          font-weight: 500;
-          font-size: 24px;
-        `}
-      >
-        {props.name}
-      </div>
-      <div
-        id="description"
-        className={css`
-          font-weight: 500;
-          font-size: 18px;
-          margin: 0 20px 0 20px;
-        `}
-      >
-        {props.text}
-      </div>
-      <img
-        className={css`
-          margin: 22px;
-          height: 5em;
-        `}
-        src={props.signature}
-      />
-      <div
-        id="email"
-        className={css`
-          font-weight: 500;
-          font-size: 18px;
-          margin-bottom: 50px;
-        `}
-      >
-        {props.email}
-      </div>
-    </div>
+    </>
   )
 }
 

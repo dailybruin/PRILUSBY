@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
-
+import CustomHead from '../components/CustomHead'
 import CustomHeader from '../components/CustomHeader'
 import { QuarterlyStories } from '../components/QuarterlyStories'
 import { css } from 'emotion'
@@ -36,7 +36,17 @@ export const query = graphql`
 `
 const AllStories = ({ data }) => {
   if (typeof window == 'undefined') {
-    return null
+    return (
+      <>
+        <CustomHead
+          siteName="PRIME"
+          pageName="all stories"
+          url="https://prime.dailybruin.com/all"
+          description="PRIME is the official website for the Daily Bruin's quarterly arts, culture, and lifestyle magazine."
+          image="https://assets.dailybruin.com/images/prime.map.articles.to.issues/PRIME.thumbnail-cf84048a01d52fbc0582220cf04779ad.jpg"
+        />
+      </>
+    )
   }
   let quarterlyStories = data.issues.issues.map(issue => {
     let term = issue.term
@@ -54,19 +64,28 @@ const AllStories = ({ data }) => {
   })
   console.log(quarterlyStories)
   return (
-    <div>
-      <CustomHeader />
-      <div
-        className={css`
-          margin: 20px;
-          margin-top: 50px;
-          margin-bottom: 100px;
-        `}
-      >
-        <QuarterlyStories quarters={quarterlyStories} />
+    <>
+      <CustomHead
+        siteName="PRIME"
+        pageName="all stories"
+        url="https://prime.dailybruin.com/all"
+        description="PRIME is the official website for the Daily Bruin's quarterly arts, culture, and lifestyle magazine."
+        image="https://assets.dailybruin.com/images/prime.map.articles.to.issues/PRIME.thumbnail-cf84048a01d52fbc0582220cf04779ad.jpg"
+      />
+      <div>
+        <CustomHeader />
+        <div
+          className={css`
+            margin: 20px;
+            margin-top: 50px;
+            margin-bottom: 100px;
+          `}
+        >
+          <QuarterlyStories quarters={quarterlyStories} />
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </>
   )
 }
 
