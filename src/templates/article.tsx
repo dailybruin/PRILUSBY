@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
-import { Article, Head, Video } from '@dailybruin/lux'
+import { Article, Video } from '@dailybruin/lux'
 import { css } from 'react-emotion'
 
 import GraphicNovel from '../components/GraphicNovel'

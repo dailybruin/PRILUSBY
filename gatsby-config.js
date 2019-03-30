@@ -1,7 +1,7 @@
 const slugify = require('slugify')
 
 const siteName = 'PRIME'
-const description = 'SITE_DESCRIPTION'
+const description = "PRIME is the official website for the Daily Bruin's quarterly arts, culture, and lifestyle magazine."
 const image =
   'https://assets.dailybruin.com/images/prime.map.articles.to.issues/PRIME.thumbnail-cf84048a01d52fbc0582220cf04779ad.jpg'
 const year = '2019'

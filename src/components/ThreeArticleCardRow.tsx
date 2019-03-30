@@ -23,7 +23,9 @@ export class ThreeArticleCardRow extends React.Component<
 > {
   render() {
     const cards = this.props.cards.slice(0, 3)
+    const allcards = this.props.cards
     const swiperParams = {
+      spaceBetween: 10,
       navigation: {
         nextEl: '.button-next',
         prevEl: '.button-prev',
@@ -34,7 +36,8 @@ export class ThreeArticleCardRow extends React.Component<
     return (
       <div
         className={css`
-          margin: 10px;
+          margin-left: 10px;
+          margin-right: 10px;
         `}
       >
         <HeaderHighLight
@@ -54,16 +57,26 @@ export class ThreeArticleCardRow extends React.Component<
           `}
         >
           {cards.map((card, i) => (
-            <ArticleCard
-              key={i}
-              blackCardFontSize={1}
-              whiteCardFontSize={0.8}
-              blackCardText={card.title}
-              whiteCardText={card.caption}
-              imageSrc={card.imageSrc}
-              href={card.href}
-              imageHeightVW={20}
-            />
+            <div
+              className={css`
+                height: auto;
+                width: 100%;
+                margin-left: 5px;
+                margin-right: 5px;
+              `}
+            >
+              <ArticleCard
+                key={i}
+                blackCardFontSize={1}
+                whiteCardFontSize={0.8}
+                blackCardText={card.title}
+                whiteCardText={card.caption}
+                imageSrc={card.imageSrc}
+                href={card.href}
+                imageHeightVW={18}
+                imageHeightMobileVW={50}
+              />
+            </div>
           ))}
         </div>
         <div
@@ -74,42 +87,28 @@ export class ThreeArticleCardRow extends React.Component<
           `}
         >
           <Swiper {...swiperParams}>
-            <div>
-              <ArticleCard
-                key={0}
-                blackCardFontSize={1}
-                whiteCardFontSize={0.8}
-                blackCardText={cards[0].title}
-                whiteCardText={cards[0].caption}
-                imageSrc={cards[0].imageSrc}
-                href={cards[0].href}
-                imageHeightVW={50}
-              />
-            </div>
-            <div>
-              <ArticleCard
-                key={1}
-                blackCardFontSize={1}
-                whiteCardFontSize={0.8}
-                blackCardText={cards[1].title}
-                whiteCardText={cards[1].caption}
-                imageSrc={cards[1].imageSrc}
-                href={cards[1].href}
-                imageHeightVW={50}
-              />
-            </div>
-            <div>
-              <ArticleCard
-                key={2}
-                blackCardFontSize={1}
-                whiteCardFontSize={0.8}
-                blackCardText={cards[2].title}
-                whiteCardText={cards[2].caption}
-                imageSrc={cards[2].imageSrc}
-                href={cards[2].href}
-                imageHeightVW={50}
-              />
-            </div>
+            {allcards.map((card, i) => (
+              <div
+                className={css`
+                  height: auto;
+                  width: 100%;
+                  margin-left: 5px;
+                  margin-right: 5px;
+                `}
+              >
+                <ArticleCard
+                  key={i}
+                  blackCardFontSize={1}
+                  whiteCardFontSize={0.8}
+                  blackCardText={card.title}
+                  whiteCardText={card.caption}
+                  imageSrc={card.imageSrc}
+                  href={card.href}
+                  imageHeightVW={18}
+                  imageHeightMobileVW={50}
+                />
+              </div>
+            ))}
           </Swiper>
         </div>
         <div
@@ -131,6 +130,7 @@ export class ThreeArticleCardRow extends React.Component<
             className={css`
               padding-bottom: 0px;
               padding-left: 0px;
+              margin-top: 20px;
               margin-bottom: 25px;
               margin-right: 25px;
               border-bottom: 2px solid #fff96b;

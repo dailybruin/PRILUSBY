@@ -1,8 +1,7 @@
 import * as React from 'react'
-import { graphql, navigate } from 'gatsby'
+import { graphql } from 'gatsby'
 import CustomHead from '../components/CustomHead'
 import { Footer } from '../components/Footer'
-import GraphicNovel from '../components/GraphicNovel'
 import CustomHeader from '../components/CustomHeader'
 import { ArticleCard } from '../components/ArticleCard'
 import { css } from 'emotion'
@@ -12,41 +11,34 @@ import { TitleGallery } from '../components/TitleGallery'
 import { ThreeArticleCardRow } from '../components/ThreeArticleCardRow'
 import { TwoArticleCardRow } from '../components/TwoArticleCardRow'
 
-import F18prime from '../images/prime.f18.cover.png'
-
-// export const query = graphql`
-//   query {
-//     issue {
-//       term
-//       title
-//       coverphoto
-//       articles
-//     }
-//   }
-// `
-
-const CoverPhotos = [
-  {
-    photoURL: F18prime,
-    URL: 'https://www.linkedin.com/in/maxcwu/',
-  },
-  {
-    photoURL: F18prime,
-    URL: 'https://www.linkedin.com/in/maxcwu/',
-  },
-  {
-    photoURL: F18prime,
-    URL: 'https://www.linkedin.com/in/maxcwu/',
-  },
-  {
-    photoURL: F18prime,
-    URL: 'https://www.linkedin.com/in/maxcwu/',
-  },
-  {
-    photoURL: F18prime,
-    URL: 'https://www.linkedin.com/in/maxcwu/',
-  },
-]
+export const query = graphql`
+  query {
+    issues {
+      issues {
+        term
+        title
+        articles
+      }
+    }
+    allPrimeArticle {
+      edges {
+        node {
+          slug
+          headline
+          author
+          authorbio
+          authoremail
+          authortwitter
+          coverimg
+          covercred
+          coveralt
+          articleType
+          excerpt
+        }
+      }
+    }
+  }
+`
 
 const whykarl = [
   {
@@ -72,145 +64,6 @@ const whykarl = [
   },
 ]
 
-const stories = [
-  {
-    title: 'The Road to Royce',
-    authors: ['John Tudhope'],
-    description:
-      'A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this.',
-    quarter: 'Fall 2018',
-    imageURL:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Solid_white.svg/1024px-Solid_white.svg.png',
-  },
-  {
-    title: 'Song Sot/Survival',
-    authors: ['Kristie-Valerie Hoang'],
-    description:
-      'A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this.',
-    quarter: 'Winter 2018',
-    imageURL:
-      'https://s3.amazonaws.com/images.seroundtable.com/google-submit-url-1516800645.jpg',
-  },
-]
-
-const articleCards = [
-  <ArticleCard
-    blackCardFontSize={1}
-    whiteCardFontSize={0.8}
-    blackCardText="Song Sot/Survival"
-    whiteCardText={
-      'A description of the story goes here. It should be about \
-  two sentences and probably about this long and maybe even longer like this.'
-    }
-    imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-    href="/"
-    imageHeightVW={30}
-  />,
-  <ArticleCard
-    blackCardFontSize={1}
-    whiteCardFontSize={0.8}
-    blackCardText="Song Sot/Survival"
-    whiteCardText={
-      'A description of the story goes here. It should be about \
-  two sentences and probably about this long and maybe even longer like this.'
-    }
-    imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-    href="/"
-    imageHeightVW={30}
-  />,
-  <ArticleCard
-    blackCardFontSize={1}
-    whiteCardFontSize={0.8}
-    blackCardText="Song Sot/Survival"
-    whiteCardText={
-      'A description of the story goes here. It should be about \
-  two sentences and probably about this long and maybe even longer like this.'
-    }
-    imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-    href="/"
-    imageHeightVW={30}
-  />,
-  <ArticleCard
-    blackCardFontSize={1}
-    whiteCardFontSize={0.8}
-    blackCardText="Song Sot/Survival"
-    whiteCardText={
-      'A description of the story goes here. It should be about \
-  two sentences and probably about this long and maybe even longer like this.'
-    }
-    imageSrc="https://ampbyexample.com/img/canoe_900x600.jpg"
-    href="/"
-    imageHeightVW={30}
-  />,
-]
-
-const quarterlyStories = [
-  {
-    quarter: 'Fall 2018',
-    stories: [
-      {
-        title: 'The Road to Royce',
-        authors: ['John Tudhope'],
-        description:
-          'A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this.',
-        quarter: 'Fall 2018',
-        imageURL:
-          'https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg',
-      },
-      {
-        title: 'Song Sot/Survival',
-        authors: ['Kristie-Valerie Hoang'],
-        description:
-          'A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this.',
-        quarter: 'Winter 2018',
-        imageURL:
-          'https://s3.amazonaws.com/images.seroundtable.com/google-submit-url-1516800645.jpg',
-      },
-      {
-        title: 'The Road to Royce',
-        authors: ['John Tudhope'],
-        description:
-          'A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this.',
-        quarter: 'Fall 2018',
-        imageURL:
-          'https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg',
-      },
-      {
-        title: 'Song Sot/Survival',
-        authors: ['Kristie-Valerie Hoang'],
-        description:
-          'A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this.',
-        quarter: 'Winter 2018',
-        imageURL:
-          'https://s3.amazonaws.com/images.seroundtable.com/google-submit-url-1516800645.jpg',
-      },
-    ],
-  },
-  {
-    quarter: 'Winter 2019',
-    stories: [
-      {
-        title: 'YETEETET',
-        authors: ['John Tudhope'],
-        description:
-          'A description of the story goes here. A description of the story goes here. A description of the story goes here. A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this.',
-        quarter: 'Fall 2018',
-        imageURL:
-          'https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg',
-      },
-      {
-        title: 'Song Sot/Survival',
-        authors: ['Kristie-Valerie Hoang'],
-        description:
-          'A description of the story goes here. It should be about two sentence and probably this long and maybe even longer like this.',
-        quarter: 'Winter 2018',
-        imageURL:
-          'https://s3.amazonaws.com/images.seroundtable.com/google-submit-url-1516800645.jpg',
-      },
-    ],
-  },
-]
-
 const IndexPage = ({ data }) => {
   if (typeof window == 'undefined') {
     return (
@@ -225,7 +78,6 @@ const IndexPage = ({ data }) => {
       </>
     )
   }
-  navigate('/winter19')
   if (typeof document == 'undefined') {
     return (
       <>
@@ -239,6 +91,35 @@ const IndexPage = ({ data }) => {
       </>
     )
   }
+  const formatTerm = term => {
+    return (
+      term.charAt(0).toUpperCase() + term.slice(1, -2) + ' ' + term.slice(-2)
+    )
+  }
+  console.log(data)
+  const featuredSlugs = data.issues.issues.map(issue => {
+    return { slug: issue.articles[0], quarter: formatTerm(issue.term) }
+  })
+  const featuredArticles1 = featuredSlugs.map(element => {
+    return {
+      ...element,
+      ...data.allPrimeArticle.edges.find(
+        edge => edge.node.slug === element.slug
+      ).node,
+    }
+  })
+  console.log(featuredArticles1)
+  const featuredArticles2 = featuredArticles1.map(ele => {
+    return {
+      title: ele.headline,
+      authors: [ele.author],
+      description: ele.excerpt,
+      quarter: ele.quarter,
+      imageURL: ele.coverimg,
+      slug: ele.slug,
+    }
+  })
+  console.log(featuredArticles2)
   return (
     <>
       <CustomHead
@@ -248,18 +129,36 @@ const IndexPage = ({ data }) => {
         image="https://assets.dailybruin.com/images/prime.map.articles.to.issues/PRIME.thumbnail-cf84048a01d52fbc0582220cf04779ad.jpg"
       />
       <CustomHeader transparent={true} />
-      <TitleGallery stories={stories} />
+      <TitleGallery stories={featuredArticles2} />
       <div
         className={css`
           height: 20px;
         `}
       />
-      <ThreeArticleCardRow cards={whykarl} term={'winter19'} />
-      <TwoArticleCardRow
-        cards={whykarl}
-        term={'fall18'}
-        title="facing tomorrow"
-      />
+      {data.issues.issues.map((issue, idx) => {
+        console.log(issue)
+        const issueData = issue.articles.map(slug => {
+          const curArticle = data.allPrimeArticle.edges.find(
+            edge => edge.node.slug === slug
+          ).node
+          console.log(curArticle)
+          return {
+            title: curArticle.headline,
+            caption: curArticle.excerpt,
+            imageSrc: curArticle.coverimg,
+            href: `/${curArticle.slug.split('.').join('')}`,
+          }
+        })
+        if (idx === 0)
+          return <ThreeArticleCardRow cards={issueData} term={issue.term} />
+        return (
+          <TwoArticleCardRow
+            cards={issueData}
+            term={issue.term}
+            title={issue.title}
+          />
+        )
+      })}
       <Footer />
     </>
   )
