@@ -150,11 +150,16 @@ const IndexPage = ({ data }) => {
           }
         })
         if (idx === 0)
-          return <ThreeArticleCardRow cards={issueData} term={issue.term} />
+          return (
+            <ThreeArticleCardRow
+              cards={issueData}
+              term={formatTerm(issue.term)}
+            />
+          )
         return (
           <TwoArticleCardRow
             cards={issueData}
-            term={issue.term}
+            term={formatTerm(issue.term)}
             title={issue.title}
           />
         )
