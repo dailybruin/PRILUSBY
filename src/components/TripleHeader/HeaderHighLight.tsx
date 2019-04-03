@@ -15,7 +15,7 @@ export class HeaderHighLight extends React.Component<HeaderProps, {}> {
           display: ${this.props.fullWidth ? 'block' : 'inline-block'};
           font-family: Barlow;
           font-style: italic;
-          font-size: 2rem;
+          font-size: 1.8rem;
           font-weight: bold;
           height: 30px;
           background: #fff96b;
