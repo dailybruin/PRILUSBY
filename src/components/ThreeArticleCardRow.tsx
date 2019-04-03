@@ -11,6 +11,8 @@ interface TAC {
   caption: string
   imageSrc: string
   href: string
+  slug: string
+  aType: string
 }
 
 interface ThreeArticleCardRowProps {
@@ -72,9 +74,11 @@ export class ThreeArticleCardRow extends React.Component<
                 blackCardText={card.title}
                 whiteCardText={card.caption}
                 imageSrc={card.imageSrc}
-                href={card.href}
                 imageHeightVW={18}
                 imageHeightMobileVW={50}
+                link={card.href}
+                aType={card.aType}
+                slug={card.slug}
               />
             </div>
           ))}
@@ -103,9 +107,11 @@ export class ThreeArticleCardRow extends React.Component<
                   blackCardText={card.title}
                   whiteCardText={card.caption}
                   imageSrc={card.imageSrc}
-                  href={card.href}
                   imageHeightVW={18}
                   imageHeightMobileVW={50}
+                  link={card.href}
+                  aType={card.aType}
+                  slug={card.slug}
                 />
               </div>
             ))}

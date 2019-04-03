@@ -12,6 +12,7 @@ interface ArticleCardProps {
   imageHeightMobileVW?: number
   aType: string
   slug: string
+  link: string
 }
 
 const CustomLink = props => {

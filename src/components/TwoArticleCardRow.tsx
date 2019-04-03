@@ -11,6 +11,8 @@ interface TAC {
   caption: string
   imageSrc: string
   href: string
+  slug: string
+  aType: string
 }
 
 interface TwoArticleCardRowProps {
@@ -32,6 +34,7 @@ export class TwoArticleCardRow extends React.Component<TwoArticleCardRowProps> {
       renderPrevButton: () => <div className="button-prev" />,
       renderNextButton: () => <div className="button-next" />,
     }
+    const term = this.props.term
     return (
       <div
         className={css`
@@ -39,7 +42,10 @@ export class TwoArticleCardRow extends React.Component<TwoArticleCardRowProps> {
         `}
       >
         <HeaderHighLight
-          title={`${this.props.term} // ${this.props.title}`}
+          title={`${term.charAt(0).toUpperCase() +
+            term.slice(1, -2) +
+            ' ' +
+            term.slice(-2)} // ${this.props.title}`}
           highlightPosition="top"
           textAlign="left"
           fullWidth={true}
@@ -71,9 +77,11 @@ export class TwoArticleCardRow extends React.Component<TwoArticleCardRowProps> {
                 blackCardText={card.title}
                 whiteCardText={card.caption}
                 imageSrc={card.imageSrc}
-                href={card.href}
                 imageHeightVW={25}
                 imageHeightMobileVW={50}
+                link={card.href}
+                aType={card.aType}
+                slug={card.slug}
               />
             </div>
           ))}
@@ -104,9 +112,11 @@ export class TwoArticleCardRow extends React.Component<TwoArticleCardRowProps> {
                   blackCardText={card.title}
                   whiteCardText={card.caption}
                   imageSrc={card.imageSrc}
-                  href={card.href}
                   imageHeightVW={25}
                   imageHeightMobileVW={50}
+                  link={card.href}
+                  aType={card.aType}
+                  slug={card.slug}
                 />
               </div>
             ))}

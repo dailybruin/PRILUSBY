@@ -40,30 +40,6 @@ export const query = graphql`
   }
 `
 
-const whykarl = [
-  {
-    title: 'titleeeee',
-    caption: 'caption here',
-    imageSrc:
-      'https://upload.wikimedia.org/wikipedia/commons/4/4b/What_Is_URL.jpg',
-    href: '/',
-  },
-  {
-    title: 'title',
-    caption: 'caption here',
-    imageSrc:
-      'https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg',
-    href: '/',
-  },
-  {
-    title: 'title',
-    caption: 'caption here',
-    imageSrc:
-      'https://ichef.bbci.co.uk/news/660/cpsprodpb/6EB0/production/_103963382_adder2.jpg',
-    href: '/',
-  },
-]
-
 const IndexPage = ({ data }) => {
   if (typeof window == 'undefined') {
     return (
@@ -147,19 +123,16 @@ const IndexPage = ({ data }) => {
             caption: curArticle.excerpt,
             imageSrc: curArticle.coverimg,
             href: `/${curArticle.slug.split('.').join('')}`,
+            slug: curArticle.slug,
+            aType: curArticle.articleType,
           }
         })
         if (idx === 0)
-          return (
-            <ThreeArticleCardRow
-              cards={issueData}
-              term={formatTerm(issue.term)}
-            />
-          )
+          return <ThreeArticleCardRow cards={issueData} term={issue.term} />
         return (
           <TwoArticleCardRow
             cards={issueData}
-            term={formatTerm(issue.term)}
+            term={issue.term}
             title={issue.title}
           />
         )
