@@ -79,7 +79,7 @@ export default class CustomHeader extends React.Component<CustomHeaderProps> {
               @media screen and (max-width: 940px) {
                 width: 60vw;
                 max-height: 125px;
-                margin: 0 75px;
+                margin: 0 auto 0 75px;
               }
             `}
           />
