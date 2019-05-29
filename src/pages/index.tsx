@@ -112,12 +112,10 @@ const IndexPage = ({ data }) => {
         `}
       />
       {data.issues.issues.map((issue, idx) => {
-        console.log(issue)
         const issueData = issue.articles.map(slug => {
           const curArticle = data.allPrimeArticle.edges.find(
             edge => edge.node.slug === slug
           ).node
-          console.log(curArticle)
           return {
             title: curArticle.headline,
             caption: curArticle.excerpt,
@@ -128,9 +126,16 @@ const IndexPage = ({ data }) => {
           }
         })
         if (idx === 0)
-          return <ThreeArticleCardRow cards={issueData} term={issue.term} />
+          return (
+            <ThreeArticleCardRow
+              key={idx}
+              cards={issueData}
+              term={issue.term}
+            />
+          )
         return (
           <TwoArticleCardRow
+            key={idx}
             cards={issueData}
             term={issue.term}
             title={issue.title}
