@@ -39,6 +39,7 @@ export default class CustomHeader extends React.Component<CustomHeaderProps> {
     transparent: false,
   }
   render() {
+    const curIssue = 'spring19'
     const background = this.props.transparent ? transparent : black
     const headerStyle = css`
       width: 100%;
@@ -61,7 +62,7 @@ export default class CustomHeader extends React.Component<CustomHeaderProps> {
             <Link key={1} to="/about">
               about
             </Link>,
-            <Link key={2} to="/winter19">
+            <Link key={2} to={`/${curIssue}`}>
               current issue
             </Link>,
             <Link key={3} to="/pastissues">
@@ -86,7 +87,7 @@ export default class CustomHeader extends React.Component<CustomHeaderProps> {
         </Link>
         <div className={linkStyle}>
           <Link to="/about">about</Link>
-          <Link to="/spring19">current issue</Link>
+          <Link to={`/${curIssue}`}>current issue</Link>
           <Link to="/pastissues">past issues</Link>
           <Link to="/all">all stories</Link>
         </div>
