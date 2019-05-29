@@ -86,7 +86,7 @@ export default class CustomHeader extends React.Component<CustomHeaderProps> {
         </Link>
         <div className={linkStyle}>
           <Link to="/about">about</Link>
-          <Link to="/winter19">current issue</Link>
+          <Link to="/spring19">current issue</Link>
           <Link to="/pastissues">past issues</Link>
           <Link to="/all">all stories</Link>
         </div>
