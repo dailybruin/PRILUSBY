@@ -114,6 +114,9 @@ export default ({ data, pageContext }) => {
               font-style: italic;
               font-size: 1.15rem;
             }
+            @media only screen and (max-width: 800px) {
+              max-width: 80%;
+            }
           `}
         />
       )}
