@@ -49,7 +49,7 @@ const IndexPage = ({ data }) => {
           pageName="all stories"
           url="https://prime.dailybruin.com/all"
           description="PRIME is the official website for the Daily Bruin's quarterly arts, culture, and lifestyle magazine."
-          image="https://assets.dailybruin.com/images/prime.map.articles.to.issues/PRIME.thumbnail-cf84048a01d52fbc0582220cf04779ad.jpg"
+          image="http://assets.dailybruin.com/images/prime.map.articles.to.issues/prime%20cover%20spring.jpg"
         />
       </>
     )
@@ -62,7 +62,7 @@ const IndexPage = ({ data }) => {
           pageName="all stories"
           url="https://prime.dailybruin.com/all"
           description="PRIME is the official website for the Daily Bruin's quarterly arts, culture, and lifestyle magazine."
-          image="https://assets.dailybruin.com/images/prime.map.articles.to.issues/PRIME.thumbnail-cf84048a01d52fbc0582220cf04779ad.jpg"
+          image="http://assets.dailybruin.com/images/prime.map.articles.to.issues/prime%20cover%20spring.jpg"
         />
       </>
     )
@@ -102,7 +102,7 @@ const IndexPage = ({ data }) => {
         siteName="PRIME"
         url="https://prime.dailybruin.com"
         description="PRIME is the official website for the Daily Bruin's quarterly arts, culture, and lifestyle magazine."
-        image="https://assets.dailybruin.com/images/prime.map.articles.to.issues/PRIME.thumbnail-cf84048a01d52fbc0582220cf04779ad.jpg"
+        image="http://assets.dailybruin.com/images/prime.map.articles.to.issues/prime%20cover%20spring.jpg"
       />
       <CustomHeader transparent={true} />
       <TitleGallery stories={featuredArticles2} />
