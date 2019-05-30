@@ -38,8 +38,6 @@ export const query = graphql`
 `
 
 export default ({ data, pageContext }) => {
-  console.log(data)
-  console.log(pageContext)
   let articles = []
   data.allPrimeArticle.edges.forEach(edge => {
     let slug = edge.node.slug

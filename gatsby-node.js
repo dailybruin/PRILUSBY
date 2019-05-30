@@ -14,7 +14,6 @@ exports.sourceNodes = async ({
   const mapResponse = await fetch(mapURL)
   const mapJson = await mapResponse.json()
   const { data } = mapJson
-  console.log(data)
   createNode({
     issues: data['map.aml'].issues,
     children: [],

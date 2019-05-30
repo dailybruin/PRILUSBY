@@ -145,37 +145,50 @@ const About = ({ data }) => (
         font-weight: 500;
         line-height: normal;
         font-size: 24px;
-        text-align: center;
+        text-align: left;
         margin: 18px 12vw 108px 12vw;
       `}
     >
+      <p>Dear reader,</p>
       <p>
-        In this Winter 2019 issue, we hope to strike a chord on the subject of
-        identity. We’re all on a mission to better understand ourselves within
-        the context of our communities as we forge a sense of who we are and,
-        more importantly, who we might become.
+        If there’s one thing many of us will learn in college, it’s that meshing
+        with the places, people and pursuits that make us feel like we’re home
+        can be quite a challenge. But what does it take to belong?
       </p>
       <p>
-        Some of us search for ourselves in our memories of the past, which we
-        may uncover in places as unexpected as our online shopping carts to
-        keepsakes as familiar as the recipes of our childhoods. From quotidian
-        commutes through Berlin to half-packed games at Pauley Pavilion during
-        peak sports season, the adventures and places contributors have
-        investigated enlighten our search for a Bruin identity in relation to
-        the sprawling places that surround us. We also featured the voices of
-        those who are often overlooked, if not silenced, by the UCLA community,
-        from the driven nonstudents who tread Bruin Walk to those who seek
-        recovery from personal struggles.
+        Kennedy Hill, a self-proclaimed “blerd” – a black nerd – and lifelong
+        fan of anime, found the confidence to cosplay by speaking with other
+        trailblazing female blerds. She confronts a persisting feeling of
+        exclusion from the anime community head on. Similarly, Molly Wright
+        addresses her unintentional withdrawal from friends and family
+        post-breakup.
       </p>
       <p>
-        Our habits and all we hold dear can also play a role in how we seek
-        change over the years, as one writer examined the psychological toll of
-        being the lifelong fan of a controversial figure. But even when the
-        things we cherish most are lost to forces beyond our control, we find
-        ways to move forward and live for ourselves. In the end, we pen our own
-        narratives, and the most beautiful stories are often considerate of
-        those others write alongside us.
+        Some take a more self-reflective approach. In his graphic novel, Marvel
+        fan Cody Wilson illustrates how he came to terms with his introverted
+        nature following the passing of his heroes. Kristin Snyder brings to
+        light how individual study, music and friendship, gave some LGBTQ
+        students the will to reconcile disparate identities within the Christian
+        community. And in her column, Anushka Jain tells us the story of her
+        growing up, laying bare the nature of her grief after losing her mother.
       </p>
+      <p>
+        Abby Thomas uncovers the individuated paths the seemingly uniform cadets
+        of ROTC walk on in their search for purpose. Writer Joy Harjanto shows
+        we are capable of more than we think, speaking with students once
+        dismissed from UCLA who, once convinced they didn’t belong on campus,
+        made their way back.
+      </p>
+      <p>
+        This quarter, PRIME shows us belonging isn’t contingent on comfort.
+        Rather, it’s an active process those featured in this final edition
+        prove is well-worth the time and effort.
+      </p>
+      <p>
+        Thank you for picking up this last issue of PRIME, we hope you enjoy it.
+      </p>
+      <p>Peace out,</p>
+      <p>The PRIME editors</p>
     </div>
     <div
       className={css`
