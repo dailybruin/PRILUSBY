@@ -62,7 +62,6 @@ const AllStories = ({ data }) => {
       }),
     }
   })
-  console.log(quarterlyStories)
   return (
     <>
       <CustomHead

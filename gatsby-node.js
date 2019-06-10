@@ -148,6 +148,43 @@ exports.createPages = async ({ graphql, actions }) => {
           })
         })
       })
+      // i have a final tomorrow sue me
+      const gradissue2019 = [
+        'prime.gradissue.visa',
+        'prime.gradissue.evolutionofphotos',
+      ]
+      gradissue2019.forEach(articleslug => {
+        return graphql(`
+      {
+        primeArticle(slug: {eq: "${articleslug}"}) {
+          slug
+          headline
+          author
+          authorbio
+          authoremail
+          authortwitter
+          coverimg
+          covercred
+          coveralt
+          articleType
+          excerpt
+          content {
+            type
+            value
+          }
+        }
+      }
+    `).then(_ => {
+          createPage({
+            path: `${articleslug.split('.').join('')}`,
+            component: path.resolve(`./src/templates/article.tsx`),
+            context: {
+              term: 'Grad Issue 2019',
+              slug: articleslug,
+            },
+          })
+        })
+      })
     })
   })
 }
