@@ -179,7 +179,7 @@ exports.createPages = async ({ graphql, actions }) => {
             path: `${articleslug.split('.').join('')}`,
             component: path.resolve(`./src/templates/article.tsx`),
             context: {
-              term: 'Grad Issue 2019',
+              term: 'Grad Issue19',
               slug: articleslug,
             },
           })
