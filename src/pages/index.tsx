@@ -72,10 +72,10 @@ const IndexPage = ({ data }) => {
       term.charAt(0).toUpperCase() + term.slice(1, -2) + ' ' + term.slice(-2)
     )
   }
-  console.log(data)
   const featuredSlugs = data.issues.issues.map(issue => {
     return { slug: issue.articles[0], quarter: formatTerm(issue.term) }
   })
+  console.log(featuredSlugs)
   const featuredArticles1 = featuredSlugs.map(element => {
     return {
       ...element,
@@ -84,7 +84,6 @@ const IndexPage = ({ data }) => {
       ).node,
     }
   })
-  console.log(featuredArticles1)
   const featuredArticles2 = featuredArticles1.map(ele => {
     return {
       title: ele.headline,
@@ -95,7 +94,6 @@ const IndexPage = ({ data }) => {
       slug: ele.slug,
     }
   })
-  console.log(featuredArticles2)
   return (
     <>
       <CustomHead
@@ -111,11 +109,14 @@ const IndexPage = ({ data }) => {
           height: 20px;
         `}
       />
+      {console.log(data)}
       {data.issues.issues.map((issue, idx) => {
         const issueData = issue.articles.map(slug => {
-          const curArticle = data.allPrimeArticle.edges.find(
-            edge => edge.node.slug === slug
-          ).node
+          let curArticle = data.allPrimeArticle.edges.find(edge => {
+            return edge.node.slug === slug
+          })
+          if (curArticle === undefined) console.log(slug)
+          curArticle = curArticle.node
           return {
             title: curArticle.headline,
             caption: curArticle.excerpt,

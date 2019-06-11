@@ -82,6 +82,7 @@ export default ({ data, pageContext }) => {
         image={data.primeArticle.coverimg}
       />
       <CustomHeader transparent={false} />
+      {console.log(data)}
       <StyledCoverPhoto
         socialMediaLinks={[]}
         title={data.primeArticle.headline}
