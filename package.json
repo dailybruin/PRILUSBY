@@ -35,7 +35,7 @@
     "normalize.css": "8.0.1",
     "react": "16.9.0",
     "react-dom": "16.9.0",
-    "react-emotion": "9.2.12",
+    "react-emotion": "10.0.0",
     "react-helmet": "5.2.1",
     "react-id-swiper": "^1.6.9",
     "react-images": "^0.5.19",
