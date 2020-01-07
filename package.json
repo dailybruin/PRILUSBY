@@ -8,7 +8,8 @@
     "start": "gatsby develop --open -p 1234",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "build:prefix-paths": "gatsby build --prefix-paths"
+    "build:prefix-paths": "gatsby build --prefix-paths",
+    "deploy": "docker build -t dailybruin/prilusby:latest ."
   },
   "keywords": [
     "gatsby",

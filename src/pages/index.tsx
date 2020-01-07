@@ -77,6 +77,7 @@ const IndexPage = ({ data }) => {
   })
   console.log(featuredSlugs)
   const featuredArticles1 = featuredSlugs.map(element => {
+    console.log(element)
     return {
       ...element,
       ...data.allPrimeArticle.edges.find(
@@ -117,6 +118,7 @@ const IndexPage = ({ data }) => {
           })
           if (curArticle === undefined) console.log(slug)
           curArticle = curArticle.node
+          console.log(curArticle.articleType)
           return {
             title: curArticle.headline,
             caption: curArticle.excerpt,
@@ -126,6 +128,7 @@ const IndexPage = ({ data }) => {
             aType: curArticle.articleType,
           }
         })
+
         if (idx === 0)
           return (
             <ThreeArticleCardRow

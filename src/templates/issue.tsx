@@ -60,6 +60,9 @@ export default ({ data, pageContext }) => {
   if (term === 'spring18')
     issuuLink =
       'https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=finalpdf'
+  if (term == 'winter20')
+    issuuLink = 'https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=master'
+  // the link is determined by the filename on upload oops so be careful!
   const formatTerm = season + ' ' + year
   const articleCards = []
   articles.forEach((article, i) => {
@@ -73,6 +76,7 @@ export default ({ data, pageContext }) => {
         imageSrc={article.coverimg}
         aType={article.articleType}
         slug={article.slug}
+        link={article.link}
         imageHeightVW={20}
         imageHeightMobileVW={50}
       />

@@ -44,6 +44,9 @@ const Subheading = props => (
 
 export default ({ data, pageContext }) => {
   if (typeof document == 'undefined') {
+    if (!data.primeArticle) {
+      return <></>
+    }
     return (
       <>
         <CustomHead

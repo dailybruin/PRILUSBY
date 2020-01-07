@@ -45,19 +45,19 @@ exports.sourceNodes = async ({
   })
 
   // === GET ALL THE ARTICLES
-  for (let i = 0; i <= 7; i++) {
+  for (let i = 0; i <= 8; i++) {
     let url = `https://kerckhoff.dailybruin.com/api/packages/prime?page=${i}`
-    if (i === 7)
+    if (i === 8)
       url = `https://kerckhoff.dailybruin.com/api/packages/prime/prime.john.theroadtoroyce/`
     const response = await fetch(url)
     const json = await response.json()
     const { slug, data, description } = json
-    if (i === 7) console.log(data)
+    if (i === 8) console.log(data)
     // Each article name is given as a key on in the JSON data, e.g., `"article.aml": {...}`
     Object.keys(data).forEach(key => {
       let article
       let slug
-      if (i === 7) {
+      if (i === 8) {
         article = data['article.aml']
         slug = 'prime.john.theroadtoroyce'
       } else {
@@ -159,10 +159,11 @@ exports.createPages = async ({ graphql, actions }) => {
       })
       // i have a final tomorrow sue me
       // (FIX BELOWWW)
-      const orientationissue2019 = [
-        'prime.orientationissue.stories'
+      const registrationissue2019 = [
+        'prime.regissue.toptenprofessors',
+        'prime.regissue.studyspace',
       ]
-      orientationissue2019.forEach(articleslug => {
+      registrationissue2019.forEach(articleslug => {
         return graphql(`{
           primeArticle(slug: {eq: "${articleslug}"}) {
             slug
@@ -180,6 +181,37 @@ exports.createPages = async ({ graphql, actions }) => {
               type
               value
             }
+          }
+        }`).then(_ => {
+          createPage({
+            path: `${articleslug.split('.').join('')}`,
+            component: path.resolve(`./src/templates/article.tsx`),
+            context: {
+              term: 'Registration Issue19',
+              slug: articleslug,
+            },
+          })
+        })
+      })
+      const orientationissue2019 = ['prime.orientationissue.stories']
+      orientationissue2019.forEach(articleslug => {
+        return graphql(`{
+          primeArticle(slug: {eq: "${articleslug}"}) {
+            slug
+            headline
+            author
+            authorbio
+            authoremail
+            authortwitter
+            coverimg
+            covercred
+            coveralt
+            articleType
+            excerpt
+            content {
+              type
+              value
+            } 
           }
         }`).then(_ => {
           createPage({
