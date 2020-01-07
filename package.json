@@ -9,7 +9,7 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "build:prefix-paths": "gatsby build --prefix-paths",
-    "deploy": "docker build -t dailybruin/prilusby:latest ."
+    "deploy": "docker build -t dailybruin/prilusby:latest . && docker push dailybruin/prilusby"
   },
   "keywords": [
     "gatsby",
