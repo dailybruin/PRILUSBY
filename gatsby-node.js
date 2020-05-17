@@ -43,27 +43,15 @@ exports.sourceNodes = async ({
       parent: null,
     })
   })
-
-  // === GET ALL THE ARTICLES
-  for (let i = 0; i <= 8; i++) {
-    let url = `https://kerckhoff.dailybruin.com/api/packages/prime?page=${i}`
-    if (i === 8)
-      url = `https://kerckhoff.dailybruin.com/api/packages/prime/prime.john.theroadtoroyce/`
+  {
+    // === GET ALL THE ARTICLES
+    let url = `https://kerckhoff.dailybruin.com/api/packages/prime?all=True`
     const response = await fetch(url)
     const json = await response.json()
     const { slug, data, description } = json
-    if (i === 8) console.log(data)
-    // Each article name is given as a key on in the JSON data, e.g., `"article.aml": {...}`
     Object.keys(data).forEach(key => {
-      let article
-      let slug
-      if (i === 8) {
-        article = data['article.aml']
-        slug = 'prime.john.theroadtoroyce'
-      } else {
-        article = data[key].data['article.aml']
-        slug = data[key].slug
-      }
+      let article = data[key].data['article.aml']
+      let slug = data[key].slug
       if (!article || !slug) {
         return
       }

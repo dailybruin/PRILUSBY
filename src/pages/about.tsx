@@ -31,7 +31,7 @@ export function AboutFrame(props: AboutInfo) {
           pageName="about"
           url="https://prime.dailybruin.com/about"
           description="PRIME is the official website for the Daily Bruin's quarterly arts, culture, and lifestyle magazine."
-          image="http://assets.dailybruin.com/images/prime.map.articles.to.issues/prime%20cover%20spring.jpg"
+          image="https://assets.dailybruin.com/images/sabrina.whensoundshurt/cover-83530e07fd73cf3d7e1c8b5a85639df2.jpg"
         />
       </>
     )
@@ -43,7 +43,7 @@ export function AboutFrame(props: AboutInfo) {
         pageName="about"
         url="https://prime.dailybruin.com/about"
         description="PRIME is the official website for the Daily Bruin's quarterly arts, culture, and lifestyle magazine."
-        image="http://assets.dailybruin.com/images/prime.map.articles.to.issues/prime%20cover%20spring.jpg"
+        image="https://assets.dailybruin.com/images/sabrina.whensoundshurt/cover-83530e07fd73cf3d7e1c8b5a85639df2.jpg"
       />
       <div
         className={css`

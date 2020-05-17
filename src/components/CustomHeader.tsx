@@ -39,7 +39,7 @@ export default class CustomHeader extends React.Component<CustomHeaderProps> {
     transparent: false,
   }
   render() {
-    const curIssue = 'winter20'
+    const curIssue = 'spring20'
     const background = this.props.transparent ? transparent : black
     const headerStyle = css`
       width: 100%;
