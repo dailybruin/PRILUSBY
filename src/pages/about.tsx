@@ -5,13 +5,13 @@ import CustomHead from '../components/CustomHead'
 import CustomHeader from '../components/CustomHeader'
 import { Footer } from '../components/Footer'
 
-import Alexphoto from '../images/alexphoto.png'
-import Juliettephoto from '../images/juliettephoto.png'
-import Meganphoto from '../images/meganphoto.png'
+import AnushkaPhoto from '../images/anushka_photo.png'
+import JustinPhoto from '../images/justin_photo.jpg'
+import SamPhoto from '../images/sam_photo.jpg'
 
-import Alexsig from '../images/alex.png'
-import Juliettesig from '../images/juju.png'
-import Megansig from '../images/mle.png'
+import AnushkaSig from '../images/anushka_signature.png'
+import JustinSig from '../images/justin_signature.png'
+import SamSig from '../images/sam_signature.png'
 
 interface AboutInfo {
   headshot?: string
@@ -57,6 +57,8 @@ export function AboutFrame(props: AboutInfo) {
         <img
           className={css`
             margin-bottom: 16px;
+            width: 300px;
+            height: 300px;
           `}
           src={props.headshot}
         />
@@ -151,44 +153,38 @@ const About = ({ data }) => (
     >
       <p>Dear reader,</p>
       <p>
-        If there’s one thing many of us will learn in college, it’s that meshing
-        with the places, people and pursuits that make us feel like we’re home
-        can be quite a challenge. But what does it take to belong?
+        Here at PRIME, we strive to shine a light on issues affecting the UCLA
+        community and give them a human voice. As a magazine, we aim to uplift
+        narratives that might otherwise be overlooked at a big, ever buzzing
+        institution like the Daily Bruin.
       </p>
       <p>
-        Kennedy Hill, a self-proclaimed “blerd” – a black nerd – and lifelong
-        fan of anime, found the confidence to cosplay by speaking with other
-        trailblazing female blerds. She confronts a persisting feeling of
-        exclusion from the anime community head on. Similarly, Molly Wright
-        addresses her unintentional withdrawal from friends and family
-        post-breakup.
+        When AFSCME protests rocked campus, PRIME told the story of a leader at
+        the union, shedding light on his experiences as a senior custodian and
+        single father. Illustrations of the human heart and skull helped tell
+        the shocking story of body parts stolen from the UCLA Willed Body
+        Program. And when the pandemic altered academic life, at PRIME we hoped
+        to share the new grim reality for graduating UCLA medical students.
       </p>
       <p>
-        Some take a more self-reflective approach. In his graphic novel, Marvel
-        fan Cody Wilson illustrates how he came to terms with his introverted
-        nature following the passing of his heroes. Kristin Snyder brings to
-        light how individual study, music and friendship, gave some LGBTQ
-        students the will to reconcile disparate identities within the Christian
-        community. And in her column, Anushka Jain tells us the story of her
-        growing up, laying bare the nature of her grief after losing her mother.
+        Personal columns also have a home in PRIME. One of our reporters has
+        written about her experience grappling with imposter syndrome as a Black
+        Bruin, and another has discussed her experiences with misophonia – a
+        disorder which causes an aversion to “triggering” sounds like chewing.
       </p>
       <p>
-        Abby Thomas uncovers the individuated paths the seemingly uniform cadets
-        of ROTC walk on in their search for purpose. Writer Joy Harjanto shows
-        we are capable of more than we think, speaking with students once
-        dismissed from UCLA who, once convinced they didn’t belong on campus,
-        made their way back.
+        Our quarterly magazine exists at the intersection of reporting, writing,
+        design and art, and is made possible by the Daily Bruin staff and our
+        very own PRIME reporters.
       </p>
       <p>
-        This quarter, PRIME shows us belonging isn’t contingent on comfort.
-        Rather, it’s an active process those featured in this final edition
-        prove is well-worth the time and effort.
+        As UCLA students navigate the highs and lows of this virtual school
+        year, PRIME will be here, continuing to tell important stories that need
+        to be told.
       </p>
-      <p>
-        Thank you for picking up this last issue of PRIME, we hope you enjoy it.
-      </p>
-      <p>Peace out,</p>
-      <p>The PRIME editors</p>
+      <p>Thank you for reading PRIME, we hope you enjoy it.</p>
+      <p>With love,</p>
+      <p>The PRIME Editors</p>
     </div>
     <div
       className={css`
@@ -215,34 +211,34 @@ const About = ({ data }) => (
       `}
     >
       <AboutFrame
-        headshot={Meganphoto}
+        headshot={SamPhoto}
         title={'PRIME art director'}
-        name={'Megan Le'}
+        name={'Samantha Joseph'}
         text={
-          'Le is a fourth-year anthropology major and film and tv minor. She was previously the Design director of the Daily Bruin.'
+          'Joseph is a fourth-year microbiology major. She was previously an assistant Design director of the Daily Bruin.'
         }
-        signature={Megansig}
-        email={'mle@dailybruin.com'}
+        signature={SamSig}
+        email={'sjoseph@dailybruin.com'}
       />
       <AboutFrame
-        headshot={Juliettephoto}
+        headshot={AnushkaPhoto}
         title={'PRIME director'}
-        name={'Juliette Le Saint'}
+        name={'Anushka Jain'}
         text={
-          'Le Saint is a third-year cognitive science major. She was previously the Illustrations director for the Daily Bruin.'
+          'Jain is a fourth-year neuroscience major and society and genetics minor. She was previously the PRIME content editor and an Arts & Entertainment assistant editor for the Lifestyle beat.'
         }
-        signature={Juliettesig}
-        email={'jsaint@dailybruin.com'}
+        signature={AnushkaSig}
+        email={'ajain@dailybruin.com'}
       />
       <AboutFrame
-        headshot={Alexphoto}
+        headshot={JustinPhoto}
         title={'PRIME content director'}
-        name={'Alex Del Rosario'}
+        name={'Justin Huwe'}
         text={
-          'Del Rosario is a fourth-year comparative literature student with a minor in French. She was previously an A&E staff reporter.'
+          'Huwe is a second-year English major. He was previously part of PRIME’s first class of interns.'
         }
-        signature={Alexsig}
-        email={'adelrosario@dailybruin.com'}
+        signature={JustinSig}
+        email={'jhuwe@dailybruin.com'}
       />
     </div>
     <Footer />
