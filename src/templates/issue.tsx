@@ -62,6 +62,8 @@ export default ({ data, pageContext }) => {
       'https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=finalpdf'
   if (term == 'winter20')
     issuuLink = 'https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=master'
+  if (term == 'winter21')
+    issuuLink = `https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=prime_w21`
   // the link is determined by the filename on upload oops so be careful!
   const formatTerm = season + ' ' + year
   const articleCards = []
