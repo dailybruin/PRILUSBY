@@ -128,6 +128,7 @@ exports.createPages = async ({ graphql, actions }) => {
           coveralt
           articleType
           excerpt
+          updated
           content {
             type
             value

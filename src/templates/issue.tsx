@@ -31,6 +31,7 @@ export const query = graphql`
           coveralt
           articleType
           excerpt
+          updated
         }
       }
     }
@@ -64,6 +65,8 @@ export default ({ data, pageContext }) => {
     issuuLink = 'https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=master'
   if (term == 'winter21')
     issuuLink = `https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=prime_w21`
+  if (term == 'spring21')
+    issuuLink = `https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=prime_spring_21`
   // the link is determined by the filename on upload oops so be careful!
   const formatTerm = season + ' ' + year
   const articleCards = []

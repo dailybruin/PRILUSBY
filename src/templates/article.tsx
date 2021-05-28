@@ -24,6 +24,7 @@ export const query = graphql`
       covercred
       coveralt
       articleType
+      updated
       content {
         type
         value
@@ -98,6 +99,8 @@ export default ({ data, pageContext }) => {
         <GraphicNovel content={data.primeArticle.content} />
       )}
       {data.primeArticle.articleType === 'article' && (
+        <>
+        <p style={{"text-align":"center", "font-family": 'Source Serif Pro'}}> {data.primeArticle.updated}</p>
         <Article
           dropcap={true}
           content={data.primeArticle.content}
@@ -123,6 +126,7 @@ export default ({ data, pageContext }) => {
             }
           `}
         />
+        </>
       )}
       <FooterAuthorBio
         name={data.primeArticle.author}
