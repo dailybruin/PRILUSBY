@@ -150,7 +150,7 @@ export default ({ data, pageContext }) => {
           >
             <ArticleGrid>{articleCards}</ArticleGrid>
           </div>
-          {term != 'summer20' && <Magazine link={issuuLink} /> }
+          {term != 'summer20' && term != 'summer21' && <Magazine link={issuuLink} /> }
           <Footer />
         </div>
       </div>
