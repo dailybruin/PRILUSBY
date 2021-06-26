@@ -141,7 +141,7 @@ export default ({ data, pageContext }) => {
               title={pageContext.title}
               slug={articles[0].slug}
             />
-          </div>
+          </div> 
           <div
             className={css`
               width: 95%;
