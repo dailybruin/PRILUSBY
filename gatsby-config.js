@@ -1,7 +1,8 @@
 const slugify = require('slugify')
 
 const siteName = 'PRIME'
-const description = "PRIME is the official website for the Daily Bruin's quarterly arts, culture, and lifestyle magazine."
+const description =
+  "PRIME is the official website for the Daily Bruin's quarterly arts, culture, and lifestyle magazine."
 const image =
   'http://assets.dailybruin.com/images/prime.map.articles.to.issues/prime%20cover%20spring.jpg'
 const year = '2019'
@@ -43,12 +44,6 @@ module.exports = {
         trackingId: 'UA-28181852-23',
         head: false,
         anonymize: true,
-      },
-    },
-    {
-      resolve: 'gatsby-source-published-google-sheets',
-      options: {
-        sheetID: '1TJVrlFP0zPViE63jbPGZXGI1aixPwLYS6OdenLml76g',
       },
     },
   ],
