@@ -17,7 +17,7 @@
     "daily bruin"
   ],
   "dependencies": {
-    "@babel/plugin-transform-spread": "^7.12.1",
+    "@babel/plugin-transform-spread": "7.14.6",
     "@dailybruin/gatsby-source-kerckhoff": "1.1.1",
     "@dailybruin/lux": "1.15.0",
     "@fortawesome/react-fontawesome": "^0.1.4",
