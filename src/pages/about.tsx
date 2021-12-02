@@ -5,13 +5,13 @@ import CustomHead from '../components/CustomHead'
 import CustomHeader from '../components/CustomHeader'
 import { Footer } from '../components/Footer'
 
-import AnushkaPhoto from '../images/anushka_photo.png'
-import JustinPhoto from '../images/justin_photo.jpg'
-import SamPhoto from '../images/sam_photo.jpg'
+import JustinPhoto from '../images/JustinPhoto.jpg'
+import EmilyPhoto from '../images/EmilyPhoto.jpg'
+import AbiPhoto from '../images/AbiPhoto.jpg'
 
-import AnushkaSig from '../images/anushka_signature.png'
-import JustinSig from '../images/justin_signature.png'
-import SamSig from '../images/sam_signature.png'
+import JustinSig from '../images/JustinSig.png'
+import EmilySig from '../images/EmilySig.png'
+import AbiSig from '../images/AbiSig.png'
 
 interface AboutInfo {
   headshot?: string
@@ -30,7 +30,7 @@ export function AboutFrame(props: AboutInfo) {
           siteName="PRIME"
           pageName="about"
           url="https://prime.dailybruin.com/about"
-          description="PRIME is the official website for the Daily Bruin's quarterly arts, culture, and lifestyle magazine."
+          description="PRIME is the official website for the Daily Bruin's quarterly arts, culture and lifestyle magazine."
           image="https://assets.dailybruin.com/images/sabrina.whensoundshurt/cover-83530e07fd73cf3d7e1c8b5a85639df2.jpg"
         />
       </>
@@ -42,7 +42,7 @@ export function AboutFrame(props: AboutInfo) {
         siteName="PRIME"
         pageName="about"
         url="https://prime.dailybruin.com/about"
-        description="PRIME is the official website for the Daily Bruin's quarterly arts, culture, and lifestyle magazine."
+        description="PRIME is the official website for the Daily Bruin's quarterly arts, culture and lifestyle magazine."
         image="https://assets.dailybruin.com/images/sabrina.whensoundshurt/cover-83530e07fd73cf3d7e1c8b5a85639df2.jpg"
       />
       <div
@@ -152,39 +152,46 @@ const About = ({ data }) => (
       `}
     >
       <p>Dear reader,</p>
+
       <p>
         Here at PRIME, we strive to shine a light on issues affecting the UCLA
         community and give them a human voice. As a magazine, we aim to uplift
         narratives that might otherwise be overlooked at a big, ever buzzing
-        institution like the Daily Bruin.
+        institution like UCLA.
       </p>
+
       <p>
-        When AFSCME protests rocked campus, PRIME told the story of a leader at
-        the union, shedding light on his experiences as a senior custodian and
-        single father. Illustrations of the human heart and skull helped tell
-        the shocking story of body parts stolen from the UCLA Willed Body
-        Program. And when the pandemic altered academic life, at PRIME we hoped
-        to share the new grim reality for graduating UCLA medical students.
+        When lecturers protested against unfair labor practices, PRIME reported
+        on the daily struggles they endure as faculty. We also spoke to a
+        student peforming digital sex work to make ends meet during the COVID-19
+        pandemic. PRIME investigates the questions that matter most, from the
+        ethics of animal experimentation to predatory landlords in Westwood.
       </p>
+
       <p>
         Personal columns also have a home in PRIME. One of our reporters has
-        written about her experience grappling with imposter syndrome as a Black
-        Bruin, and another has discussed her experiences with misophonia – a
-        disorder which causes an aversion to “triggering” sounds like chewing.
+        written about her experience losing a grandparent during the pandemic,
+        and other writers have explored their identities as children of
+        immigrants.
       </p>
+
       <p>
         Our quarterly magazine exists at the intersection of reporting, writing,
-        design and art, and is made possible by the Daily Bruin staff and our
+        design and art and is made possible by the Daily Bruin staff and our
         very own PRIME reporters.
       </p>
+
       <p>
-        As UCLA students navigate the highs and lows of this virtual school
-        year, PRIME will be here, continuing to tell important stories that need
-        to be told.
+        As UCLA students navigate the highs and lows of the transition back to
+        in-person learning, PRIME will be here, continuing to tell the stories
+        that need to be told.
       </p>
-      <p>Thank you for reading PRIME, we hope you enjoy it.</p>
+
+      <p>Thank you for reading PRIME. We hope you enjoy it.</p>
+
       <p>With love,</p>
-      <p>The PRIME Editors</p>
+
+      <p>The PRIME editors</p>
     </div>
     <div
       className={css`
@@ -211,34 +218,34 @@ const About = ({ data }) => (
       `}
     >
       <AboutFrame
-        headshot={SamPhoto}
-        title={'PRIME art director'}
-        name={'Samantha Joseph'}
-        text={
-          'Joseph is a fourth-year microbiology major. She was previously an assistant Design director of the Daily Bruin.'
-        }
-        signature={SamSig}
-        email={'sjoseph@dailybruin.com'}
-      />
-      <AboutFrame
-        headshot={AnushkaPhoto}
-        title={'PRIME director'}
-        name={'Anushka Jain'}
-        text={
-          'Jain is a fourth-year neuroscience major and society and genetics minor. She was previously the PRIME content editor and an Arts & Entertainment assistant editor for the Lifestyle beat.'
-        }
-        signature={AnushkaSig}
-        email={'ajain@dailybruin.com'}
-      />
-      <AboutFrame
         headshot={JustinPhoto}
-        title={'PRIME content director'}
+        title={'PRIME director'}
         name={'Justin Huwe'}
         text={
-          'Huwe is a second-year English major. He was previously part of PRIME’s first class of interns.'
+          'Huwe is a third-year English and education student. He was previously the PRIME content editor.'
         }
         signature={JustinSig}
         email={'jhuwe@dailybruin.com'}
+      />
+      <AboutFrame
+        headshot={EmilyPhoto}
+        title={'PRIME art director'}
+        name={'Emily Dembinski'}
+        text={
+          'Dembinski is a fourth-year microbiology, immunology and molecular genetics student. She was previously the Illustrations director. '
+        }
+        signature={EmilySig}
+        email={'edembinski@dailybruin.com'}
+      />
+      <AboutFrame
+        headshot={AbiPhoto}
+        title={'PRIME content editor'}
+        name={'Abigail Siatkowski'}
+        text={
+          "Siatkowski is a second-year communication student. She is also a News and Arts contributor and was previously a member of PRIME's second intern class."
+        }
+        signature={AbiSig}
+        email={'asiatkowski@dailybruin.com'}
       />
     </div>
     <Footer />

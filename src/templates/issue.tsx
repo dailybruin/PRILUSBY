@@ -93,7 +93,7 @@ export default ({ data, pageContext }) => {
         siteName="PRIME"
         pageName={formatTerm}
         url={`https://prime.dailybruin.com/${term}`}
-        description="PRIME is the official website for the Daily Bruin's quarterly arts, culture, and lifestyle magazine."
+        description="PRIME is the official website for the Daily Bruin's quarterly arts, culture and lifestyle magazine."
         image="http://assets.dailybruin.com/images/prime.map.articles.to.issues/prime%20cover%20spring.jpg"
       />
       <div
@@ -141,7 +141,7 @@ export default ({ data, pageContext }) => {
               title={pageContext.title}
               slug={articles[0].slug}
             />
-          </div> 
+          </div>
           <div
             className={css`
               width: 95%;
@@ -150,7 +150,9 @@ export default ({ data, pageContext }) => {
           >
             <ArticleGrid>{articleCards}</ArticleGrid>
           </div>
-          {term != 'summer20' && term != 'summer21' && <Magazine link={issuuLink} /> }
+          {term != 'summer20' && term != 'summer21' && (
+            <Magazine link={issuuLink} />
+          )}
           <Footer />
         </div>
       </div>

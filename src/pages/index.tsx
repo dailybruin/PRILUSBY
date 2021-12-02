@@ -48,7 +48,7 @@ const IndexPage = ({ data }) => {
           siteName="PRIME"
           pageName="all stories"
           url="https://prime.dailybruin.com/all"
-          description="PRIME is the official website for the Daily Bruin's quarterly arts, culture, and lifestyle magazine."
+          description="PRIME is the official website for the Daily Bruin's quarterly arts, culture and lifestyle magazine."
           image="https://assets.dailybruin.com/images/sabrina.whensoundshurt/cover-83530e07fd73cf3d7e1c8b5a85639df2.jpg"
         />
       </>
@@ -61,7 +61,7 @@ const IndexPage = ({ data }) => {
           siteName="PRIME"
           pageName="all stories"
           url="https://prime.dailybruin.com/all"
-          description="PRIME is the official website for the Daily Bruin's quarterly arts, culture, and lifestyle magazine."
+          description="PRIME is the official website for the Daily Bruin's quarterly arts, culture and lifestyle magazine."
           image="https://assets.dailybruin.com/images/sabrina.whensoundshurt/cover-83530e07fd73cf3d7e1c8b5a85639df2.jpg"
         />
       </>
@@ -100,7 +100,7 @@ const IndexPage = ({ data }) => {
       <CustomHead
         siteName="PRIME"
         url="https://prime.dailybruin.com"
-        description="PRIME is the official website for the Daily Bruin's quarterly arts, culture, and lifestyle magazine."
+        description="PRIME is the official website for the Daily Bruin's quarterly arts, culture and lifestyle magazine."
         image="https://assets.dailybruin.com/images/sabrina.whensoundshurt/cover-83530e07fd73cf3d7e1c8b5a85639df2.jpg"
       />
       <CustomHeader transparent={true} />
@@ -116,7 +116,11 @@ const IndexPage = ({ data }) => {
           let curArticle = data.allPrimeArticle.edges.find(edge => {
             return edge.node.slug === slug
           })
-          if (curArticle === undefined) console.log(slug)
+          if (curArticle === undefined) {
+            console.log("ERROR: couldn't find a mapping of an article.")
+            console.log(slug)
+            return {}
+          }
           curArticle = curArticle.node
           console.log(curArticle.articleType)
           return {
