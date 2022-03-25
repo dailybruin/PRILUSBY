@@ -21,7 +21,7 @@
     "@dailybruin/gatsby-source-kerckhoff": "1.1.1",
     "@dailybruin/lux": "1.15.0",
     "@fortawesome/react-fontawesome": "^0.1.4",
-    "@types/react": "16.9.2",
+    "@types/react": "17.0.43",
     "crypto": "^1.0.1",
     "emotion": "9.2.12",
     "emotion-server": "9.2.12",
