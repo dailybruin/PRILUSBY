@@ -5,13 +5,14 @@ import CustomHead from '../components/CustomHead'
 import CustomHeader from '../components/CustomHeader'
 import { Footer } from '../components/Footer'
 
-import JustinPhoto from '../images/JustinPhoto.jpg'
-import EmilyPhoto from '../images/EmilyPhoto.jpg'
-import AbiPhoto from '../images/AbiPhoto.jpg'
+import AbiPhoto from '../images/AbiSiatkowskiPhoto.jpg'
+import MeganTagamiPhoto from '../images/MeganTagamiPhoto.jpg'
+import MeganFuPhoto from '../images/MeganFuPhoto.jpg'
 
-import JustinSig from '../images/JustinSig.png'
-import EmilySig from '../images/EmilySig.png'
 import AbiSig from '../images/AbiSig.png'
+import MeganTagamiSig from '../images/MeganTagamiSig.png'
+import MeganFuSig from '../images/MeganFuSig.png'
+
 
 interface AboutInfo {
   headshot?: string
@@ -218,34 +219,34 @@ const About = ({ data }) => (
       `}
     >
       <AboutFrame
-        headshot={JustinPhoto}
-        title={'PRIME director'}
-        name={'Justin Huwe'}
-        text={
-          'Huwe is a third-year English and education student. He was previously the PRIME content editor.'
-        }
-        signature={JustinSig}
-        email={'jhuwe@dailybruin.com'}
-      />
-      <AboutFrame
-        headshot={EmilyPhoto}
-        title={'PRIME art director'}
-        name={'Emily Dembinski'}
-        text={
-          'Dembinski is a fourth-year microbiology, immunology and molecular genetics student. She was previously the Illustrations director. '
-        }
-        signature={EmilySig}
-        email={'edembinski@dailybruin.com'}
-      />
-      <AboutFrame
         headshot={AbiPhoto}
-        title={'PRIME content editor'}
+        title={'PRIME director'}
         name={'Abigail Siatkowski'}
         text={
-          "Siatkowski is a second-year communication student. She is also a News and Arts contributor and was previously a member of PRIME's second intern class."
+          "Siatkowski is the 2022-2023 PRIME director. She was previously the 2021-2022 PRIME content editor and a contributor for the Arts, News, Sports and Outreach sections. She is also a third-year communication student at UCLA."
         }
         signature={AbiSig}
         email={'asiatkowski@dailybruin.com'}
+      />
+      <AboutFrame
+        headshot={MeganTagamiPhoto}
+        title={'PRIME content editor'}
+        name={'Megan Tagami'}
+        text={
+          "Tagami is the 2022-2023 PRIME content editor. She was previously a News and PRIME staff member. She is a political science and public affairs student from Honolulu."
+        }
+        signature={MeganTagamiSig}
+        email={'mtagami@dailybruin.com'}
+      />
+      <AboutFrame
+        headshot={MeganFuPhoto}
+        title={'PRIME art director'}
+        name={'Megan Fu'}
+        text={
+          "Fu is the 2022-2023 PRIME art director. Previously, she was a PRIME staff writer and a contributor for Arts and Illustrations. She is also a fourth-year English student minoring in linguistics and cognitive science."
+        }
+        signature={MeganFuSig}
+        email={'mfu2@dailybruin.com'}
       />
     </div>
     <Footer />
