@@ -48,18 +48,28 @@ const AllStories = ({ data }) => {
       </>
     )
   }
+  console.log(`Printing out data`)
+  console.log(data)
   let quarterlyStories = data.issues.issues.map(issue => {
     let term = issue.term
     let season = term.substring(0, term.length - 2)
     let year = '20' + term.substring(term.length - 2, term.length)
     return {
       quarter: season + ' ' + year,
-      stories: issue.articles.map(slug => {
-        const curredge = data.allPrimeArticle.edges.filter(edge => {
-          return edge.node.slug === slug
-        })[0]
-        return curredge.node
-      }),
+      stories: issue.articles
+        .filter(slug => {
+          // just in case something is undefined filter so page doesn't crash
+          const curredge = data.allPrimeArticle.edges.filter(edge => {
+            return edge.node.slug === slug
+          })[0]
+          return !(curredge === undefined || curredge.node === undefined)
+        })
+        .map(slug => {
+          const curredge = data.allPrimeArticle.edges.filter(edge => {
+            return edge.node.slug === slug
+          })[0]
+          return curredge.node
+        }),
     }
   })
   return (
