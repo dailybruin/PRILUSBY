@@ -57,18 +57,15 @@ const AllStories = ({ data }) => {
     return {
       quarter: season + ' ' + year,
       stories: issue.articles
-        .filter(slug => {
-          // just in case something is undefined filter so page doesn't crash
-          const curredge = data.allPrimeArticle.edges.filter(edge => {
-            return edge.node.slug === slug
-          })[0]
-          return !(curredge === undefined || curredge.node === undefined)
-        })
         .map(slug => {
           const curredge = data.allPrimeArticle.edges.filter(edge => {
             return edge.node.slug === slug
           })[0]
           return curredge.node
+        })
+        .filter(node => {
+          // just in case something is undefined filter so page doesn't crash
+          return !(node === undefined)
         }),
     }
   })
