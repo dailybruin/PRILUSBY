@@ -48,8 +48,6 @@ const AllStories = ({ data }) => {
       </>
     )
   }
-  console.log(`Printing out data`)
-  console.log(data)
   let quarterlyStories = data.issues.issues.map(issue => {
     let term = issue.term
     let season = term.substring(0, term.length - 2)
