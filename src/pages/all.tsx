@@ -54,12 +54,17 @@ const AllStories = ({ data }) => {
     let year = '20' + term.substring(term.length - 2, term.length)
     return {
       quarter: season + ' ' + year,
-      stories: issue.articles.map(slug => {
-        const curredge = data.allPrimeArticle.edges.filter(edge => {
-          return edge.node.slug === slug
-        })[0]
-        return curredge.node
-      }),
+      stories: issue.articles
+        .map(slug => {
+          const curredge = data.allPrimeArticle.edges.filter(edge => {
+            return edge.node.slug === slug
+          })[0]
+          return curredge.node
+        })
+        .filter(node => {
+          // just in case something is undefined filter so page doesn't crash
+          return !(node === undefined)
+        }),
     }
   })
   return (
