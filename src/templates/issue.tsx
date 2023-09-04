@@ -38,6 +38,42 @@ export const query = graphql`
   }
 `
 
+// the link is determined by the filename on upload oops so be careful!
+const specialIssuuLinks = {
+  2018: {
+    spring: 'https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=finalpdf',
+  },
+  2020: {
+    winter: 'https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=master',
+  },
+  2021: {
+    winter: 'https://e.issuu.com/embed.html?d=prime_winter_21&u=dailybruin',
+    spring: 'https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=prime_w21',
+  },
+  2022: {
+    fall: 'https://e.issuu.com/embed.html?d=prime_f22_full_mag_&u=dailybruin',
+  },
+  2023: {
+    winter:
+      'https://e.issuu.com/embed.html?d=prime_w23_full_mag_pages&u=dailybruin',
+    spring:
+      'https://e.issuu.com/embed.html?d=prime_s23_full_mag_pages&u=dailybruin',
+  },
+}
+
+const getIssuuComponent = (year: number, season: string) => {
+  if (season === 'summer') return null // summer issues are not magazines
+
+  if (specialIssuuLinks[year] && specialIssuuLinks[year][season]) {
+    return <Magazine link={specialIssuuLinks[year][season]} />
+  }
+
+  let defaultIssuuLink = `https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=prime${season}${year}`
+  if (year > 2017 || (year === 2017 && season === 'fall'))
+    defaultIssuuLink = `https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=prime_${season}_${year}`
+  return <Magazine link={defaultIssuuLink} />
+}
+
 export default ({ data, pageContext }) => {
   let articles = []
   data.allPrimeArticle.edges.forEach(edge => {
@@ -55,19 +91,6 @@ export default ({ data, pageContext }) => {
   const term = pageContext.term
   const season = term.substring(0, term.length - 2)
   const year = '20' + term.substring(term.length - 2, term.length)
-  let issuuLink = `https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=prime${season}${year}`
-  if (parseInt(year) > 2017 || (parseInt(year) === 2017 && season === 'fall'))
-    issuuLink = `https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=prime_${season}_${year}`
-  if (term === 'spring18')
-    issuuLink =
-      'https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=finalpdf'
-  if (term == 'winter20')
-    issuuLink = 'https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=master'
-  if (term == 'winter21')
-    issuuLink = `https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=prime_w21`
-  if (term == 'spring21')
-    issuuLink = `https://e.issuu.com/anonymous-embed.html?u=dailybruin&d=prime_spring_21`
-  // the link is determined by the filename on upload oops so be careful!
   const formatTerm = season + ' ' + year
   const articleCards = []
   articles.forEach((article, i) => {
@@ -150,9 +173,7 @@ export default ({ data, pageContext }) => {
           >
             <ArticleGrid>{articleCards}</ArticleGrid>
           </div>
-          {term != 'summer20' && term != 'summer21' && (
-            <Magazine link={issuuLink} />
-          )}
+          {getIssuuComponent(parseInt(year), season)}
           <Footer />
         </div>
       </div>
