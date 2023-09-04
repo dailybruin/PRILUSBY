@@ -5,13 +5,13 @@ import CustomHead from '../components/CustomHead'
 import CustomHeader from '../components/CustomHeader'
 import { Footer } from '../components/Footer'
 
-import AbiPhoto from '../images/AbiSiatkowskiPhoto.jpg'
-import MeganTagamiPhoto from '../images/MeganTagamiPhoto.jpg'
-import MeganFuPhoto from '../images/MeganFuPhoto.jpg'
+import KatePhoto from '../images/Kate_Green_Photo.png'
+import MartinPhoto from '../images/Martin_Sevcik_Photo.jpg'
+import MayaPhoto from '../images/Maya_O_Kelly_Photo.png'
 
-import AbiSig from '../images/AbiSig.png'
-import MeganTagamiSig from '../images/MeganTagamiSig.png'
-import MeganFuSig from '../images/MeganFuSig.png'
+import KateSign from '../images/Kate_Green_Signature.png'
+import MartinSign from '../images/Martin_Sevcik_Signature.png'
+import MayaSign from '../images/Maya_O_Kelly_Signature.png'
 
 interface AboutInfo {
   headshot?: string
@@ -218,34 +218,36 @@ const About = ({ data }) => (
       `}
     >
       <AboutFrame
-        headshot={AbiPhoto}
+        headshot={KatePhoto}
         title={'PRIME director'}
-        name={'Abigail Siatkowski'}
+        name={'Kate Green'}
         text={
-          'Siatkowski is the 2022-2023 PRIME director. She was previously the 2021-2022 PRIME content editor and a contributor for the Arts, News, Sports and Outreach sections. She is also a third-year communication student at UCLA.'
+          'Green is the 2023-2024 PRIME director. She was previously a PRIME and Outreach staff member. \
+          She is also a fourth-year English student minoring in community engagement and social change.'
         }
-        signature={AbiSig}
-        email={'asiatkowski@dailybruin.com'}
+        signature={KateSign}
+        email={'kgreen@dailybruin.com'}
       />
       <AboutFrame
-        headshot={MeganTagamiPhoto}
+        headshot={MartinPhoto}
         title={'PRIME content editor'}
-        name={'Megan Tagami'}
+        name={'Martin Sevcik'}
         text={
-          'Tagami is the 2022-2023 PRIME content editor. She was previously a News and PRIME staff member. She is a political science and public affairs student from Honolulu.'
+          'Sevcik is the 2023-2024 PRIME content editor. He was previously a PRIME staff member. \
+          He is a third-year double majoring in economics and labor studies.'
         }
-        signature={MeganTagamiSig}
-        email={'mtagami@dailybruin.com'}
+        signature={MartinSign}
+        email={'msevcik@dailybruin.com'}
       />
       <AboutFrame
-        headshot={MeganFuPhoto}
+        headshot={MayaPhoto}
         title={'PRIME art director'}
-        name={'Megan Fu'}
-        text={
-          'Fu is the 2022-2023 PRIME art director. Previously, she was a PRIME staff writer and a contributor for Arts and Illustrations. She is also a fourth-year English student minoring in linguistics and cognitive science.'
-        }
-        signature={MeganFuSig}
-        email={'mfu2@dailybruin.com'}
+        name={`Maya O'Kelly`}
+        text={`O'Kelly is the 2023-2024 PRIME art director. She was previously the 2022-2023 Design director \
+          and one of the 2021-2022 Assistant Design directors. She is also a fourth-year human biology \
+          and society student minoring in applied developmental psychology.`}
+        signature={MayaSign}
+        email={'mokelly@dailybruin.com'}
       />
     </div>
     <Footer />
