@@ -5,13 +5,7 @@ import CustomHead from '../components/CustomHead'
 import CustomHeader from '../components/CustomHeader'
 import { Footer } from '../components/Footer'
 
-import KatePhoto from '../images/Kate_Green_Photo.png'
-import MartinPhoto from '../images/Martin_Sevcik_Photo.jpg'
-import MayaPhoto from '../images/Maya_O_Kelly_Photo.png'
-
-import KateSign from '../images/Kate_Green_Signature.png'
-import MartinSign from '../images/Martin_Sevcik_Signature.png'
-import MayaSign from '../images/Maya_O_Kelly_Signature.png'
+import { useEffect, useState } from 'react'
 
 interface AboutInfo {
   headshot?: string
@@ -22,10 +16,71 @@ interface AboutInfo {
   email?: string
 }
 
-export function AboutFrame(props: AboutInfo) {
-  if (typeof document == 'undefined') {
-    return (
+interface AboutData {
+  pageName: string;
+  url: string;
+  description: string;
+  image: string;
+  missionStatement: { type: string; content: string }[];
+  directors: {
+    title: string;
+    name: string;
+    bio: string;
+    email: string;
+    signature: string;
+    headshot: string;
+  }[];
+}
+
+export function AboutFrame(props) {
+  const [data, setData] = useState<AboutData | null>(null);
+
+  useEffect(() => {
+    // Fetch data from the API
+    fetch("https://kerckhoff.dailybruin.com/api/packages/prime/prime.about")
+      .then(res => res.json())
+      .then(res => setData(res.data['article.aml'] as AboutData)) // Type assertion
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
+
+  // Log the fetched data to debug
+  console.log(data);
+
+  // Check if the document is undefined (i.e., during server-side rendering)
+  if (typeof document === 'undefined') {
+    // Render only if data is available during SSR
+    return data ? (
       <>
+        <CustomHead
+          siteName={data.pageName || 'PRIME'}
+          pageName={data.pageName || 'about'}
+          url={data.url || 'https://prime.dailybruin.com/about'}
+          description={
+            data.description ||
+            "PRIME is the official website for the Daily Bruin's quarterly arts, culture and lifestyle magazine."
+          }
+          image={
+            data.image ||
+            'https://assets.dailybruin.com/images/sabrina.whensoundshurt/cover-83530e07fd73cf3d7e1c8b5a85639df2.jpg'
+          }
+        />
+      </>
+    ) : null; // Render nothing if data is not yet available during SSR
+  }
+
+  // Render the component for client-side with dynamic data
+  return (
+    <>
+      {data ? (
+        <CustomHead
+          siteName={data.pageName}
+          pageName={data.pageName}
+          url={data.url}
+          description={data.description}
+          image={data.image}
+        />
+      ) : (
+        // Loading state while fetching the data
         <CustomHead
           siteName="PRIME"
           pageName="about"
@@ -33,18 +88,7 @@ export function AboutFrame(props: AboutInfo) {
           description="PRIME is the official website for the Daily Bruin's quarterly arts, culture and lifestyle magazine."
           image="https://assets.dailybruin.com/images/sabrina.whensoundshurt/cover-83530e07fd73cf3d7e1c8b5a85639df2.jpg"
         />
-      </>
-    )
-  }
-  return (
-    <>
-      <CustomHead
-        siteName="PRIME"
-        pageName="about"
-        url="https://prime.dailybruin.com/about"
-        description="PRIME is the official website for the Daily Bruin's quarterly arts, culture and lifestyle magazine."
-        image="https://assets.dailybruin.com/images/sabrina.whensoundshurt/cover-83530e07fd73cf3d7e1c8b5a85639df2.jpg"
-      />
+      )}
       <div
         className={css`
           text-align: center;
@@ -54,14 +98,18 @@ export function AboutFrame(props: AboutInfo) {
           line-height: normal;
         `}
       >
+        {/* Update image styling to preserve aspect ratio */}
         <img
           className={css`
             margin-bottom: 16px;
-            width: 300px;
-            height: 300px;
+            width: 300px; /* Fixed width for uniform size */
+            height: 300px; /* Fixed height for uniform size */
+            object-fit: cover; /* Ensures image covers the area and maintains aspect ratio */
+            object-position: center; /* Centers the cropped image */
           `}
           src={props.headshot}
         />
+
         <div
           className={css`
             font-weight: 600;
@@ -94,6 +142,8 @@ export function AboutFrame(props: AboutInfo) {
           className={css`
             margin: 22px;
             height: 5em;
+            object-fit: cover; /* Ensures image covers the area and maintains aspect ratio */
+            object-position: center; /* Centers the cropped image */
           `}
           src={props.signature}
         />
@@ -124,134 +174,92 @@ export const query = graphql`
     }
   }
 `
-const About = ({ data }) => (
-  <>
-    <CustomHeader transparent={false} />
-    <div
-      className={css`
-        text-align: center;
-        font-family: Barlow;
-        font-weight: 800;
-        line-height: normal;
-        font-size: 36px;
-        color: black;
-        margin-top: 107px;
-      `}
-    >
-      mission
-    </div>
-    <div
-      className={css`
-        font-family: Barlow;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        font-size: 24px;
-        text-align: left;
-        margin: 18px 12vw 108px 12vw;
-      `}
-    >
-      <p>Dear reader,</p>
+const About = () => {
+  const [data, setData] = useState<AboutData | null>(null);
 
-      <p>
-        Here at PRIME, we strive to shine a light on issues affecting the UCLA
-        community and give them a human voice. As a magazine, we aim to uplift
-        narratives that might otherwise be overlooked at a big, ever-buzzing
-        institution like UCLA.
-      </p>
+  useEffect(() => {
+    // Fetch data from the API
+    fetch("https://kerckhoff.dailybruin.com/api/packages/prime/prime.about")
+      .then(res => res.json())
+      .then(res => setData(res.data['article.aml'] as AboutData)) // Type assertion
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
 
-      <p>
-        When lecturers protested against unfair labor practices, PRIME covered
-        the daily struggles they endure as faculty. We also reported on the
-        evolution of COVID-19 testing technology as our community returned to
-        campus. PRIME investigates the questions that matter most, from
-        transgender inclusion in student life to the ethics of animal
-        experimentation.
-      </p>
+  if (!data) {
+    return <div>Loading...</div>;
+  }
 
-      <p>
-        PRIME writers delve into every element of the Bruin experience. Even
-        while investigating predatory landlords in Westwood, we make time for
-        exploring the history of Bruins' love for boba. Personal columns also
-        have a home in PRIME. From discussing the imposter syndrome of being a
-        nontraditional student to reflecting on identity as a child of
-        immigrants, PRIME platforms reporters to honestly share their diverse
-        stories.
-      </p>
+  return (
+    <>
+      <CustomHeader transparent={false} />
+      <div
+        className={css`
+          text-align: center;
+          font-family: Barlow;
+          font-weight: 800;
+          line-height: normal;
+          font-size: 36px;
+          color: black;
+          margin-top: 107px;
+        `}
+      >
+        mission
+      </div>
+      <div
+        className={css`
+          font-family: Barlow;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+          font-size: 24px;
+          text-align: left;
+          margin: 18px 12vw 108px 12vw;
+        `}
+      >
+        {data.missionStatement.map((paragraph, index) => (
+          <p key={index}>{paragraph.content}</p>
+        ))}
+      </div>
+      <div
+        className={css`
+          text-align: center;
+          font-family: Barlow;
+          font-weight: 800;
+          line-height: normal;
+          font-size: 36px;
+          color: black;
+          margin-top: 107px;
+          margin-bottom: 25px;
+        `}
+      >
+        staff
+      </div>
 
-      <p>
-        Our quarterly magazine exists at the intersection of reporting, writing,
-        design and art and is made possible by the Daily Bruin staff and our
-        very own PRIME reporters. As PRIME pushes the boundaries of narrative
-        journalism, embracing multimedia formats and immersive first-person
-        reporting, we will continue to tell the stories that need to be told.
-      </p>
+      <div
+        className={css`
+          display: flex;
+          justify-content: space-evenly;
+          margin: 0 10vw 0 10vw;
+          @media (max-width: 1000px) {
+            display: block;
+          }
+        `}
+      >
+        {data.directors.map((director, index) => (
+          <AboutFrame
+            key={index}
+            headshot={director.headshot}
+            title={director.title}
+            name={director.name}
+            text={director.bio}
+            signature={director.signature}
+            email={director.email}
+          />
+        ))}
+      </div>
+      <Footer />
+    </>
+  );
+};
 
-      <p>Thank you for reading PRIME. We hope you enjoy it.</p>
-
-      <p>With love,</p>
-
-      <p>The PRIME editors</p>
-    </div>
-    <div
-      className={css`
-        text-align: center;
-        font-family: Barlow;
-        font-weight: 800;
-        line-height: normal;
-        font-size: 36px;
-        color: black;
-        margin-top: 107px;
-        margin-bottom: 25px;
-      `}
-    >
-      staff
-    </div>
-    <div
-      className={css`
-        display: flex;
-        justify-content: space-evenly;
-        margin: 0 10vw 0 10vw;
-        @media (max-width: 1000px) {
-          display: block;
-        }
-      `}
-    >
-      <AboutFrame
-        headshot={KatePhoto}
-        title={'PRIME director'}
-        name={'Kate Green'}
-        text={
-          'Green is the 2023-2024 PRIME director. She was previously a PRIME and Outreach staff member. \
-          She is also a fourth-year English student minoring in community engagement and social change.'
-        }
-        signature={KateSign}
-        email={'kgreen@dailybruin.com'}
-      />
-      <AboutFrame
-        headshot={MartinPhoto}
-        title={'PRIME content editor'}
-        name={'Martin Sevcik'}
-        text={
-          'Sevcik is the 2023-2024 PRIME content editor. He was previously a PRIME staff member. \
-          He is a third-year double majoring in economics and labor studies.'
-        }
-        signature={MartinSign}
-        email={'msevcik@dailybruin.com'}
-      />
-      <AboutFrame
-        headshot={MayaPhoto}
-        title={'PRIME art director'}
-        name={`Maya O'Kelly`}
-        text={`O'Kelly is the 2023-2024 PRIME art director. She was previously the 2022-2023 Design director \
-          and one of the 2021-2022 Assistant Design directors. She is also a fourth-year human biology \
-          and society student minoring in applied developmental psychology.`}
-        signature={MayaSign}
-        email={'mokelly@dailybruin.com'}
-      />
-    </div>
-    <Footer />
-  </>
-)
-
-export default About
+export default About;
