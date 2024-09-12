@@ -1,3 +1,6 @@
+# PRIME Website
+This repository stores the static server code for PRIME's website. The 'public' folder of this project is generated from the build command, and is uploaded to an s3 bucket in order to be hosted.
+
 # gatsby-starter-dailybruin
 
 How the Daily Bruin likes using [Gatsby](https://www.gatsbyjs.org). Note this starter combines a couple of other in-house DB tools, like [gatsby-source-kerckhoff](https://github.com/dailybruin/gatsby-source-kerckhoff), which draws from our site manager [Kerckhoff](https://github.com/dailybruin/kerckhoff), and [Lux](https://github.com/dailybruin/lux), our React-based design system.
@@ -45,3 +48,5 @@ To build:
 ```
 yarn build
 ```
+
+

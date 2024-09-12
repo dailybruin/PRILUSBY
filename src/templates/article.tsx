@@ -43,6 +43,7 @@ const Subheading = props => (
   />
 )
 
+//the same article page is used for all articles
 export default ({ data, pageContext }) => {
   if (typeof document == 'undefined') {
     if (!data.primeArticle) {
