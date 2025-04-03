@@ -75,17 +75,34 @@ const IndexPage = ({ data }) => {
   const featuredSlugs = data.issues.issues.map(issue => {
     return { slug: issue.articles[0], quarter: formatTerm(issue.term) }
   })
-  console.log(featuredSlugs)
+  // console.log(featuredSlugs)
+
   const featuredArticles1 = featuredSlugs.map(element => {
-    console.log(element)
-    return {
-      ...element,
-      ...data.allPrimeArticle.edges.find(
-        edge => edge.node.slug === element.slug
-      ).node,
+    console.log("element: \n", element);
+    for (const edge of data.allPrimeArticle.edges) {
+      if (edge.node.slug === element.slug) {
+        // console.log("found node: \n", edge.node)
+        return {
+          ...element,
+          ...edge.node,
+        }
+      }
     }
-  })
+      console.warn(`No matching node found for slug: ${element.slug}`);
+  });
+
   const featuredArticles2 = featuredArticles1.map(ele => {
+    // console.log("ele: ", ele)
+    if (ele === undefined) {
+      return {
+        title: "DEFAUT_HEADLINE",
+        authors: "DEFAULT_AUTHOR",
+        description: "DEFAULT_EXCERPT",
+        quarter: "DEFAULT_QUARTER",
+        imageURL: "https://assets3.dailybruin.com/images/prime.nightlifestudents/7.25.prime.nightlifeworkers_illo2-75b055703bef18adf6d8fa51e7857617.png",
+        slug: "DEFAULT.SLUG",
+      }
+    }
     return {
       title: ele.headline,
       authors: [ele.author],
@@ -118,11 +135,11 @@ const IndexPage = ({ data }) => {
           })
           if (curArticle === undefined) {
             console.log("ERROR: couldn't find a mapping of an article.")
-            console.log(slug)
+            // console.log(slug)
             return {}
           }
           curArticle = curArticle.node
-          console.log(curArticle.articleType)
+          // console.log(curArticle.articleType)
           return {
             title: curArticle.headline,
             caption: curArticle.excerpt,

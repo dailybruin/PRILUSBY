@@ -45,7 +45,7 @@ const Subheading = props => (
 
 //the same article page is used for all articles
 export default ({ data, pageContext }) => {
-  if (typeof document == 'undefined') {
+  if (typeof document === 'undefined') {
     if (!data.primeArticle) {
       return <></>
     }
@@ -63,14 +63,22 @@ export default ({ data, pageContext }) => {
                   .join('')}`
           }
           image={data.primeArticle.coverimg}
-        />
+
+        >
+          {/* Added because this person wants her article de-indexed. It should add a tag only for this article. */}
+          {(data.primeArticle.headline === "The Fundamental Difference") &&  <meta name="robots" content="noindex, nofollow" />}
+          {console.log(data.primeArticle.author)}
+          {console.log("hi")}
+        </CustomHead>
       </>
     )
   }
+
   const term = pageContext.term
   const season = term.substring(0, term.length - 2)
   const year = '20' + term.substring(term.length - 2, term.length)
   const formatTerm = season + ' ' + year
+
   return (
     <div>
       <CustomHead

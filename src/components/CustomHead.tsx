@@ -20,6 +20,8 @@ interface HeadProps {
   url: string
   /** The image to display for link previews. */
   image: any // idk what require(image) type is
+  /** Allow children to be passed*/
+  children?: React.ReactNode  // This is so that we can have children to add the noindex tag to certain articles.
 }
 
 export default function Head(props: HeadProps) {
@@ -64,6 +66,7 @@ export default function Head(props: HeadProps) {
       <meta name="twitter:description" content={props.description} />
       <meta name="twitter:image" content={props.image} />
       <html lang="en" />
+      {props.children} {/* Added for noindexing */}
     </Helmet>
   )
 }
