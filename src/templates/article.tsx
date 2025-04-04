@@ -43,6 +43,7 @@ const Subheading = props => (
   />
 )
 
+// This is server side rendering (SSR) and is used when gatsby builds. This will not be seen once the browser loads the page
 //the same article page is used for all articles
 export default ({ data, pageContext }) => {
   if (typeof document === 'undefined') {
@@ -63,12 +64,9 @@ export default ({ data, pageContext }) => {
                   .join('')}`
           }
           image={data.primeArticle.coverimg}
-
         >
           {/* Added because this person wants her article de-indexed. It should add a tag only for this article. */}
-          {(data.primeArticle.headline === "The Fundamental Difference") &&  <meta name="robots" content="noindex, nofollow" />}
-          {console.log(data.primeArticle.author)}
-          {console.log("hi")}
+          {(data.primeArticle.headline === "The Fundamental Difference") && (data.primeArticle.author === "Genevieve Finn") && <meta name="robots" content="noindex, nofollow" />}
         </CustomHead>
       </>
     )
@@ -79,6 +77,7 @@ export default ({ data, pageContext }) => {
   const year = '20' + term.substring(term.length - 2, term.length)
   const formatTerm = season + ' ' + year
 
+  // Client Side Rendering = when the browser renders the page, this version will be seen.
   return (
     <div>
       <CustomHead
@@ -93,7 +92,11 @@ export default ({ data, pageContext }) => {
                 .join('')}`
         }
         image={data.primeArticle.coverimg}
-      />
+        >
+        {/* Added because this person wants her article de-indexed. It should add a tag only for this article. */}
+        {(data.primeArticle.headline === "The Fundamental Difference") && (data.primeArticle.author === "Genevieve Finn") && <meta name="robots" content="noindex, nofollow" />}
+      </CustomHead>
+
       <CustomHeader transparent={false} />
       {console.log(data)}
       <StyledCoverPhoto
