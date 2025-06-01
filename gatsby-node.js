@@ -55,6 +55,12 @@ exports.sourceNodes = async ({
       if (!article || !slug) {
         return
       }
+
+      // If the AML property is capitalized as "Coverimg", copy it to lowercase "coverimg"
+      if (!article.coverimg && article.Coverimg) {
+        article.coverimg = article.Coverimg
+      }
+
       let content
       if (article.hasOwnProperty('content') && Array.isArray(article.content)) {
         content = article.content.map(element => {
@@ -200,7 +206,7 @@ exports.createPages = async ({ graphql, actions }) => {
             content {
               type
               value
-            } 
+            }
           }
         }`).then(_ => {
           createPage({

@@ -75,7 +75,7 @@ const IndexPage = ({ data }) => {
   const featuredSlugs = data.issues.issues.map(issue => {
     return { slug: issue.articles[0], quarter: formatTerm(issue.term) }
   })
-  // console.log(featuredSlugs)
+  console.log(featuredSlugs)
 
   const featuredArticles1 = featuredSlugs.map(element => {
     console.log("element: \n", element);
@@ -92,7 +92,7 @@ const IndexPage = ({ data }) => {
   });
 
   const featuredArticles2 = featuredArticles1.map(ele => {
-    // console.log("ele: ", ele)
+    console.log("ele: ", ele)
     if (ele === undefined) {
       return {
         title: "DEFAUT_HEADLINE",
@@ -135,7 +135,7 @@ const IndexPage = ({ data }) => {
           })
           if (curArticle === undefined) {
             console.log("ERROR: couldn't find a mapping of an article.")
-            // console.log(slug)
+            console.log(slug)
             return {}
           }
           curArticle = curArticle.node
