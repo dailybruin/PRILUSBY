@@ -38,12 +38,15 @@ const rectangleStyle2 = css`
   padding-top: 5px;
 `
 interface PullQuoteProps {
-  caption: string
+  caption?: string
+  Caption?: string
 }
 
 /** A footer to go at the bottom of every page. */
 export class CustomPullQuote extends React.Component<PullQuoteProps> {
   render() {
+    // 1) prefer lowercase `caption`; 2) else use uppercase `Caption`; 3) else default to empty
+    const text = this.props.caption ?? this.props.Caption ?? ''
     return (
       <div>
         {/* <div className={rectangleStyle} /> */}
@@ -54,19 +57,13 @@ export class CustomPullQuote extends React.Component<PullQuoteProps> {
               width: calc(100% - 100px);
             `}
           >
-            {this.props.caption.split(' ').map((s, i) => {
+            {text.split(' ').map((s, i) => {
               return (
-                <React.Fragment>
+                <React.Fragment key={i}>
                   {i === 0 ? (
-                    <span key={i} className={rectangleStyle}>
-                      {'"'}
-                      {s}
-                    </span>
+                    <span className={rectangleStyle}>"{s}</span>
                   ) : i === 1 ? (
-                    <span key={i} className={rectangleStyle2}>
-                      {' '}
-                      {s}
-                    </span>
+                    <span className={rectangleStyle2}> {s}</span>
                   ) : (
                     <span> {s}</span>
                   )}
