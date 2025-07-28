@@ -38,12 +38,20 @@ module.exports = {
         pathToConfigModule: 'src/utils/typography',
       },
     },
+    // {
+    //   resolve: 'gatsby-plugin-google-analytics',
+    //   options: {
+    //     trackingId: 'UA-28181852-23',
+    //     head: false,
+    //     anonymize: true,
+    //   },
+    // },
     {
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: 'gatsby-plugin-gtag',
       options: {
-        trackingId: 'UA-28181852-23',
-        head: false,
-        anonymize: true,
+        trackingId: 'G-1D4G812DSQ', 
+        head: true,             
+        anonymize: true,         
       },
     },
   ],
