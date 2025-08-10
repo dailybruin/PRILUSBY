@@ -1668,7 +1668,7 @@ __metadata:
     react-dom: "npm:16.9.0"
     react-emotion: "npm:9.2.12"
     react-helmet: "npm:5.2.1"
-    react-id-swiper: "npm:^1.6.9"
+    react-id-swiper: "npm:^4.0.0"
     react-images: "npm:^0.5.19"
     react-photo-gallery: "npm:6.3.4"
     react-rectangle: "npm:^1.3.3"
@@ -6931,15 +6931,6 @@ __metadata:
   version: 0.1.2
   resolution: "dom-walk@npm:0.1.2"
   checksum: 10c0/4d2ad9062a9423d890f8577aa202b597a6b85f9489bdde656b9443901b8b322b289655c3affefc58ec2e41931e0828dfee0a1d2db6829a607d76def5901fc5a9
-  languageName: node
-  linkType: hard
-
-"dom7@npm:^2.1.3":
-  version: 2.1.5
-  resolution: "dom7@npm:2.1.5"
-  dependencies:
-    ssr-window: "npm:^2.0.0"
-  checksum: 10c0/41025c3386d0007eab39e4d5845e04b679566480133d0e72f5ebf7909cedfc355f23eaa3b3ab59abf1c19ab89c34bf761fef5e2e63a94f9992af910330e6325c
   languageName: node
   linkType: hard
 
@@ -14801,17 +14792,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-id-swiper@npm:^1.6.9":
-  version: 1.6.9
-  resolution: "react-id-swiper@npm:1.6.9"
+"react-id-swiper@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "react-id-swiper@npm:4.0.0"
   dependencies:
     object-assign: "npm:^4.1.1"
-    prop-types: "npm:^15.7.2"
-    swiper: "npm:^4.4.6"
   peerDependencies:
-    react: ^15.0.0 || ^16.0.0
-    react-dom: ^15.0.0 || ^16.0.0
-  checksum: 10c0/1d39d72d178e6c5b9535d49579f22d1416ce03964ec572917fd6d4440547c29da622f6f35e6a3f694ecb95d94b85eaf8000fda7c8255dccc1bda10cbfd033f67
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+    swiper: ">=5.0.0"
+  checksum: 10c0/10e47f17d38e71e3aa48c1e74074a29d8f264f75b2058f1895f9d539be64550a3fa27ee142fb7e857d957cb76dbad08492d3473a391d05abefcee7ec24364544
   languageName: node
   linkType: hard
 
@@ -16650,20 +16640,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ssr-window@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "ssr-window@npm:1.0.1"
-  checksum: 10c0/760d43afdebcf0a697185e7293e71ef30a7cae2917130718f029a16fbe7721a7299ecf9af981b281fb281eb0f320fd516fe5608c82058f8425e7ec2244adb359
-  languageName: node
-  linkType: hard
-
-"ssr-window@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "ssr-window@npm:2.0.0"
-  checksum: 10c0/019d9e1f976a36eaaef3197cf726c32151dcd80d03742da143b9b5f725e80ec71b499a299b7076e5f65e2fdc66399bf83b2affa33e1e19cab5ea55ba4971954b
-  languageName: node
-  linkType: hard
-
 "ssri@npm:^10.0.0":
   version: 10.0.6
   resolution: "ssri@npm:10.0.6"
@@ -17192,16 +17168,6 @@ __metadata:
   bin:
     svgo: ./bin/svgo
   checksum: 10c0/261a82b08acf63accd7a54b47b4ffcd2fc7e7d7f8efef3cbc61184583b24b4c5434656004c30190302821af0f6d7b047eac730b0dcdab5d179e6a74383ccc776
-  languageName: node
-  linkType: hard
-
-"swiper@npm:^4.4.6":
-  version: 4.5.1
-  resolution: "swiper@npm:4.5.1"
-  dependencies:
-    dom7: "npm:^2.1.3"
-    ssr-window: "npm:^1.0.1"
-  checksum: 10c0/823a63cb3708edc1958f068756b77fae19b4d4ea873802c3642bd7ae4e37a6753540797dfe148bb2483da0c1d62ded06a9bfe4ba364ecc8be12f7bdaf5636591
   languageName: node
   linkType: hard
 
