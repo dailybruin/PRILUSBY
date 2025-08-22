@@ -1657,6 +1657,7 @@ __metadata:
     gatsby: "npm:2.15.21"
     gatsby-plugin-emotion: "npm:2.0.7"
     gatsby-plugin-google-analytics: "npm:2.1.17"
+    gatsby-plugin-gtag: "npm:^1.0.13"
     gatsby-plugin-manifest: "npm:2.2.18"
     gatsby-plugin-react-helmet: "npm:3.1.8"
     gatsby-plugin-typescript: "npm:2.1.9"
@@ -8665,6 +8666,15 @@ __metadata:
     react: ^16.4.2
     react-dom: ^16.4.2
   checksum: 10c0/4344dbeefcfbdd571467b8ecceaff031ad0ebfdde91dd01a091cbd9c8a44a3ce9c60b098c4999dc29e344329621c34ac5fbeee86bbe93c6a11fb1860f5973b6c
+  languageName: node
+  linkType: hard
+
+"gatsby-plugin-gtag@npm:^1.0.13":
+  version: 1.0.13
+  resolution: "gatsby-plugin-gtag@npm:1.0.13"
+  peerDependencies:
+    gatsby: ">2.0.0-alpha"
+  checksum: 10c0/3b1fea7a32f57dbe6033be846a36f3d835c46cd907cad8bb4a0534a8fe6443fa46f7a775378ab0caf9a4ea34dc1484de0fd695a2a6a0ded7f4f831a141aaacf1
   languageName: node
   linkType: hard
 
