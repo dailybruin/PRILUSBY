@@ -1670,7 +1670,7 @@ __metadata:
     react-helmet: "npm:5.2.1"
     react-id-swiper: "npm:^1.6.9"
     react-images: "npm:^0.5.19"
-    react-photo-gallery: "npm:6.3.4"
+    react-photo-gallery: "npm:8.0.0"
     react-rectangle: "npm:^1.3.3"
     react-social-icons: "npm:^4.1.0"
     react-typography: "npm:0.16.19"
@@ -14844,16 +14844,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-photo-gallery@npm:6.3.4":
-  version: 6.3.4
-  resolution: "react-photo-gallery@npm:6.3.4"
+"react-photo-gallery@npm:8.0.0":
+  version: 8.0.0
+  resolution: "react-photo-gallery@npm:8.0.0"
   dependencies:
     prop-types: "npm:~15.7.2"
     resize-observer-polyfill: "npm:^1.5.0"
   peerDependencies:
-    react: ^16.0.0
-    react-dom: ^16.0.0
-  checksum: 10c0/c64b17e405785a280a039c5321b2c9967a3b64b7251dc49f37ddb700568c037ba75249f0e6d4863fec213f676924ff014d81f32ab010c476d504ab3c1acb8093
+    react: ^16.8.0
+    react-dom: ^16.8.0
+  checksum: 10c0/2e70b6004c7a94d2a0f8762d3bdb81366c3c74db8ee8c4149d5d6f698dd18c8764f7db122238cf32f9c938b8388b7917bc48047d380d33a63af1e03e280f30e6
   languageName: node
   linkType: hard
 
