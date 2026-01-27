@@ -59,8 +59,7 @@ export function Footer() {
         `}
       >
         <div>
-          PRIME is the official website for the Daily Bruin's quarterly arts,
-          culture, and lifestyle magazine.
+          PRIME is the official website for the Daily Bruin's quarterly narrative journalism magazine.
         </div>
         <div>© UCLA Student Media 1998 - 2022</div>
         <div>Built with love at 118 Kerckhoff Hall</div>
