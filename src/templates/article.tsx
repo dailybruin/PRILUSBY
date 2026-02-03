@@ -145,6 +145,7 @@ export default ({ data, pageContext }) => {
         email={data.primeArticle.authoremail}
         handle={data.primeArticle.authortwitter}
         bio={data.primeArticle.authorbio}
+        year={year}
       />
     </div>
   )
