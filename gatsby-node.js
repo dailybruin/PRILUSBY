@@ -2,6 +2,32 @@ const { createHash } = require('crypto')
 const fetch = require('node-fetch').default
 const path = require(`path`)
 
+const applyInlineFormatting = value =>
+  value
+    .replace(/\{\{i\}\}([\s\S]+?)\{\{\/i\}\}/g, '<em>$1</em>')
+    .replace(/\{\{em\}\}([\s\S]+?)\{\{\/em\}\}/g, '<em>$1</em>')
+
+const formatCustomContentValue = (type, value) => {
+  if (type !== 'italics') {
+    return value
+  }
+
+  try {
+    const parsedValue = JSON.parse(value)
+
+    if (parsedValue && typeof parsedValue.content === 'string') {
+      return JSON.stringify({
+        ...parsedValue,
+        content: applyInlineFormatting(parsedValue.content),
+      })
+    }
+  } catch (error) {
+    return value
+  }
+
+  return value
+}
+
 exports.sourceNodes = async ({
   actions,
   createNodeId,
@@ -64,7 +90,16 @@ exports.sourceNodes = async ({
       let content
       if (article.hasOwnProperty('content') && Array.isArray(article.content)) {
         content = article.content.map(element => {
-          if (typeof element.value !== 'string') {
+          if (typeof element.value === 'string') {
+            if (element.type === 'text') {
+              element.value = applyInlineFormatting(element.value)
+            } else {
+              element.value = formatCustomContentValue(
+                element.type,
+                element.value
+              )
+            }
+          } else {
             element.value = JSON.stringify(element.value)
           }
           return element
