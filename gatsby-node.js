@@ -8,26 +8,32 @@ exports.sourceNodes = async ({
   createContentDigest,
 }) => {
   const { createNode } = actions
-  // === GET MAP OF ARTICLES TO ISSUES
+  // === GET MAP OF ARTICLES TO ISSUES (Kerckhoff for old issues, Oink for spring26+)
   const mapURL =
     'https://kerckhoff.dailybruin.com/api/packages/prime/prime.map.articles.to.issues/'
   const mapResponse = await fetch(mapURL)
   const mapJson = await mapResponse.json()
-  const { data } = mapJson
+  const oinkMapURL =
+    'https://oink.dailybruin.com/api/packages/prime/prime.map.articles.to.issues/'
+  const oinkMapResponse = await fetch(oinkMapURL)
+  const oinkMapJson = await oinkMapResponse.json()
+  const kerckhoffIssues = mapJson.data['map.aml'].issues
+  const oinkIssues = oinkMapJson.data['map.aml'].issues
+  const allIssues = [...kerckhoffIssues, ...oinkIssues]
   createNode({
-    issues: data['map.aml'].issues,
+    issues: allIssues,
     children: [],
     id: createNodeId(`kerck-issues`),
     internal: {
-      content: JSON.stringify(data['map.aml'].issues),
+      content: JSON.stringify(allIssues),
       contentDigest: createHash('md5')
-        .update(JSON.stringify(data['map.aml'].issues))
+        .update(JSON.stringify(allIssues))
         .digest('hex'),
       type: 'Issues',
     },
     parent: null,
   })
-  data['map.aml'].issues.forEach((issue, i) => {
+  allIssues.forEach((issue, i) => {
     createNode({
       ...issue,
       term: issue.term,
@@ -45,12 +51,17 @@ exports.sourceNodes = async ({
   })
   {
     // === GET ALL THE ARTICLES
-    // Fetch from Kerckhoff (pre-spring26) and Oink (spring26+) and merge
+    // Use each map to know which slugs belong to which source, then filter accordingly
+    const kerckhoffSlugs = new Set(kerckhoffIssues.flatMap(i => i.articles))
+    const oinkSlugs = new Set(oinkIssues.flatMap(i => i.articles))
     const kerckhoffRes = await fetch(`https://kerckhoff.dailybruin.com/api/packages/prime?all=True`)
     const kerckhoffJson = await kerckhoffRes.json()
     const oinkRes = await fetch(`https://oink.dailybruin.com/api/packages/prime?all=True`)
     const oinkJson = await oinkRes.json()
-    const data = { ...kerckhoffJson.data, ...oinkJson.data }
+    const data = {
+      ...Object.fromEntries(Object.entries(kerckhoffJson.data).filter(([, v]) => kerckhoffSlugs.has(v.slug))),
+      ...Object.fromEntries(Object.entries(oinkJson.data).filter(([, v]) => oinkSlugs.has(v.slug))),
+    }
     Object.keys(data).forEach(key => {
       let article = data[key].data['article.aml']
       let slug = data[key].slug
@@ -99,8 +110,12 @@ exports.createPages = async ({ graphql, actions }) => {
     'https://kerckhoff.dailybruin.com/api/packages/prime/prime.map.articles.to.issues/'
   const mapResponse = await fetch(mapURL)
   const mapJson = await mapResponse.json()
-  const { data } = mapJson
-  data['map.aml'].issues.forEach(issue => {
+  const oinkMapURL =
+    'https://oink.dailybruin.com/api/packages/prime/prime.map.articles.to.issues/'
+  const oinkMapResponse = await fetch(oinkMapURL)
+  const oinkMapJson = await oinkMapResponse.json()
+  const allIssues = [...mapJson.data['map.aml'].issues, ...oinkMapJson.data['map.aml'].issues]
+  allIssues.forEach(issue => {
     return graphql(`
       {
         issue(term: {eq: "${issue.term}"}) {
