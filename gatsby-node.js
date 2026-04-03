@@ -2,32 +2,70 @@ const { createHash } = require('crypto')
 const fetch = require('node-fetch').default
 const path = require(`path`)
 
+const KERCKHOFF_BASE = 'https://kerckhoff.dailybruin.com/api/packages/prime'
+const OINK_BASE = 'https://oink.dailybruin.com/api/packages/prime'
+
+// Fetch the articles-to-issues map from a given base URL.
+// Returns the issues array, or [] if the request fails.
+async function fetchIssueMap(baseUrl) {
+  try {
+    const response = await fetch(
+      `${baseUrl}/prime.map.articles.to.issues/`
+    )
+    const json = await response.json()
+    return json.data['map.aml'].issues || []
+  } catch (e) {
+    console.warn(`[prime] Could not fetch issue map from ${baseUrl}:`, e.message)
+    return []
+  }
+}
+
+// Fetch all article packages from a given base URL.
+// Returns the data object keyed by package slug, or {} if the request fails.
+async function fetchAllArticles(baseUrl) {
+  try {
+    const response = await fetch(`${baseUrl}?all=True`)
+    const json = await response.json()
+    return json.data || {}
+  } catch (e) {
+    console.warn(`[prime] Could not fetch articles from ${baseUrl}:`, e.message)
+    return {}
+  }
+}
+
 exports.sourceNodes = async ({
   actions,
   createNodeId,
   createContentDigest,
 }) => {
   const { createNode } = actions
-  // === GET MAP OF ARTICLES TO ISSUES
-  const mapURL =
-    'https://kerckhoff.dailybruin.com/api/packages/prime/prime.map.articles.to.issues/'
-  const mapResponse = await fetch(mapURL)
-  const mapJson = await mapResponse.json()
-  const { data } = mapJson
+
+  // === GET MAP OF ARTICLES TO ISSUES (both sources)
+  const [kerckhoffIssues, oinkIssues] = await Promise.all([
+    fetchIssueMap(KERCKHOFF_BASE),
+    fetchIssueMap(OINK_BASE),
+  ])
+  // Merge issues; Oink entries override Kerckhoff entries for the same term
+  const issuesByTerm = {}
+  ;[...kerckhoffIssues, ...oinkIssues].forEach(issue => {
+    issuesByTerm[issue.term] = issue
+  })
+  const allIssues = Object.values(issuesByTerm)
+
   createNode({
-    issues: data['map.aml'].issues,
+    issues: allIssues,
     children: [],
     id: createNodeId(`kerck-issues`),
     internal: {
-      content: JSON.stringify(data['map.aml'].issues),
+      content: JSON.stringify(allIssues),
       contentDigest: createHash('md5')
-        .update(JSON.stringify(data['map.aml'].issues))
+        .update(JSON.stringify(allIssues))
         .digest('hex'),
       type: 'Issues',
     },
     parent: null,
   })
-  data['map.aml'].issues.forEach((issue, i) => {
+  allIssues.forEach((issue, i) => {
     createNode({
       ...issue,
       term: issue.term,
@@ -43,15 +81,19 @@ exports.sourceNodes = async ({
       parent: null,
     })
   })
+
   {
-    // === GET ALL THE ARTICLES
-    let url = `https://kerckhoff.dailybruin.com/api/packages/prime?all=True`
-    const response = await fetch(url)
-    const json = await response.json()
-    const { slug, data, description } = json
-    Object.keys(data).forEach(key => {
-      let article = data[key].data['article.aml']
-      let slug = data[key].slug
+    // === GET ALL THE ARTICLES (both sources)
+    const [kerckhoffData, oinkData] = await Promise.all([
+      fetchAllArticles(KERCKHOFF_BASE),
+      fetchAllArticles(OINK_BASE),
+    ])
+    // Merge article data; Oink entries override Kerckhoff entries for the same key
+    const allData = { ...kerckhoffData, ...oinkData }
+
+    Object.keys(allData).forEach(key => {
+      let article = allData[key].data['article.aml']
+      let slug = allData[key].slug
       if (!article || !slug) {
         return
       }
@@ -93,12 +135,19 @@ exports.createPages = async ({ graphql, actions }) => {
   // **Note:** The graphql function call returns a Promise
   // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise for more info
   const { createPage } = actions
-  const mapURL =
-    'https://kerckhoff.dailybruin.com/api/packages/prime/prime.map.articles.to.issues/'
-  const mapResponse = await fetch(mapURL)
-  const mapJson = await mapResponse.json()
-  const { data } = mapJson
-  data['map.aml'].issues.forEach(issue => {
+
+  // Fetch issue map from both sources and merge (same logic as sourceNodes)
+  const [kerckhoffIssues, oinkIssues] = await Promise.all([
+    fetchIssueMap(KERCKHOFF_BASE),
+    fetchIssueMap(OINK_BASE),
+  ])
+  const issuesByTerm = {}
+  ;[...kerckhoffIssues, ...oinkIssues].forEach(issue => {
+    issuesByTerm[issue.term] = issue
+  })
+  const allIssues = Object.values(issuesByTerm)
+
+  allIssues.forEach(issue => {
     return graphql(`
       {
         issue(term: {eq: "${issue.term}"}) {
