@@ -45,10 +45,12 @@ exports.sourceNodes = async ({
   })
   {
     // === GET ALL THE ARTICLES
-    let url = `https://kerckhoff.dailybruin.com/api/packages/prime?all=True`
-    const response = await fetch(url)
-    const json = await response.json()
-    const { slug, data, description } = json
+    // Fetch from Kerckhoff (pre-spring26) and Oink (spring26+) and merge
+    const kerckhoffRes = await fetch(`https://kerckhoff.dailybruin.com/api/packages/prime?all=True`)
+    const kerckhoffJson = await kerckhoffRes.json()
+    const oinkRes = await fetch(`https://oink.dailybruin.com/api/packages/prime?all=True`)
+    const oinkJson = await oinkRes.json()
+    const data = { ...kerckhoffJson.data, ...oinkJson.data }
     Object.keys(data).forEach(key => {
       let article = data[key].data['article.aml']
       let slug = data[key].slug
