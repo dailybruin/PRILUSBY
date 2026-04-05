@@ -8,26 +8,32 @@ exports.sourceNodes = async ({
   createContentDigest,
 }) => {
   const { createNode } = actions
-  // === GET MAP OF ARTICLES TO ISSUES
+  // === GET MAP OF ARTICLES TO ISSUES (Kerckhoff for old issues, Oink for spring26+)
   const mapURL =
     'https://kerckhoff.dailybruin.com/api/packages/prime/prime.map.articles.to.issues/'
   const mapResponse = await fetch(mapURL)
   const mapJson = await mapResponse.json()
-  const { data } = mapJson
+  const oinkMapURL =
+    'https://oink.dailybruin.com/api/packages/prime/prime.map.articles.to.issues/'
+  const oinkMapResponse = await fetch(oinkMapURL)
+  const oinkMapJson = await oinkMapResponse.json()
+  const kerckhoffIssues = mapJson.data['map.aml'].issues
+  const oinkIssues = oinkMapJson.data['map.aml'].issues
+  const allIssues = [...kerckhoffIssues, ...oinkIssues]
   createNode({
-    issues: data['map.aml'].issues,
+    issues: allIssues,
     children: [],
     id: createNodeId(`kerck-issues`),
     internal: {
-      content: JSON.stringify(data['map.aml'].issues),
+      content: JSON.stringify(allIssues),
       contentDigest: createHash('md5')
-        .update(JSON.stringify(data['map.aml'].issues))
+        .update(JSON.stringify(allIssues))
         .digest('hex'),
       type: 'Issues',
     },
     parent: null,
   })
-  data['map.aml'].issues.forEach((issue, i) => {
+  allIssues.forEach((issue, i) => {
     createNode({
       ...issue,
       term: issue.term,
@@ -45,12 +51,17 @@ exports.sourceNodes = async ({
   })
   {
     // === GET ALL THE ARTICLES
-    // Fetch from Kerckhoff (pre-spring26) and Oink (spring26+) and merge
+    // Use each map to know which slugs belong to which source, then filter accordingly
+    const kerckhoffSlugs = new Set(kerckhoffIssues.flatMap(i => i.articles))
+    const oinkSlugs = new Set(oinkIssues.flatMap(i => i.articles))
     const kerckhoffRes = await fetch(`https://kerckhoff.dailybruin.com/api/packages/prime?all=True`)
     const kerckhoffJson = await kerckhoffRes.json()
     const oinkRes = await fetch(`https://oink.dailybruin.com/api/packages/prime?all=True`)
     const oinkJson = await oinkRes.json()
-    const data = { ...kerckhoffJson.data, ...oinkJson.data }
+    const data = {
+      ...Object.fromEntries(Object.entries(kerckhoffJson.data).filter(([, v]) => kerckhoffSlugs.has(v.slug))),
+      ...Object.fromEntries(Object.entries(oinkJson.data).filter(([, v]) => oinkSlugs.has(v.slug))),
+    }
     Object.keys(data).forEach(key => {
       let article = data[key].data['article.aml']
       let slug = data[key].slug
@@ -99,8 +110,23 @@ exports.createPages = async ({ graphql, actions }) => {
     'https://kerckhoff.dailybruin.com/api/packages/prime/prime.map.articles.to.issues/'
   const mapResponse = await fetch(mapURL)
   const mapJson = await mapResponse.json()
-  const { data } = mapJson
-  data['map.aml'].issues.forEach(issue => {
+  const oinkMapURL =
+    'https://oink.dailybruin.com/api/packages/prime/prime.map.articles.to.issues/'
+  const oinkMapResponse = await fetch(oinkMapURL)
+  const oinkMapJson = await oinkMapResponse.json()
+  const kerckhoffIssues = mapJson.data['map.aml'].issues
+  const oinkIssues = oinkMapJson.data['map.aml'].issues
+  const termToNumber = (term) => {
+    const [season, year] = [term.slice(0, -2), term.slice(-2)]
+    const seasonOrder = { winter: 0, spring: 1, summer: 2, fall: 3 }
+    return parseInt(year) * 10 + seasonOrder[season]
+  }
+  const useOink = (term) => termToNumber(term) >= termToNumber('spring26')
+  kerckhoffIssues.forEach(issue => {
+    if (useOink(issue.term)) {
+      return
+    }
+
     return graphql(`
       {
         issue(term: {eq: "${issue.term}"}) {
@@ -154,79 +180,141 @@ exports.createPages = async ({ graphql, actions }) => {
           })
         })
       })
-      // i have a final tomorrow sue me
-      // (FIX BELOWWW)
-      const registrationissue2019 = [
-        'prime.regissue.toptenprofessors',
-        'prime.regissue.studyspace',
-      ]
-      registrationissue2019.forEach(articleslug => {
-        return graphql(`{
-          primeArticle(slug: {eq: "${articleslug}"}) {
-            slug
-            headline
-            author
-            authorbio
-            authoremail
-            authortwitter
-            coverimg
-            covercred
-            coveralt
-            articleType
-            excerpt
-            content {
-              type
-              value
-            }
-          }
-        }`).then(_ => {
-          createPage({
-            path: `${articleslug.split('.').join('')}`,
-            component: path.resolve(`./src/templates/article.tsx`),
-            context: {
-              term: 'Registration Issue19',
-              slug: articleslug,
-            },
-          })
-        })
+    })
+  })
+  oinkIssues.forEach(issue => {
+    if (!useOink(issue.term)) {
+      return
+    }
+
+    return graphql(`
+      {
+        issue(term: {eq: "${issue.term}"}) {
+          term
+          title
+          coverphoto
+          articles
+        }
+      }
+    `).then(_ => {
+      createPage({
+        path: `${issue.term}`,
+        component: path.resolve(`./src/templates/issue.tsx`),
+        context: {
+          term: issue.term,
+          articles: issue.articles,
+          coverphoto: issue.coverphoto,
+          title: issue.title,
+        },
       })
-      const orientationissue2019 = ['prime.orientationissue.stories']
-      orientationissue2019.forEach(articleslug => {
-        return graphql(`{
-          primeArticle(slug: {eq: "${articleslug}"}) {
-            slug
-            headline
-            author
-            authorbio
-            authoremail
-            authortwitter
-            coverimg
-            covercred
-            coveralt
-            articleType
-            excerpt
-            content {
-              type
-              value
-            }
-          }
-        }`).then(_ => {
-          createPage({
-            path: `${articleslug.split('.').join('')}`,
-            component: path.resolve(`./src/templates/article.tsx`),
-            context: {
-              term: 'Orientation Issue19',
-              slug: articleslug,
-            },
-          })
-        })
-      })
-      const gradissue2019 = [
-        'prime.gradissue.visa',
-        'prime.gradissue.evolutionofphotos',
-      ]
-      gradissue2019.forEach(articleslug => {
+      issue.articles.forEach(articleslug => {
         return graphql(`
+      {
+        primeArticle(slug: {eq: "${articleslug}"}) {
+          slug
+          headline
+          author
+          authorbio
+          authoremail
+          authortwitter
+          coverimg
+          covercred
+          coveralt
+          articleType
+          excerpt
+          updated
+          content {
+            type
+            value
+          }
+        }
+      }
+    `).then(_ => {
+          createPage({
+            path: `${articleslug.split('.').join('')}`,
+            component: path.resolve(`./src/templates/article.tsx`),
+            context: {
+              term: issue.term,
+              slug: articleslug,
+            },
+          })
+        })
+      })
+    })
+  })
+  // i have a final tomorrow sue me
+  // (FIX BELOWWW)
+  const registrationissue2019 = [
+    'prime.regissue.toptenprofessors',
+    'prime.regissue.studyspace',
+  ]
+  registrationissue2019.forEach(articleslug => {
+    return graphql(`{
+          primeArticle(slug: {eq: "${articleslug}"}) {
+            slug
+            headline
+            author
+            authorbio
+            authoremail
+            authortwitter
+            coverimg
+            covercred
+            coveralt
+            articleType
+            excerpt
+            content {
+              type
+              value
+            }
+          }
+        }`).then(_ => {
+      createPage({
+        path: `${articleslug.split('.').join('')}`,
+        component: path.resolve(`./src/templates/article.tsx`),
+        context: {
+          term: 'Registration Issue19',
+          slug: articleslug,
+        },
+      })
+    })
+  })
+  const orientationissue2019 = ['prime.orientationissue.stories']
+  orientationissue2019.forEach(articleslug => {
+    return graphql(`{
+          primeArticle(slug: {eq: "${articleslug}"}) {
+            slug
+            headline
+            author
+            authorbio
+            authoremail
+            authortwitter
+            coverimg
+            covercred
+            coveralt
+            articleType
+            excerpt
+            content {
+              type
+              value
+            }
+          }
+        }`).then(_ => {
+      createPage({
+        path: `${articleslug.split('.').join('')}`,
+        component: path.resolve(`./src/templates/article.tsx`),
+        context: {
+          term: 'Orientation Issue19',
+          slug: articleslug,
+        },
+      })
+    })
+  })
+  const gradissue2019 = [
+    'prime.gradissue.visa',
+    'prime.gradissue.evolutionofphotos',
+  ]
+  gradissue2019.forEach(articleslug => {
+    return graphql(`
       {
         primeArticle(slug: {eq: "${articleslug}"}) {
           slug
@@ -247,15 +335,13 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     `).then(_ => {
-          createPage({
-            path: `${articleslug.split('.').join('')}`,
-            component: path.resolve(`./src/templates/article.tsx`),
-            context: {
-              term: 'Grad Issue19',
-              slug: articleslug,
-            },
-          })
-        })
+      createPage({
+        path: `${articleslug.split('.').join('')}`,
+        component: path.resolve(`./src/templates/article.tsx`),
+        context: {
+          term: 'Grad Issue19',
+          slug: articleslug,
+        },
       })
     })
   })
