@@ -18,7 +18,7 @@ exports.sourceNodes = async ({
   const oinkMapResponse = await fetch(oinkMapURL)
   const oinkMapJson = await oinkMapResponse.json()
   const kerckhoffIssues = mapJson.data['map.aml'].issues
-  const oinkIssues = oinkMapJson.data['map.aml'].issues
+  const oinkIssues = oinkMapJson.data['article.aml'].issues
   const allIssues = [...kerckhoffIssues, ...oinkIssues]
   createNode({
     issues: allIssues,
@@ -115,7 +115,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const oinkMapResponse = await fetch(oinkMapURL)
   const oinkMapJson = await oinkMapResponse.json()
   const kerckhoffIssues = mapJson.data['map.aml'].issues
-  const oinkIssues = oinkMapJson.data['map.aml'].issues
+  const oinkIssues = oinkMapJson.data['article.aml'].issues
   const termToNumber = (term) => {
     const [season, year] = [term.slice(0, -2), term.slice(-2)]
     const seasonOrder = { winter: 0, spring: 1, summer: 2, fall: 3 }
