@@ -14,7 +14,7 @@ exports.sourceNodes = async ({
   const mapResponse = await fetch(mapURL)
   const mapJson = await mapResponse.json()
   const oinkMapURL =
-    'https://oink.dailybruin.com/api/packages/prime/prime.map.articles.to.issues/'
+    'https://oink.dailybruin.com/api/packages/prime/prime.map.articles.to.issues'
   const oinkMapResponse = await fetch(oinkMapURL)
   const oinkMapJson = await oinkMapResponse.json()
   const kerckhoffIssues = mapJson.data['map.aml'].issues
@@ -111,7 +111,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const mapResponse = await fetch(mapURL)
   const mapJson = await mapResponse.json()
   const oinkMapURL =
-    'https://oink.dailybruin.com/api/packages/prime/prime.map.articles.to.issues/'
+    'https://oink.dailybruin.com/api/packages/prime/prime.map.articles.to.issues'
   const oinkMapResponse = await fetch(oinkMapURL)
   const oinkMapJson = await oinkMapResponse.json()
   const kerckhoffIssues = mapJson.data['map.aml'].issues
@@ -121,7 +121,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const seasonOrder = { winter: 0, spring: 1, summer: 2, fall: 3 }
     return parseInt(year) * 10 + seasonOrder[season]
   }
-  const useOink = (term) => termToNumber(term) >= termToNumber('spring26')
+  const useOink = (term) => termToNumber(term) >= termToNumber('winter26')
   kerckhoffIssues.forEach(issue => {
     if (useOink(issue.term)) {
       return
