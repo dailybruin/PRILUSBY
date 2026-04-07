@@ -116,8 +116,17 @@ exports.createPages = async ({ graphql, actions }) => {
   const oinkMapJson = await oinkMapResponse.json()
   const kerckhoffIssues = mapJson.data['map.aml'].issues
   const oinkIssues = oinkMapJson.data['article.aml'].issues
-
+  const termToNumber = (term) => {
+    const [season, year] = [term.slice(0, -2), term.slice(-2)]
+    const seasonOrder = { winter: 0, spring: 1, summer: 2, fall: 3 }
+    return parseInt(year) * 10 + seasonOrder[season]
+  }
+  const useOink = (term) => termToNumber(term) >= termToNumber('winter26')
   kerckhoffIssues.forEach(issue => {
+    if (useOink(issue.term)) {
+      return
+    }
+
     return graphql(`
       {
         issue(term: {eq: "${issue.term}"}) {
@@ -174,6 +183,9 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
   oinkIssues.forEach(issue => {
+    if (!useOink(issue.term)) {
+      return
+    }
 
     return graphql(`
       {
