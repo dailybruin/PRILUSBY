@@ -2,6 +2,13 @@ const { createHash } = require('crypto')
 const fetch = require('node-fetch').default
 const path = require(`path`)
 
+const termToNumber = (term) => {
+  const [season, year] = [term.slice(0, -2), term.slice(-2)]
+  const seasonOrder = { winter: 0, spring: 1, summer: 2, fall: 3 }
+  return parseInt(year) * 10 + seasonOrder[season]
+}
+const useOink = (term) => termToNumber(term) >= termToNumber('winter26')
+
 exports.sourceNodes = async ({
   actions,
   createNodeId,
@@ -17,9 +24,9 @@ exports.sourceNodes = async ({
     'https://oink.dailybruin.com/api/packages/prime/prime.map.articles.to.issues'
   const oinkMapResponse = await fetch(oinkMapURL)
   const oinkMapJson = await oinkMapResponse.json()
-  const kerckhoffIssues = mapJson.data['map.aml'].issues
+  const kerckhoffIssues = mapJson.data['map.aml'].issues.filter(issue => !useOink(issue.term))
   const oinkIssues = oinkMapJson.data['article.aml'].issues
-  const allIssues = [...kerckhoffIssues, ...oinkIssues]
+  const allIssues = [...oinkIssues, ...kerckhoffIssues]
   createNode({
     issues: allIssues,
     children: [],
@@ -52,15 +59,15 @@ exports.sourceNodes = async ({
   {
     // === GET ALL THE ARTICLES
     // Use each map to know which slugs belong to which source, then filter accordingly
-    const kerckhoffSlugs = new Set(kerckhoffIssues.flatMap(i => i.articles))
+    const kerckhoffSlugs = new Set(kerckhoffIssues.filter(issue => !useOink(issue.term)).flatMap(i => i.articles))
     const oinkSlugs = new Set(oinkIssues.flatMap(i => i.articles))
     const kerckhoffRes = await fetch(`https://kerckhoff.dailybruin.com/api/packages/prime?all=True`)
     const kerckhoffJson = await kerckhoffRes.json()
     const oinkRes = await fetch(`https://oink.dailybruin.com/api/packages/prime?all=True`)
     const oinkJson = await oinkRes.json()
     const data = {
-      ...Object.fromEntries(Object.entries(kerckhoffJson.data).filter(([, v]) => kerckhoffSlugs.has(v.slug))),
-      ...Object.fromEntries(Object.entries(oinkJson.data).filter(([, v]) => oinkSlugs.has(v.slug))),
+      ...Object.fromEntries(oinkJson.data.filter(v => oinkSlugs.has(v.slug)).map(v => [v.slug, v])),
+      ...Object.fromEntries(kerckhoffJson.data.filter(v => kerckhoffSlugs.has(v.slug)).map(v => [v.slug, v])),
     }
     Object.keys(data).forEach(key => {
       let article = data[key].data['article.aml']
@@ -114,79 +121,10 @@ exports.createPages = async ({ graphql, actions }) => {
     'https://oink.dailybruin.com/api/packages/prime/prime.map.articles.to.issues'
   const oinkMapResponse = await fetch(oinkMapURL)
   const oinkMapJson = await oinkMapResponse.json()
-  const kerckhoffIssues = mapJson.data['map.aml'].issues
+  const kerckhoffIssues = mapJson.data['map.aml'].issues.filter(issue => !useOink(issue.term))
   const oinkIssues = oinkMapJson.data['article.aml'].issues
-  const termToNumber = (term) => {
-    const [season, year] = [term.slice(0, -2), term.slice(-2)]
-    const seasonOrder = { winter: 0, spring: 1, summer: 2, fall: 3 }
-    return parseInt(year) * 10 + seasonOrder[season]
-  }
-  const useOink = (term) => termToNumber(term) >= termToNumber('winter26')
-  kerckhoffIssues.forEach(issue => {
-    if (useOink(issue.term)) {
-      return
-    }
-
-    return graphql(`
-      {
-        issue(term: {eq: "${issue.term}"}) {
-          term
-          title
-          coverphoto
-          articles
-        }
-      }
-    `).then(_ => {
-      createPage({
-        path: `${issue.term}`,
-        component: path.resolve(`./src/templates/issue.tsx`),
-        context: {
-          term: issue.term,
-          articles: issue.articles,
-          coverphoto: issue.coverphoto,
-          title: issue.title,
-        },
-      })
-      issue.articles.forEach(articleslug => {
-        return graphql(`
-      {
-        primeArticle(slug: {eq: "${articleslug}"}) {
-          slug
-          headline
-          author
-          authorbio
-          authoremail
-          authortwitter
-          coverimg
-          covercred
-          coveralt
-          articleType
-          excerpt
-          updated
-          content {
-            type
-            value
-          }
-        }
-      }
-    `).then(_ => {
-          createPage({
-            path: `${articleslug.split('.').join('')}`,
-            component: path.resolve(`./src/templates/article.tsx`),
-            context: {
-              term: issue.term,
-              slug: articleslug,
-            },
-          })
-        })
-      })
-    })
-  })
-  oinkIssues.forEach(issue => {
-    if (!useOink(issue.term)) {
-      return
-    }
-
+  allIssues = [...oinkIssues, ...kerckhoffIssues]
+  allIssues.forEach(issue => {
     return graphql(`
       {
         issue(term: {eq: "${issue.term}"}) {
