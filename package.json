@@ -51,7 +51,7 @@
     "typography": "0.16.24"
   },
   "devDependencies": {
-    "prettier": "1.19.1"
+    "prettier": "3.8.3"
   },
   "resolutions": {
     "sharp": "^0.34.0"
