@@ -1617,8 +1617,8 @@ __metadata:
     "@fortawesome/react-fontawesome": "npm:^0.2.0"
     "@types/react": "npm:16.14.68"
     crypto: "npm:^1.0.1"
-    emotion: "npm:9.2.12"
-    emotion-server: "npm:9.2.12"
+    emotion: "npm:11.0.0"
+    emotion-server: "npm:11.0.0"
     gatsby: "npm:2.32.13"
     gatsby-plugin-emotion: "npm:2.0.7"
     gatsby-plugin-google-analytics: "npm:2.11.0"
@@ -7530,7 +7530,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"emotion-server@npm:9.2.12, emotion-server@npm:^9.2.12":
+"emotion-server@npm:11.0.0":
+  version: 11.0.0
+  resolution: "emotion-server@npm:11.0.0"
+  checksum: 10c0/8813be18a91f0ac811935ec40d87c5003dba9ce908312b7b46ca2dee61817d8200eec3af52ab1ceaf6949ca7b9671a93384df99ddb3376872befb109040e76f4
+  languageName: node
+  linkType: hard
+
+"emotion-server@npm:^9.2.12":
   version: 9.2.12
   resolution: "emotion-server@npm:9.2.12"
   dependencies:
@@ -7541,7 +7548,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"emotion@npm:9.2.12, emotion@npm:^9.2.12":
+"emotion@npm:11.0.0":
+  version: 11.0.0
+  resolution: "emotion@npm:11.0.0"
+  checksum: 10c0/273d4e0573c07e2fffcc5f8f0c9e35b9117be03c1317ec5b786a1dfaff6162d34e770c03ff0597d84909844f480aa3b5cb4017f38ee40db89296387abbf5af54
+  languageName: node
+  linkType: hard
+
+"emotion@npm:^9.2.12":
   version: 9.2.12
   resolution: "emotion@npm:9.2.12"
   dependencies:
