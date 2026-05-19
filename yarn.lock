@@ -1615,7 +1615,7 @@ __metadata:
     "@dailybruin/lux": "npm:1.16.0"
     "@fortawesome/fontawesome-svg-core": "npm:^1.2.20"
     "@fortawesome/react-fontawesome": "npm:^0.2.0"
-    "@types/react": "npm:16.14.68"
+    "@types/react": "npm:16.14.70"
     crypto: "npm:^1.0.1"
     emotion: "npm:9.2.12"
     emotion-server: "npm:9.2.12"
@@ -1640,7 +1640,7 @@ __metadata:
     react-social-icons: "npm:^4.1.0"
     react-typography: "npm:0.16.23"
     sharp: "npm:^0.34.0"
-    slugify: "npm:1.6.6"
+    slugify: "npm:1.6.9"
     typography: "npm:0.16.24"
   languageName: unknown
   linkType: soft
@@ -3142,14 +3142,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:16.14.68":
-  version: 16.14.68
-  resolution: "@types/react@npm:16.14.68"
+"@types/react@npm:16.14.70":
+  version: 16.14.70
+  resolution: "@types/react@npm:16.14.70"
   dependencies:
     "@types/prop-types": "npm:*"
     "@types/scheduler": "npm:^0.16"
     csstype: "npm:^3.2.2"
-  checksum: 10c0/be88dc8596b216107c3d21ab8fd8e0cf96cca651022d91011d0e0d6837122df66df6e5d0b4b05a55ae25ac3e4991768302bec5f9b93743d4f1300e290c05822a
+  checksum: 10c0/045b4ec6b117d4cc50b569c8d3c084e98163b6273d7b09ffab28075c921279e1d272aafcfd32abe7d7b32c634ffab56de1c8dce9dba0bd6a566e4b8196cd5695
   languageName: node
   linkType: hard
 
@@ -18032,10 +18032,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"slugify@npm:1.6.6, slugify@npm:^1.4.4":
-  version: 1.6.6
-  resolution: "slugify@npm:1.6.6"
-  checksum: 10c0/e7e63f08f389a371d6228bc19d64ec84360bf0a538333446cc49dbbf3971751a6d180d2f31551188dd007a65ca771e69f574e0283290a7825a818e90b75ef44d
+"slugify@npm:1.6.9":
+  version: 1.6.9
+  resolution: "slugify@npm:1.6.9"
+  checksum: 10c0/8473c566ae00c5db26bfbf6182a4a9478ab3c912a9c926e1fdb410736a77228bfca4fdc5c755b46fafa7d2d9900de482fd7a9bd5e5c91128c4743c2c072d88da
   languageName: node
   linkType: hard
 
@@ -18043,6 +18043,13 @@ __metadata:
   version: 1.4.0
   resolution: "slugify@npm:1.4.0"
   checksum: 10c0/700d6e6e7ce7cc6ea4973a427fc990d481f08610d1d179b812ed7c6844c87fd291c8642fee967cf62cd7a2a24c4d32c9e0abf8695208d590a56a9d52e17b8f30
+  languageName: node
+  linkType: hard
+
+"slugify@npm:^1.4.4":
+  version: 1.6.6
+  resolution: "slugify@npm:1.6.6"
+  checksum: 10c0/e7e63f08f389a371d6228bc19d64ec84360bf0a538333446cc49dbbf3971751a6d180d2f31551188dd007a65ca771e69f574e0283290a7825a818e90b75ef44d
   languageName: node
   linkType: hard
 
