@@ -32,7 +32,16 @@ export const query = graphql`
     }
   }
 `
-const Italics = props => <p>{props.content}</p>
+const Italics = props => (
+  <p
+    style={{
+      fontStyle: 'italic',
+    }}
+    dangerouslySetInnerHTML={{
+      __html: props.content || '',
+    }}
+  />
+)
 
 const Subheading = props => (
   <HeaderHighLight
