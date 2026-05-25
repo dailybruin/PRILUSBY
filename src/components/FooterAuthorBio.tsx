@@ -11,6 +11,7 @@ interface FooterAuthorBioProps {
   email: String,
   handle: String,
   bio: String,
+  year?: String | number,
 }
 
 export class FooterAuthorBio extends React.Component<FooterAuthorBioProps> {
@@ -48,7 +49,7 @@ export class FooterAuthorBio extends React.Component<FooterAuthorBioProps> {
         `}>
           <p className={css`
             margin: 0;
-          `}><b>{ this.props.name }</b> // { this.props.email } // { this.props.handle }</p>
+          `}><b>{ this.props.name }</b> { (this.props.year && Number(this.props.year) >= 2020) ? "" : "// " }{ this.props.email } { (this.props.year && Number(this.props.year) >= 2020) ? "" : "// " }{ this.props.handle }</p>
           <p className={css`
             margin: 0;
           `}>{ this.props.bio }</p>
