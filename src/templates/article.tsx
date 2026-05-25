@@ -113,31 +113,42 @@ export default ({ data, pageContext }) => {
       {data.primeArticle.articleType === 'article' && (
         <>
         <p style={{"text-align":"center", "font-family": 'Source Serif Pro'}}> {data.primeArticle.updated}</p>
-        <Article
-          dropcap={true}
-          content={data.primeArticle.content}
-          customTypeComponentMapping={{
-            pull: CustomPullQuote,
-            pullimage: CustomPullImage,
-            subheading: Subheading,
-            italics: Italics,
-            video: Video,
-          }}
-          style={css`
-            max-width: 60%;
-            font-family: 'Source Serif Pro';
-            line-height: 38px;
-            font-size: 1.25rem;
-            min-width: 300px;
-            figcaption {
-              font-style: italic;
-              font-size: 1.15rem;
+        {(() => {
+          let dropcap = true;
+          if (data.primeArticle.content && data.primeArticle.content.length > 0) {
+            const firstElement = data.primeArticle.content[0];
+            if (firstElement.type === 'text' && (firstElement.value.trim().startsWith("Editor's note") || firstElement.value.trim().startsWith("Correction"))) {
+              dropcap = false;
             }
-            @media only screen and (max-width: 800px) {
-              max-width: 80%;
-            }
-          `}
-        />
+          }
+          return (
+            <Article
+              dropcap={dropcap}
+              content={data.primeArticle.content}
+              customTypeComponentMapping={{
+                pull: CustomPullQuote,
+                pullimage: CustomPullImage,
+                subheading: Subheading,
+                italics: Italics,
+                video: Video,
+              }}
+              style={css`
+                max-width: 60%;
+                font-family: 'Source Serif Pro';
+                line-height: 38px;
+                font-size: 1.25rem;
+                min-width: 300px;
+                figcaption {
+                  font-style: italic;
+                  font-size: 1.15rem;
+                }
+                @media only screen and (max-width: 800px) {
+                  max-width: 80%;
+                }
+              `}
+            />
+          );
+        })()}
         </>
       )}
       <FooterAuthorBio
