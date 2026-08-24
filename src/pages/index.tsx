@@ -96,7 +96,7 @@ const IndexPage = ({ data }) => {
     if (ele === undefined) {
       return {
         title: "DEFAUT_HEADLINE",
-        authors: "DEFAULT_AUTHOR",
+        authors: ["DEFAULT_AUTHOR"],
         description: "DEFAULT_EXCERPT",
         quarter: "DEFAULT_QUARTER",
         imageURL: "https://assets3.dailybruin.com/images/prime.nightlifestudents/7.25.prime.nightlifeworkers_illo2-75b055703bef18adf6d8fa51e7857617.png",

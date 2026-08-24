@@ -164,7 +164,7 @@ export class StyledCoverPhoto extends React.Component<StyledCoverPhotoProps> {
             BY {toSentence(this.props.authors).toUpperCase()}
             {this.props.photographers &&
               this.props.quarter !== "spring 2024" &&
-              ' // ART BY ' +
+              ' // ' +
                 toSentence(this.props.photographers).toUpperCase()
             }
           </p>

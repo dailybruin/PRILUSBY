@@ -59,12 +59,9 @@ const AllStories = ({ data }) => {
           const curredge = data.allPrimeArticle.edges.filter(edge => {
             return edge.node.slug === slug
           })[0]
-          return curredge.node
+          return curredge?.node  // optional chaining instead of crashing
         })
-        .filter(node => {
-          // just in case something is undefined filter so page doesn't crash
-          return !(node === undefined)
-        }),
+        .filter(node => node !== undefined)  // drop the ones that didn't match,
     }
   })
   return (

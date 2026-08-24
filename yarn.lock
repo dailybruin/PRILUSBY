@@ -1621,11 +1621,12 @@ __metadata:
     emotion-server: "npm:9.2.12"
     gatsby: "npm:2.32.13"
     gatsby-plugin-emotion: "npm:2.0.7"
-    gatsby-plugin-google-analytics: "npm:2.11.0"
-    gatsby-plugin-manifest: "npm:2.12.1"
-    gatsby-plugin-react-helmet: "npm:3.10.0"
-    gatsby-plugin-typescript: "npm:2.12.1"
-    gatsby-plugin-typography: "npm:2.12.0"
+    gatsby-plugin-google-analytics: "npm:2.1.17"
+    gatsby-plugin-gtag: "npm:^1.0.13"
+    gatsby-plugin-manifest: "npm:2.2.18"
+    gatsby-plugin-react-helmet: "npm:3.1.8"
+    gatsby-plugin-typescript: "npm:2.1.9"
+    gatsby-plugin-typography: "npm:2.3.8"
     node-fetch: "npm:^2.6.1"
     normalize.css: "npm:8.0.1"
     prettier: "npm:1.19.1"
@@ -9428,9 +9429,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-manifest@npm:2.12.1":
-  version: 2.12.1
-  resolution: "gatsby-plugin-manifest@npm:2.12.1"
+"gatsby-plugin-gtag@npm:^1.0.13":
+  version: 1.0.13
+  resolution: "gatsby-plugin-gtag@npm:1.0.13"
+  peerDependencies:
+    gatsby: ">2.0.0-alpha"
+  checksum: 10c0/3b1fea7a32f57dbe6033be846a36f3d835c46cd907cad8bb4a0534a8fe6443fa46f7a775378ab0caf9a4ea34dc1484de0fd695a2a6a0ded7f4f831a141aaacf1
+  languageName: node
+  linkType: hard
+
+"gatsby-plugin-manifest@npm:2.2.18":
+  version: 2.2.18
+  resolution: "gatsby-plugin-manifest@npm:2.2.18"
   dependencies:
     "@babel/runtime": "npm:^7.12.5"
     gatsby-core-utils: "npm:^1.10.1"
