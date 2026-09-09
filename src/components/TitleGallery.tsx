@@ -19,9 +19,6 @@ interface TitleGalleryProps {
 
 export class TitleGallery extends React.Component<TitleGalleryProps> {
   render() {
-    if (typeof document == 'undefined') {
-      return null
-    }
     const params = {
       ContainerEl: 'section',
       WrapperEl: 'section',
@@ -124,7 +121,7 @@ export class TitleGallery extends React.Component<TitleGalleryProps> {
                                 font-size: 18px;
                               `}
                             >
-                              BY {toSentence(story.authors).toUpperCase()}
+                              BY {(toSentence((story.authors || []).filter(Boolean)) || '').toUpperCase()}
                             </h2>
                           </tr>
                           <tr>
