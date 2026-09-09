@@ -35,19 +35,6 @@ export const query = graphql`
   }
 `
 const AllStories = ({ data }) => {
-  if (typeof window == 'undefined') {
-    return (
-      <>
-        <CustomHead
-          siteName="PRIME"
-          pageName="all stories"
-          url="https://prime.dailybruin.com/all"
-          description="PRIME is the official website for the Daily Bruin's quarterly arts, culture and lifestyle magazine."
-          image="https://assets.dailybruin.com/images/sabrina.whensoundshurt/cover-83530e07fd73cf3d7e1c8b5a85639df2.jpg"
-        />
-      </>
-    )
-  }
   let quarterlyStories = data.issues.issues.map(issue => {
     let term = issue.term
     let season = term.substring(0, term.length - 2)
