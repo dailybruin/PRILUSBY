@@ -18,6 +18,8 @@ import { CustomPullQuote } from '../components/pullQuote'
 export const query = graphql`
   query($slug: String!) {
     primeArticle(slug: { eq: $slug }) {
+      slug
+      excerpt
       headline
       author
       authorbio
@@ -55,33 +57,11 @@ const Subheading = props => (
   />
 )
 
-// This is server side rendering (SSR) and is used when gatsby builds. This will not be seen once the browser loads the page
-//the same article page is used for all articles
+// Rendered once at build time into static HTML, then hydrated in the browser.
+// The same article page is used for all articles.
 export default ({ data, pageContext }) => {
-  if (typeof document === 'undefined') {
-    if (!data.primeArticle) {
-      return <></>
-    }
-    return (
-      <>
-        <CustomHead
-          siteName="PRIME"
-          pageName={data.primeArticle.headline}
-          description={data.primeArticle.excerpt}
-          url={
-            !data.primeArticle.slug
-              ? ''
-              : `https://prime.dailybruin.com/${data.primeArticle.slug
-                .split('.')
-                .join('')}`
-          }
-          image={data.primeArticle.coverimg}
-        >
-          {/* Added because this person wants her article de-indexed. It should add a tag only for this article. */}
-          {(data.primeArticle.headline === "The Fundamental Difference") && (data.primeArticle.author === "Genevieve Finn") && <meta name="robots" content="noindex, nofollow" />}
-        </CustomHead>
-      </>
-    )
+  if (!data.primeArticle) {
+    return <></>
   }
 
   const term = pageContext.term
@@ -101,7 +81,6 @@ export default ({ data, pageContext }) => {
     }
   }
 
-  // Client Side Rendering = when the browser renders the page, this version will be seen.
   return (
     <div>
       <CustomHead

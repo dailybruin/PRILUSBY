@@ -329,15 +329,5 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
         },
       },
     })
-    actions.setWebpackConfig({
-      module: {
-        rules: [
-          {
-            test: /lux/,
-            use: loaders.null(),
-          },
-        ],
-      },
-    })
   }
 }
