@@ -17,9 +17,6 @@ interface FooterAuthorBioProps {
 export class FooterAuthorBio extends React.Component<FooterAuthorBioProps> {
 
   render() {
-    if (typeof document == 'undefined') {
-      return null
-    }
 
     return (
       <div className={css`

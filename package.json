@@ -55,6 +55,7 @@
     "prettier": "1.19.1"
   },
   "resolutions": {
-    "sharp": "^0.34.0"
+    "sharp": "^0.34.0",
+    "react-images": "0.5.19"
   }
 }

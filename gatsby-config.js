@@ -10,6 +10,7 @@ const year = '2019'
 const url = `https://features.dailybruin.com/${year}/${slugify(siteName)}`
 
 module.exports = {
+  pathPrefix: '/prime',
   siteMetadata: {
     siteName,
     description,
