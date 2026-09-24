@@ -1,52 +1,118 @@
-# PRIME Website
-This repository stores the static server code for PRIME's website. The 'public' folder of this project is generated from the build command, and is uploaded to an s3 bucket in order to be hosted.
+# PRIME
 
-# gatsby-starter-dailybruin
+PRIME is the Daily Bruin's quarterly arts, culture and lifestyle magazine. This
+repository builds **PRIME's archive** — every issue from spring 2018 through
+spring 2026, 235 stories.
 
-How the Daily Bruin likes using [Gatsby](https://www.gatsbyjs.org). Note this starter combines a couple of other in-house DB tools, like [gatsby-source-kerckhoff](https://github.com/dailybruin/gatsby-source-kerckhoff), which draws from our site manager [Kerckhoff](https://github.com/dailybruin/kerckhoff), and [Lux](https://github.com/dailybruin/lux), our React-based design system.
+## Where it lives
 
-## Overview
+The archive is at **[dailybruin.com/prime](https://dailybruin.com/prime)**.
 
-What's going on here? Kerckhoff is pulling data from a [Google Drive Folder](https://docs.google.com/document/d/1CBXuDRDNLyZZVe51Z0F_0eEgwupJWF9J0NQ0CK7jlNQ/edit?usp=sharing) that contains docs written in [ArchieML](http://archieml.org/) and images and transforming them into parsable JSON via [an api](https://kerckhoff.dailybruin.com/api/packages/flatpages/online.demoaml/). gatsby-source-kerckhoff is then fetching that JSON and makes it available as GraphQL for use in this Gatsby template. In a diagram:
+It used to live at `prime.dailybruin.com`. That address still works, but it now
+forwards to dailybruin.com — there is no separate PRIME site any more. Moving it
+onto the main site means PRIME's stories benefit from dailybruin.com's
+reputation in Google instead of competing with it.
+
+## The archive is closed
+
+**New PRIME stories are published in WordPress**, like any other Daily Bruin
+article, with the PRIME category. They show up on
+[dailybruin.com/category/prime](https://dailybruin.com/category/prime) on their
+own.
+
+Nothing new is added to this repository. You only need it if you have to change
+something in a story published before the 2026–27 school year.
+
+## Changing an old story
+
+The words and images do not live in this repository — they live in [this Google
+Drive folder](https://docs.google.com/document/d/1CBXuDRDNLyZZVe51Z0F_0eEgwupJWF9J0NQ0CK7jlNQ/edit?usp=sharing),
+written in [ArchieML](http://archieml.org/).
+[Kerckhoff](https://github.com/dailybruin/kerckhoff) turns those docs into data,
+and [gatsby-source-kerckhoff](https://github.com/dailybruin/gatsby-source-kerckhoff)
+feeds it into this site:
 
 ```
-ArchieML  --Kerckhoff-->  JSON ––gatsby-source-kerckhoff--> GraphQL ––gatsby-starter-dailybruin--> HTML
+Google Doc (ArchieML) → Kerckhoff → this site → HTML
 ```
 
-## Installation
+So edit the Google Doc first. Then rebuild and re-upload, following the steps
+below.
 
-Make sure you have [Yarn](https://yarnpkg.com/) the [Gatsby CLI](https://www.gatsbyjs.org/docs/#using-the-gatsby-cli) installed.
-
-```
-gatsby new <your-project-name> https://github.com/dailybruin/gatsby-starter-dailybruin
-```
-
-## Usage
-
-### Development
-
-If you haven't already, install [yarn](https://yarnpkg.com/).
-
-Install dependencies with:
+## Running it locally
 
 ```
+corepack enable
 yarn
-```
-
-To start the development server, run:
-
-```
 yarn start
 ```
 
-Then go to [localhost:1234](http://localhost:1234)!
+Then open [localhost:1234](http://localhost:1234).
 
-### Deployment
+If the install or build fails, try Node 20 (`nvm use 20`). This is an older
+Gatsby site and newer versions of Node can trip it up.
 
-To build:
+## Publishing changes
+
+**1. Build it**
 
 ```
-yarn build
+yarn build:prefix-paths
 ```
 
+⚠️ Use this command, **not** `yarn build`. The archive is served from a folder
+called `prime/`, and this is the command that tells the site so. Plain
+`yarn build` produces a version that loads no styling or images and looks
+completely broken.
 
+**2. Upload it**
+
+Upload **everything inside** the `public/` folder to the `prime/` folder of the
+`prime.dailybruin.com` bucket in Amazon S3.
+
+- Upload the *contents* of `public/`, not the `public` folder itself. You want
+  `prime/index.html`, not `prime/public/index.html`.
+- Do **not** upload to the top level of the bucket. That holds the old site,
+  which nothing uses any more.
+- Ask Online's external sites editor if you do not have access.
+
+**3. Make the files public**
+
+Select the `prime/` folder → Actions → Make public using ACL.
+
+New uploads are private by default, so if you skip this, every page shows
+"Access Denied" instead of the story.
+
+**4. Clear the cache**
+
+In Cloudflare: Caching → Configuration → Purge Cache → Custom Purge, and purge
+the pages you changed. Otherwise readers keep seeing the old version for up to
+an hour.
+
+**5. Check it worked**
+
+Open the story on dailybruin.com/prime and confirm your change is there.
+
+## A note on the code
+
+The pages are built with [Lux](https://github.com/dailybruin/lux), the Daily
+Bruin's React component library, on top of [Gatsby](https://www.gatsbyjs.org).
+
+Until 2026 this site sent search engines almost nothing — about 16 words per
+story, because the text was added by the reader's browser after the page
+arrived, and search engines mostly don't wait for that. PRIME's journalism was
+effectively invisible in Google for seven years.
+
+It was caused by a workaround added in 2019 to get the site deploying: it
+switched Lux off while the pages were being built, so every page had to be told
+to skip rendering as a result. The site looked perfect to anyone using a
+browser, which is why nobody noticed.
+
+That is fixed. Each page now contains its full story text before any JavaScript
+runs. If you are changing how pages are built, be careful not to reintroduce it:
+after a change, open a story, use **View Source** (not Inspect — Inspect shows
+the page after JavaScript runs and hides the problem), and check the story's
+text is actually there.
+
+One story carries a `noindex` tag at its author's request, in
+`src/templates/article.tsx`. Please keep it.
