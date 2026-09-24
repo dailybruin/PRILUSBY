@@ -25,10 +25,12 @@ something in a story published before the 2026–27 school year.
 
 ## Changing an old story
 
-The words and images do not live in this repository — they live in Google Docs,
-written in [ArchieML](http://archieml.org/), which
-[Kerckhoff](https://github.com/dailybruin/kerckhoff) turns into data this site
-reads:
+The words and images do not live in this repository — they live in [this Google
+Drive folder](https://docs.google.com/document/d/1CBXuDRDNLyZZVe51Z0F_0eEgwupJWF9J0NQ0CK7jlNQ/edit?usp=sharing),
+written in [ArchieML](http://archieml.org/).
+[Kerckhoff](https://github.com/dailybruin/kerckhoff) turns those docs into data,
+and [gatsby-source-kerckhoff](https://github.com/dailybruin/gatsby-source-kerckhoff)
+feeds it into this site:
 
 ```
 Google Doc (ArchieML) → Kerckhoff → this site → HTML
@@ -93,14 +95,17 @@ Open the story on dailybruin.com/prime and confirm your change is there.
 
 ## A note on the code
 
+The pages are built with [Lux](https://github.com/dailybruin/lux), the Daily
+Bruin's React component library, on top of [Gatsby](https://www.gatsbyjs.org).
+
 Until 2026 this site sent search engines almost nothing — about 16 words per
 story, because the text was added by the reader's browser after the page
 arrived, and search engines mostly don't wait for that. PRIME's journalism was
 effectively invisible in Google for seven years.
 
 It was caused by a workaround added in 2019 to get the site deploying: it
-switched off the step that writes the story into the page, and every page had to
-be told to skip rendering as a result. The site looked perfect to anyone using a
+switched Lux off while the pages were being built, so every page had to be told
+to skip rendering as a result. The site looked perfect to anyone using a
 browser, which is why nobody noticed.
 
 That is fixed. Each page now contains its full story text before any JavaScript
