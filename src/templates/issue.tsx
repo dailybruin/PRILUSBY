@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { ArticleCard } from '../components/ArticleCard'
 import { css } from 'emotion'
 import CustomHead from '../components/CustomHead'
+import { SITE_URL } from '../constants'
 import CustomHeader from '../components/CustomHeader'
 import { TripleHeader } from '../components/TripleHeader/TripleHeader'
 import { Footer } from '../components/Footer'
@@ -115,7 +116,7 @@ export default ({ data, pageContext }) => {
       <CustomHead
         siteName="PRIME"
         pageName={formatTerm}
-        url={`https://prime.dailybruin.com/${term}`}
+        url={`${SITE_URL}/${term}`}
         description="PRIME is the official website for the Daily Bruin's quarterly arts, culture and lifestyle magazine."
         image="http://assets.dailybruin.com/images/prime.map.articles.to.issues/prime%20cover%20spring.jpg"
       />

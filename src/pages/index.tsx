@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
 import CustomHead from '../components/CustomHead'
+import { SITE_URL } from '../constants'
 import { Footer } from '../components/Footer'
 import CustomHeader from '../components/CustomHeader'
 import { ArticleCard } from '../components/ArticleCard'
@@ -90,7 +91,7 @@ const IndexPage = ({ data }) => {
     <>
       <CustomHead
         siteName="PRIME"
-        url="https://prime.dailybruin.com"
+        url={`${SITE_URL}/`}
         description="PRIME is the official website for the Daily Bruin's quarterly arts, culture and lifestyle magazine."
         image="https://assets.dailybruin.com/images/sabrina.whensoundshurt/cover-83530e07fd73cf3d7e1c8b5a85639df2.jpg"
       />

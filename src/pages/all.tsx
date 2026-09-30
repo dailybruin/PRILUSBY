@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
 import CustomHead from '../components/CustomHead'
+import { SITE_URL } from '../constants'
 import CustomHeader from '../components/CustomHeader'
 import { QuarterlyStories } from '../components/QuarterlyStories'
 import { css } from 'emotion'
@@ -56,7 +57,7 @@ const AllStories = ({ data }) => {
       <CustomHead
         siteName="PRIME"
         pageName="all stories"
-        url="https://prime.dailybruin.com/all"
+        url={`${SITE_URL}/all`}
         description="PRIME is the official website for the Daily Bruin's quarterly arts, culture and lifestyle magazine."
         image="https://assets.dailybruin.com/images/sabrina.whensoundshurt/cover-83530e07fd73cf3d7e1c8b5a85639df2.jpg"
       />
