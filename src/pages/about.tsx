@@ -2,6 +2,7 @@ import * as React from 'react'
 import { graphql } from 'gatsby'
 import { css } from 'react-emotion'
 import CustomHead from '../components/CustomHead'
+import { SITE_URL } from '../constants'
 import CustomHeader from '../components/CustomHeader'
 import { Footer } from '../components/Footer'
 
@@ -54,7 +55,7 @@ export function AboutFrame(props) {
         <CustomHead
           siteName={data.pageName || 'PRIME'}
           pageName={data.pageName || 'about'}
-          url={data.url || 'https://prime.dailybruin.com/about'}
+          url={`${SITE_URL}/about`}
           description={
             data.description ||
             "PRIME is the official website for the Daily Bruin's quarterly arts, culture and lifestyle magazine."
@@ -75,7 +76,7 @@ export function AboutFrame(props) {
         <CustomHead
           siteName={data.pageName}
           pageName={data.pageName}
-          url={data.url}
+          url={`${SITE_URL}/about`}
           description={data.description}
           image={data.image}
         />
@@ -84,7 +85,7 @@ export function AboutFrame(props) {
         <CustomHead
           siteName="PRIME"
           pageName="about"
-          url="https://prime.dailybruin.com/about"
+          url={`${SITE_URL}/about`}
           description="PRIME is the official website for the Daily Bruin's quarterly arts, culture and lifestyle magazine."
           image="https://assets.dailybruin.com/images/sabrina.whensoundshurt/cover-83530e07fd73cf3d7e1c8b5a85639df2.jpg"
         />

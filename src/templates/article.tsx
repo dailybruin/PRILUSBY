@@ -5,6 +5,7 @@ import { css } from 'react-emotion'
 
 import GraphicNovel from '../components/GraphicNovel'
 import CustomHead from '../components/CustomHead'
+import { SITE_URL } from '../constants'
 import CustomHeader from '../components/CustomHeader'
 import { HeaderHighLight } from '../components/TripleHeader/HeaderHighLight'
 import { StyledCoverPhoto } from '../components/StyledCoverPhoto'
@@ -90,9 +91,7 @@ export default ({ data, pageContext }) => {
         url={
           !data.primeArticle.slug
             ? ''
-            : `https://prime.dailybruin.com/${data.primeArticle.slug
-              .split('.')
-              .join('')}`
+            : `${SITE_URL}/${data.primeArticle.slug.split('.').join('')}`
         }
         image={data.primeArticle.coverimg}
       >
