@@ -3,6 +3,7 @@ import { css } from 'react-emotion'
 import { Link } from 'gatsby'
 import MobilePopup from './MobilePopup'
 import PRIME from '../images/PRIME.svg'
+import { SECTION_URL } from '../constants'
 
 interface CustomHeaderProps {
   transparent?: boolean
@@ -28,6 +29,20 @@ const linkStyle = css`
     text-decoration: none;
     color: #fff;
     margin-left: 67px;
+    white-space: nowrap;
+  }
+  /* Five links no longer fit on one line at the old spacing below ~1400px,
+     so tighten in two steps rather than let each label wrap onto two lines. */
+  @media (max-width: 1400px) {
+    a {
+      margin-left: 36px;
+    }
+  }
+  @media (max-width: 1100px) {
+    font-size: 19px;
+    a {
+      margin-left: 22px;
+    }
   }
   @media (max-width: 940px) {
     display: none;
@@ -71,6 +86,9 @@ export default class CustomHeader extends React.Component<CustomHeaderProps> {
             <Link key={4} to="/all">
               all stories
             </Link>,
+            <a key={5} href={SECTION_URL}>
+              new stories
+            </a>,
           ]}
         </MobilePopup>
         <Link to="/">
@@ -90,6 +108,7 @@ export default class CustomHeader extends React.Component<CustomHeaderProps> {
           <Link to={`/${curIssue}`}>current issue</Link>
           <Link to="/pastissues">past issues</Link>
           <Link to="/all">all stories</Link>
+          <a href={SECTION_URL}>new stories</a>
         </div>
       </div>
     )

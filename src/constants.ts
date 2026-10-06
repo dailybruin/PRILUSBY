@@ -20,3 +20,17 @@
  * is the home page, which is linked as `/prime/` and so keeps the slash.
  */
 export const SITE_URL = 'https://dailybruin.com/prime'
+
+/**
+ * The Daily Bruin's main site, and PRIME's section page on it.
+ *
+ * This site is the archive: it stops at spring 2026. PRIME stories since then
+ * are published on the main site and listed on the section page, so the
+ * header and footer send readers there.
+ *
+ * These are plain <a href> targets, never Gatsby <Link to>. They are outside
+ * this app, and <Link> would prepend the /prime path prefix and try to route
+ * to them client-side.
+ */
+export const MAIN_SITE_URL = 'https://dailybruin.com'
+export const SECTION_URL = `${MAIN_SITE_URL}/category/prime`
