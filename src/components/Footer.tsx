@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Link } from 'gatsby'
 import { css } from 'react-emotion'
 import RectangleLogos from '../images/RectangleLogos.png'
+import { MAIN_SITE_URL, SECTION_URL } from '../constants'
 
 export function Footer() {
   return (
@@ -12,8 +13,12 @@ export function Footer() {
         padding: 0 0;
         color: white;
         background: black;
-        height: 200px;
+        min-height: 200px;
+        padding-bottom: 16px;
         width: 100%;
+        a {
+          color: white;
+        }
       `}
     >
       <div
@@ -40,7 +45,14 @@ export function Footer() {
             }
           `}
         >
-          DAILY BRUIN
+          <a
+            href={MAIN_SITE_URL}
+            className={css`
+              text-decoration: none;
+            `}
+          >
+            DAILY BRUIN
+          </a>
         </div>
       </div>
 
@@ -60,6 +72,11 @@ export function Footer() {
       >
         <div>
           PRIME is the official website for the Daily Bruin's quarterly narrative journalism magazine.
+        </div>
+        <div>
+          This is the PRIME archive. Read{' '}
+          <a href={SECTION_URL}>the latest PRIME stories</a> on the Daily
+          Bruin.
         </div>
         <div>© UCLA Student Media 1998 - 2022</div>
         <div>Built with love at 118 Kerckhoff Hall</div>
